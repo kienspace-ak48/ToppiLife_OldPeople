@@ -1,0 +1,23 @@
+.section{
+    margin: 20px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.section-toggle{
+    width: 100%;
+    padding: 12px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    background-color: #f0f0f0;
+    text-align: left;
+
+}
+.section-content{
+    display: none;
+    padding: 15px;
+    background-color: #fff;
+}

@@ -1,0 +1,53 @@
+nav {
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      background: white;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      border-top: 1px solid #eee;
+      padding: 15px 0;
+      
+    }
+
+    nav ul {
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    nav.active {
+      display: flex;
+    }
+
+    .menu-toggle {
+      display: block;
+    }
+
+    .hotline {
+      display: none; /* Ẩn hotline trên mobile, có thể cho vào menu nếu cần */
+    }
+
+    .hero {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .hero-text h1 {
+      font-size: 26px;
+    }
+
+
+    .hero .main-content {
+      flex-direction: column;
+      text-align: center;
+      gap: 20px;
+    }
+    .hero {
+      min-height: auto; /* bỏ giới hạn chiều cao */
+      padding: 60px 0;
+    }
+    .hero-text h1 {
+      font-size: clamp(22px, 6vw, 32px);
+    }

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="/lib/css/sweetalert2.min.css" />
+        <link rel="stylesheet" href="/lib/css/bootstrap.min.css" />
+        <!--  -->
+        <script src="/lib/js/jquery-3.7.1.js"></script>
+        <script src="/lib/js/bootstrap.bundle.min.js"></script>
+        <script src="/lib/js/sweetalert2.all.min.js"></script>
+        <!-- text editor tinymce  -->
+        <script src="/lib/tinymce/tinymce.min.js"></script>
+        <!-- fontawesome v7. -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+            integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+        <!--  -->
+        <link rel="stylesheet" href="/css/adminstyle.css" />
+    </head>
+
+    <body>
+        <div class="main-container">
+            <h4>Trang quanr tri noi dung</h4>
+            <p class="desc">Config noi dung (text, image, video, bo cuc,) luu xuong db</p>
+            <div class="f-wrapper wrap-button">
+                <div class="group-button">
+                    <button value="hero">Hero</button>
+                    <button value="about" class="active">About</button>
+                    <button>Advance</button>
+                    <button>afd</button>
+                    <button>fdsafd</button>
+                </div>
+            </div>
+        </div>
+        <!-- <button class="btn btn-outline-info">info<i class="fa-solid fa-code"></i></button> -->
+        <div class="main-container">
+            <div class="my-card">
+                <div class="row">
+                    <div class="col-6">
+                        <label for="" class="form-label">Tieu de highline</label>
+                        <input type="text" class="form-control" placeholder="" />
+                        <label for="" class="form-label">Tieu de</label>
+                        <input type="text" class="form-control" placeholder="" />
+                    </div>
+                    <div class="col-6">
+                        <label for="" class="form-label">Desc</label>
+                        <input type="text" class="form-control" placeholder="" />
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="form-label">Anh hero URL</label>
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+                <div class="gaction">
+                    <button type="button" class="btn btn-outline-primary mt-3">Save config</button>
+                </div>
+            </div>
+        </div>
+        <!-- //=====================OUTDOOR=====================// -->
+        <div id="editModal" class="modal fade" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5">Text editor</h1>
+                        <button class="btn-close" data-bs-dismiss="modal" ></button>
+                    </div>
+                    <div class="modal-body">
+                        <textarea id="modalEditor"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="saveEditor" class="btn btn-outline-success">Save shange</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- script -->
+        <script src="/js/admin.js"></script>
+        <script></script>
+    </body>
+</html>

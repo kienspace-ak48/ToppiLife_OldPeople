@@ -1,0 +1,331 @@
+@media (max-width: 768px) {
+    /* =============== #HEADER */
+  /* .wrap-header::before,
+.wrap-header::after {
+  z-index: -1; 
+} */
+  /* đẩy background mờ xuống dưới */
+  .wrap-header {
+    height: auto;
+  }
+  .header {
+    padding: 10px 5%;
+    z-index: 1000;
+    /* position: relative; */
+  }
+
+  nav {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: white;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    border-top: 1px solid #eee;
+    padding: 20px 0;
+    z-index: 999;
+    opacity: 1;
+  }
+
+  nav.active {
+    display: flex;
+    z-index: 999;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+  .hotline {
+    display: none; /* Ẩn hotline trên mobile, có thể cho vào menu nếu cần */
+  }
+  .hero {
+    max-height: auto;
+    margin-top: 50px;
+    display: block;
+  }
+  .hero .hero-text {
+    margin: auto auto;
+  }
+
+  .hero .main-content {
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .hero-img img {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 20px;
+  }
+
+  .hero-text h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+  }
+
+  .hero-text p {
+    font-weight: 600;
+    font-size: 2rem;
+  }
+  .hero .actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .btn.btn-cta-contact {
+    display: flex;
+    align-items: center;
+    /* text-align: center; */
+    text-align: center;
+    height: 50px;
+    max-width: 200px;
+    padding: 2px 20px;
+    font-size: 1.8rem;
+    font-weight: 700;
+    border-radius: 60px;
+  }
+  /* =============== #ISSUE ===========*/
+  .issue{
+    /* height: auto; */
+    padding: 40px 0;
+    background-color: #fff;
+  }
+  .issue .title{
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
+  .issue .issue-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    justify-items: center;
+}
+.issue .issue-card {
+    position: relative;
+    width: auto;
+    height: 250px;
+    background: #fff;
+    border-radius: 40px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+}
+.issue .issue-card h3.desc {
+    font-size: 2rem;
+    font-weight: 600;
+}
+.issue .issue-summary .desc{
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.5;
+    padding: 30px 8%;
+}
+/* ================SOLUTION============ */
+
+
+.solution .sol-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    
+    gap: 50px 0;
+  }
+  .solution .sol-card:last-child  .col-right{
+    /* grid-column: 1; */
+    display: none;
+  }
+  .solution h2.sol-title{
+    font-size: 3rem;
+    font-weight: 700;
+  }
+  .solution .sol-card h3.title{
+    font-size: 2.6rem;
+    font-weight: 700;
+  }
+  .solution .sol-card .desc{
+    font-size: 2rem;
+    font-weight: 500;
+  }
+  .solution .sol-video .vid-wrap{
+    height: 250px;
+    width: 100%;
+  }
+
+/* .solution-card:last-child {
+      grid-column: span 1;
+    }
+    .solutions-grid {
+      grid-template-columns: 1fr;
+    } */
+/* ==============WHY CHOOSE US */
+#why-choose img{
+  max-width: 180px;
+}
+#why-choose .difference-box{
+  flex-direction: column;
+}
+#why-choose .product{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#why-choose .benefits p{
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+#why-choose .benefit .number{
+  width: 40px;
+  height: 40px;
+  padding: 15px;
+}
+/* table */
+.toppilife-compare .table-wrapper{
+  overflow: hidden;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.toppilife-compare .table-wrapper th{
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+ .toppilife-compare .table-wrapper td{
+    font-weight: 500;
+    font-size: 1.6rem;
+}
+.feature-grid {
+    grid-template-columns: 1fr;
+    padding: 0 25px;
+  }
+.feature-grid .feature-card p{
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+/* ==================== Certificate ========== */
+.certificates h2{ 
+  font-size: 2.8rem;
+  font-weight: 700;
+}
+/* ==================Survey ================ */
+.survey h2 {
+  font-size: 2.8rem;
+  font-weight: 700;
+}
+.survey-card p {
+  font-size: 2rem;
+  font-weight: 600;
+}
+/* ==================== Feedback=============== */
+.feedback h2{
+  font-size: 2.8rem;
+  font-weight: 700;
+}
+.feed-video .sol-video {
+
+}
+.feed-video  .vid-wrap {
+  height: 250px;
+    width: 100%;
+}
+/* ==================== FAQ ================= */
+.faq-section h2 {
+  font-size: 2.8rem;
+  font-weight: 700;
+}
+.faq-question {
+  font-size: 1.9rem;
+  font-weight: 600;
+}
+.faq-answer {
+  font-size: 1.6rem;
+  line-height: 1.8rem;
+  font-weight: 500;
+}
+.warranty-card p {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+/* =================== Wanrnaty ================*/
+.warranty h2 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+/* =================== Contact ============== */
+.cta.contact {
+  border-radius: 0;
+}
+.cta h2 {
+  font-size: 2.8rem;
+  font-weight: 700;
+}
+
+.cta p {
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+/* ==================== Introlduce ===========*/
+.introduce {
+
+}
+.introduce .intro-text {
+  max-width: 70%; /* giới hạn text */
+}
+.introduce .intro-text h2{
+  font-size: 4rem;
+  font-weight: 600;
+}
+.introduce .intro-text .desc{
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #000;
+}
+
+/* =============FOOTER =========*/
+
+.footer .tooter-top .footer-title{
+  font-size: 2.8rem;
+  font-weight: 700;
+}
+.footer .footer-top {
+    flex-direction: column;
+    text-align: center;
+  }
+
+
+
+  /* end resp */
+}
+/* Tablet */
+@media (min-width: 768px) {
+  .solution .sol-grid {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .solution .sol-card:last-child {
+    grid-column: span 2;
+     /* chỉ áp dụng trên desktop */
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .solution .sol-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+
+  .solution .sol-card:last-child {
+    grid-column: span 2;
+     /* chỉ áp dụng trên desktop */
+  }
+}
+

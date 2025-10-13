@@ -1,0 +1,120 @@
+
+<section id="certificate" class="certificates">
+  <!-- Popup -->
+<div id="imgModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="modalImg">
+  <div class="caption" id="caption"></div>
+</div>
+<!--  -->
+  <div class="main-content">
+    <h2><%=ps.certificate.title%></h2>
+    <!--  -->
+    <div class="swiper SwiperCertificate">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <img src="/img/certificate1.png" class="thumb" loading="lazy" alt="Certificate 1" />
+      </div>
+      <div class="swiper-slide">
+        <img src="/img/certificate1.png" class="thumb" loading="lazy" alt="Certificate 2" />
+      </div>
+      <div class="swiper-slide">
+        <img src="/img/certificate1.png" class="thumb" loading="lazy" alt="Certificate 3" />
+      </div>
+      <div class="swiper-slide">
+        <img src="/img/certificate1.png" class="thumb" loading="lazy" alt="Certificate 4" />
+      </div>
+     
+    </div>
+
+    <!-- Nút điều hướng -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <!-- Dots -->
+    <div class="swiper-pagination"></div>
+  </div>
+    <!--  -->
+    <!-- <div class="cert-grid">
+      <div class="cert-item">
+        <img src="/img/certificate1.png" loading="lazy" alt="Certificate 1" />
+      </div>
+      <div class="cert-item">
+        <img src="/img/certificate1.png" loading="lazy" alt="Certificate 2" />
+      </div>
+      <div class="cert-item">
+        <img src="/img/certificate1.png" loading="lazy" alt="Certificate 3" />
+      </div>
+      <div class="cert-item">
+        <img src="/img/certificate1.png" loading="lazy" alt="Certificate 4" />
+      </div>
+    </div> -->
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+  <script>
+    
+    var swiper = new Swiper(".SwiperCertificate", {
+      slidesPerView: 3,      // số ảnh / view
+      // slidesPerGroup: 2,     // số slide nhảy khi next/prev
+      spaceBetween: 30,      // khoảng cách giữa ảnh
+      loop: false,            // chạy vòng lặp
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      breakpoints: {
+    // màn hình nhỏ hơn 640px (mobile) → 1 item
+    0: {
+      slidesPerView: 1,
+      spaceBetween: 10,
+    },
+    // màn hình >= 640px (tablet) → 2 item
+    640: {
+      slidesPerView: 2,
+      spaceBetween: 15,
+    },
+    // màn hình >= 1024px (desktop) → 4 item
+    1024: {
+      slidesPerView:3,
+      spaceBetween: 20,
+    }
+      }
+    });
+  </script>
+<!--  -->
+<script>
+  const totalSlides = document.querySelectorAll('.SwiperCertificate .swiper-slide').length;
+// alert( totalSlides);
+const modal = document.getElementById("imgModal");
+const modalImg = document.getElementById("modalImg");
+const captionText = document.getElementById("caption");
+const closeBtn = document.querySelector(".close");
+
+document.querySelectorAll(".certificates .swiper-wrapper .thumb").forEach(img => {
+  img.addEventListener("click", () => {
+    // alert("A")
+    modal.style.flexDirection ="column"
+    modal.style.display = "flex";
+    modal.style.justifyContent ="center"
+    modal.style.alignItems ="center"
+    modalImg.src = img.src.replace("/400/250", "/1200/800"); // 👉 load ảnh nét hơn
+    captionText.innerHTML = img.alt;
+  });
+});
+
+closeBtn.onclick = () => {
+  modal.style.display = "none";
+};
+
+// click outside image cũng tắt
+modal.onclick = (e) => {
+  if (e.target === modal) {
+    modal.style.display = "none";
+  }
+};
+</script>

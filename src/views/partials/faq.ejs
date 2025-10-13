@@ -1,0 +1,59 @@
+<style>
+
+</style>
+
+<section class="faq-section">
+  <div class="main-content">
+    <h2><%=ps.faq.title%> </h2>
+
+  <div class="faq-item">
+    <div class="faq-question">
+      <%=ps.faq.items[0].question%>
+      <span class="faq-icon">+</span>
+    </div>
+    <div class="faq-answer">
+      <%=ps.faq.items[0].answer%>
+    </div>
+  </div>
+
+  <div class="faq-item active">
+    <div class="faq-question">
+      <%=ps.faq.items[1].question%>
+      <span class="faq-icon">−</span>
+    </div>
+    <div class="faq-answer">
+      <%=ps.faq.items[1].answer%>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">
+      <%=ps.faq.items[2].question%>
+      <span class="faq-icon">+</span>
+    </div>
+    <div class="faq-answer">
+      <%=ps.faq.items[2].answer%>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">
+      <%=ps.faq.items[3].question%>
+      <span class="faq-icon">+</span>
+    </div>
+    <div class="faq-answer">
+      <%=ps.faq.items[3].answer%>
+    </div>
+  </div>
+  </div>
+</section>
+
+<script>
+document.querySelectorAll(".faq-item").forEach(item => {
+  item.addEventListener("click", () => {
+    item.classList.toggle("active");
+    const icon = item.querySelector(".faq-icon");
+    icon.textContent = item.classList.contains("active") ? "−" : "+";
+  });
+});
+</script>

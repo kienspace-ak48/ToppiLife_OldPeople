@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToppiLife</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #f8fbfd, #dff6f8);
+      color: #222;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 8%;
+    }
+
+    header .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #10b981;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #000;
+      font-weight: 500;
+    }
+
+    .hotline {
+      background: #10b981;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-weight: bold;
+    }
+
+    /* Hero section */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 40px 8%;
+      flex-wrap: wrap;
+    }
+
+    .hero-text {
+      max-width: 500px;
+    }
+
+    .hero-text h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
+
+    .hero-text h1 span {
+      color: #10b981;
+    }
+
+    .hero-text p {
+      font-size: 18px;
+      margin-bottom: 25px;
+      color: #444;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #facc15;
+      color: #000;
+      font-weight: bold;
+      padding: 15px 30px;
+      border-radius: 30px;
+      text-decoration: none;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #eab308;
+    }
+
+    .hero img {
+      max-width: 400px;
+      border-radius: 20px;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero img {
+        margin-top: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">ToppiLife</div>
+    <nav>
+      <ul>
+        <li><a href="#">Giới thiệu</a></li>
+        <li><a href="#">Sản phẩm</a></li>
+        <li><a href="#">Giấy chứng nhận</a></li>
+        <li><a href="#">Đăng ký trải nghiệm</a></li>
+      </ul>
+    </nav>
+    <div class="hotline">Hotline: 0123 456 789</div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h1><span>Không còn đau nhức</span><br>ngủ ngon hơn mỗi ngày<br>ngay tại nhà</h1>
+      <p>Giấc ngủ sâu, sống lâu sống khỏe!</p>
+      <a href="#" class="btn">TƯ VẤN NGAY →</a>
+    </div>
+    <div class="hero-img">
+      <img src="/img/hero.png" alt="Sản phẩm">
+    </div>
+  </section>
+</body>
+</html>

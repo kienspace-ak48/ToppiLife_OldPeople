@@ -1,0 +1,91 @@
+<style>
+    .issue{
+        border: 1px solid red;
+        height: 1220px;
+        width: 100%;
+        background: url('/img/bg-issue.png');
+    }
+    .issue .issue-list{
+        /* display: flex;
+        justify-content: center;
+        align-items: center;    
+        flex-wrap: wrap;
+        gap: 30px; */
+        display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 0 100px;
+    }
+    .issue .issue-list .issue-card{
+        /* width: calc(100% /3 - 90px); */
+        width: 572px;
+        max-width: 100%;
+        height: 316px;
+        background: white;
+        border-radius: 40px;
+        /* display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; */
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        text-align: center;
+        /* padding: 20px; */
+        transition: all 0.3s ease;
+        position: relative;
+
+    }
+    .issue .issue-card img.img{
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        border-radius: 40px;
+        object-fit: cover;
+        /* position: relative;
+        z-index: 1; */
+    }
+    .issue .issue-card h3.desc{
+        width: 572px;
+        height: 316px;
+        position: absolute;
+        /* bottom: 30px; */
+        top: 80%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        /* width: 80%; */
+        font-size: 32px;
+        font-weight: 600;
+        /* color: white; */
+        /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); */
+        z-index: 100;
+    }
+</style>
+<section class="issue">
+  <div class="main-content">
+    <h2 class="title">Các vấn đề thường gặp của người lớn tuổi</h2>
+    <div class="issue-list">
+      <div class="issue-card">
+        <img src="/img/issue-card1.png" alt="">
+        <h3 class="desc">Đau vai gáy, lưng, khớp do tuổi tác hoặc vận động sai tư thế</h3>
+      </div>
+      <div class="issue-card">
+        <img src="/img/issue-card2.png" alt="">
+        <h3 class="desc">Mất ngủ, ngủ không sâu giấc, mệt mỏi kéo dài</h3>
+      </div>
+      <div class="issue-card">
+        <img src="/img/issue-card3.png" alt="">
+        <h3 class="desc">Tê bì tay chân, tuần hoàn máu kém.</h3>
+      </div>
+      <div class="issue-card">
+        <img src="/img/issue-card4.png" alt="">
+        <h3 class="desc">Chức năng tiêu hóa suy giảm dẫn đến táo bón khó tiêu, biếng ăn.</h3>
+      </div>
+    </div>
+
+    <div class="issue-summary">
+      <p class="desc">
+        Hầu hết người lớn tuổi nghĩ rằng đây là những điều tất yếu của tuổi già 
+        nhưng thực tế vẫn có giải pháp an toàn - tiện lợi - hiệu quả ngay tại nhà!
+      </p>
+    </div>
+  </div>
+</div>
