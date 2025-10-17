@@ -1,61 +1,88 @@
 <style>
-    
+    .circle {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: conic-gradient(#0ba84c 0% 95%, #fff 95% 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 16px auto; /* căn giữa và cách text */
+    }
 
+    .circle .inner {
+        width: 85px;
+        height: 85px;
+        background: #fff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 24px;
+        color: #000;
+    }
 </style>
 <section class="survey">
-  <div class="main-content">
-    <h2><%=ps.survey.title%></h2>
-  <div class="survey-grid">
+    <div class="main-content">
+        <h2><%-(pc&&pc.survey)?pc.survey?.title:''%></h2>
+        <div class="survey-grid">
+            <div class="survey-card green">
+                <div class="circle" data-percent="<%=(pc&&pc.survey)?pc.survey?.cards[0]?.percent:''%>">
+                    <div class="inner">
+                        <span><%=(pc&&pc.survey)?pc.survey?.cards[0]?.percent:''%>%</span>
+                    </div>
+                </div>
+                <p><%-(pc&&pc.survey)?pc.survey?.cards[0]?.desc:''%></p>
+            </div>
 
-    <div class="survey-card green">
-      <div class="circle" data-percent="<%=ps.survey.items[0].percent%>">
-        <span><%=ps.survey.items[0].percent%>%</span>
-      </div>
-      <p><%=ps.survey.items[0].text%></p>
+            <div class="survey-card lime">
+                <div class="circle" data-percent="<%=(pc&&pc.survey)?pc.survey?.cards[1]?.percent:''%>">
+                    <div class="inner">
+                        <span><%=(pc&&pc.survey)?pc.survey?.cards[1]?.percent:''%>%</span>
+                    </div>
+                </div>
+                <p><%-(pc&&pc.survey)?pc.survey?.cards[1]?.desc:''%></p>
+            </div>
+
+            <div class="survey-card yellow">
+                <div class="circle" data-percent="<%=(pc&&pc.survey)?pc.survey?.cards[2]?.percent:''%>">
+                    <div class="inner">
+                        <span><%=(pc&&pc.survey)?pc.survey?.cards[2]?.percent:''%>%</span>
+                    </div>
+                </div>
+                <p><%-(pc&&pc.survey)?pc.survey?.cards[2]?.desc:''%></p>
+            </div>
+
+            <div class="survey-card blue">
+                <div class="circle" data-percent="<%=(pc&&pc.survey)?pc.survey?.cards[3]?.percent:''%>">
+                    <div class="inner">
+                        <span><%=(pc&&pc.survey)?pc.survey?.cards[3]?.percent:''%>%</span>
+                    </div>
+                </div>
+                <p><%-(pc&&pc.survey)?pc.survey?.cards[3]?.desc:''%></p>
+            </div>
+        </div>
     </div>
-
-    <div class="survey-card lime">
-      <div class="circle" data-percent="<%=ps.survey.items[1].percent%>">
-        <span><%=ps.survey.items[1].percent%>%</span>
-      </div>
-      <p><%=ps.survey.items[1].text%></p>
-    </div>
-
-    <div class="survey-card yellow">
-      <div class="circle" data-percent="<%=ps.survey.items[2].percent%>">
-        <span><%=ps.survey.items[2].percent%>%</span>
-      </div>
-      <p><%=ps.survey.items[2].text%></p>
-    </div>
-
-    <div class="survey-card blue">
-      <div class="circle" data-percent="<%=ps.survey.items[3].percent%>">
-        <span><%=ps.survey.items[3].percent%>%</span>
-      </div>
-      <p><%=ps.survey.items[3].text%></p>
-    </div>
-
-  </div>
-  </div>
 </section>
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const circles = document.querySelectorAll(".circle");
+    document.addEventListener('DOMContentLoaded', function () {
+        const circles = document.querySelectorAll('.circle');
 
-    circles.forEach(circle => {
-      const percent = parseInt(circle.getAttribute("data-percent"), 10) || 0;
+        circles.forEach((circle) => {
+            const percent = parseInt(circle.getAttribute('data-percent'), 10) || 0;
 
-      // Lấy màu từ class cha (survey-card)
-      const card = circle.closest(".survey-card");
-      let color = "#22c55e"; // mặc định nếu không tìm thấy class
+            // Lấy màu từ class cha (survey-card)
+            const card = circle.closest('.survey-card');
+            let color = '#22c55e'; // mặc định nếu không tìm thấy class
 
-      if (card.classList.contains("green")) color = "#22c55e";
-      else if (card.classList.contains("lime")) color = "#84cc16";
-      else if (card.classList.contains("yellow")) color = "#eab308";
-      else if (card.classList.contains("blue")) color = "#0ea5e9";
+            if (card.classList.contains('green')) color = '#22c55e';
+            else if (card.classList.contains('lime')) color = '#84cc16';
+            else if (card.classList.contains('yellow')) color = '#eab308';
+            else if (card.classList.contains('blue')) color = '#0ea5e9';
 
-      // Gán background bằng conic-gradient
-      circle.style.background = `conic-gradient(${color} ${percent}%, #e5e7eb 0)`;
+            // Gán background bằng conic-gradient
+            circle.style.background = `conic-gradient(${color} ${percent}%, #e5e7eb 0)`;
+        });
     });
-  });
 </script>

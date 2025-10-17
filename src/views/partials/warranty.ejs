@@ -3,7 +3,7 @@
 </style>
 <section class="warranty">
   <div class="main-content">
-    <h2><%=ps.warranty.title%></h2>
+    <h2><%-(pc&&pc.warranty)?pc?.warranty?.title:''%></h2>
   <div class="warranty-grid">
 
     <div class="warranty-card">
@@ -13,7 +13,7 @@
 </svg>
 
       </div>
-      <p><%=ps.warranty.items[0]%></p>
+      <p><%-(pc&&pc.warranty)?pc?.warranty?.cards[0]:''%></p>
     </div>
 
     <div class="warranty-card">
@@ -27,7 +27,7 @@
 </svg>
 
       </div>
-      <p><%=ps.warranty.items[1]%></p>
+      <p><%-(pc&&pc.warranty)?pc?.warranty?.cards[1]:''%></p>
     </div>
 
     <div class="warranty-card">
@@ -37,7 +37,7 @@
 </svg>
 
       </div>
-      <p><%=ps.warranty.items[2]%></p>
+      <p><%-(pc&&pc.warranty)?pc?.warranty?.cards[2]:''%></p>
     </div>
 
     <div class="warranty-card">
@@ -50,7 +50,7 @@
 </svg>
 
       </div>
-      <p><%=ps.warranty.items[3]%></p>
+      <p><%-(pc&&pc.warranty)?pc?.warranty?.cards[3]:''%></p>
     </div>
 
   </div>

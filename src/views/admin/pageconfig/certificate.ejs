@@ -1,0 +1,152 @@
+<%- include('../partials/pcHeaderControl.ejs') %>
+<script src="/js/TinyApp.js"></script>
+<div class="my-card">
+    <label for="" class="label">title</label>
+    <input type="text" value="<%=(c&&c.title)?c.title:''%>" id="title" class="form-control mb-3" />
+    <div class="row">
+        <div class="col-6">
+             <!--  -->
+            <div class="image-group">
+                <label for="" class="form-label">Image(link)</label>
+                <div class="image-group-body">
+                    <input type="text" name="img_1" image-action="true" class="form-control" />
+                    <img
+                        class="img_preview"
+                        
+                        src="<%= (c && c.title) ? ('/uploads/' + c.img_urls[0]) : '/img/default.png' %>"
+
+                        alt=""
+                    />
+                </div>
+            </div>
+            <!--  -->
+             <!--  -->
+            <div class="image-group">
+                <label for="" class="form-label">Image(link)</label>
+                <div class="image-group-body">
+                    <input type="text" name="img_2" image-action="true" class="form-control" />
+                    <img
+                        class="img_preview"
+                        
+                       src="<%= (c && c.title) ? ('/uploads/' + c.img_urls[1]) : '/img/default.png' %>"
+
+                        alt=""
+                    />
+                </div>
+            </div>
+            <!--  -->
+        </div>
+        <div class="col-6">
+             <!--  -->
+            <div class="image-group">
+                <label for="" class="form-label">Image(link)</label>
+                <div class="image-group-body">
+                    <input type="text" name="img_3" image-action="true" class="form-control" />
+                    <img
+                        class="img_preview"
+                        
+                        src="<%= (c && c.title) ? ('/uploads/' + c.img_urls[2]) : '/img/default.png' %>"
+
+                        alt=""
+                    />
+                </div>
+            </div>
+            <!--  -->
+             <!--  -->
+            <div class="image-group">
+                <label for="" class="form-label">Image(link)</label>
+                <div class="image-group-body">
+                    <input type="text" name="img_4" image-action="true" class="form-control" />
+                    <img
+                        class="img_preview"
+                        
+                        src="<%= (c && c.title) ? ('/uploads/' + c.img_urls[3]) : '/img/default.png' %>"
+
+                        alt=""
+                    />
+                </div>
+            </div>
+            <!--  -->
+        </div>
+    </div>
+</div>
+<button class="btn btn-outline-primary" id="btn-cert-submit">Save config</button>
+<!-- //==========MODAL=========// -->
+<div id="certModal" class="modal fade" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <textarea name="" id="certModalEditor"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline-secondary" id="btn-apply">Apply</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- //==================script==============//-->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        //global scpe
+        const modalEl = document.getElementById('certModal');
+        const modal = new bootstrap.Modal(modalEl);
+        var currentInput = null;
+        const btnApply = document.getElementById('btn-apply');
+        const btnCertSubmit = document.getElementById('btn-cert-submit');
+        const inputEditor = document.getElementById('title');
+        //
+        TinyApp.init('#certModalEditor');
+        document.querySelectorAll('input').forEach(el=>{
+            el.addEventListener('focus', ()=>{
+                if (el.hasAttribute('image-action')) {
+                    elementChoosing = el;
+                    imageChoosing = el.parentElement.querySelector('.img_preview');
+                    imageModal.show();
+                } 
+            })
+        })
+        inputEditor.addEventListener('focus', function (ev) {
+            
+            currentInput = inputEditor;
+            tinymce.get('certModalEditor').setContent(currentInput.value || '');
+            modal.show();
+        });
+        btnApply.addEventListener('click', function (ev) {
+            if (currentInput) {
+                const value = tinymce.get('certModalEditor').getContent();
+                currentInput.value = value;
+                modal.hide();
+            }
+        });
+        btnCertSubmit.addEventListener('click', function () {
+            const data ={
+                title: document.getElementById('title').value,
+                img_url: [
+                    document.querySelector('input[name="img_1"]').value,
+                    document.querySelector('input[name="img_2"]').value,
+                    document.querySelector('input[name="img_3"]').value,
+                    document.querySelector('input[name="img_4"]').value
+                ]
+            }
+            $.ajax({
+                url: '/admin/page-config/certificate',
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(data),
+                success: (res) => {
+                    if (res.success) {
+                        MyNotification('success', 'success');
+                    }
+                },
+                error: (xhr, status, err)=>{
+                    console.log(xhr.responseJSON.mess);
+                    MyNotification('Server error', 'error')
+                }
+            });
+        });
+        // end
+    });
+</script>

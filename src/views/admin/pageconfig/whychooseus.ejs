@@ -1,0 +1,143 @@
+
+<%- include('../partials/pcHeaderControl.ejs') %>
+<script src="/js/TinyApp.js"></script>
+<section id="whychooseus">
+    <div class="my-card">
+        <h3>Điểm khác biệt</h3>
+        <div class="row">
+            <label for="" class="label">title</label>
+            <input type="text" value="<%=(why&&why.title)?why?.title:''%>" name="title" class="form-control">
+            <div class="col-6">
+                <!--  -->
+            <div class="image-group">
+                <label for="" class="form-label">Image(link)</label>
+                <div class="image-group-body">
+                    <input type="text" name="img_url" image-action="true" class="form-control" />
+                    <img
+                        class="img_preview"
+                        
+                        src="<%= (why && why.title) ? ('/uploads/' + why.item_card.img_url) : '/img/default.png' %>"
+
+                        alt=""
+                    />
+                </div>
+            </div>
+            <!--  -->
+            </div>
+            <div class="col-6">
+                <label for="" class="form-label">1</label>
+                <input type="text" value="<%=(why&&why.title)?why?.item_card?.line1:''%>" name="line1" class="form-control" />
+                <label for="" class="form-label">2</label>
+                <input type="text" value="<%=(why&&why.title)?why?.item_card?.line2:''%>" name="line2" class="form-control" />
+                <label for="" class="form-label">3</label>
+                <input type="text" value="<%=(why&&why.title)?why?.item_card?.line3:''%>" name="line3" class="form-control" />
+            </div>
+        </div>
+        <hr />
+        <h3>Table</h3>
+        <label for="" class="form-label">Title</label>
+        <input type="text" value="<%=(why&&why.title)?why?.title_2:''%>" name="title_2" class="form-control" />
+        <h3>Features</h3>
+        <hr />
+        <label for="" class="label">Titile</label>
+        <input type="text" value="<%=(why&&why.title)?why?.title_3:''%>" name="title_3" class="form-control" />
+        <label for="" class="label">card 1</label>
+        <textarea id="" name="card1" class="form-control"><%=(why&&why.title)?why?.cards[0]:''%></textarea>
+        <label for="" class="label">card 2</label>
+        <textarea name="card2" id="" class="form-control"><%=(why&&why.title)?why?.cards[1]:''%></textarea>
+        <label for="" class="label">card 3</label>
+        <textarea name="card3" id="" class="form-control"><%=(why&&why.title)?why?.cards[2]:''%></textarea>
+        <button class="btn btn-outline-primary mt-3" id="btn-why-submit">Save config</button>
+    </div>
+</section>
+<!-- //==========MODAL=========// -->
+<div id="whyModal" class="modal fade" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <textarea name="" id="whyModalEditor"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline-secondary" id="btn-apply">Apply</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- //==========script===========// -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // global variable
+        const modalEl = document.getElementById('whyModal');
+        const modal = new bootstrap.Modal(modalEl);
+        const btnApply = document.getElementById('btn-apply');
+        const btnWhySubmit = document.getElementById('btn-why-submit');
+        var currentInput = null;
+
+        TinyApp.init('#whyModalEditor');
+        //
+        document.querySelectorAll('input, textarea').forEach((el) => {
+            // if (el.hasAttribute('ignore-element')) {
+            //     return;
+            // }
+            el.addEventListener('focus', function (ev) {
+                if (el.hasAttribute('image-action')) {
+                    elementChoosing = el;
+                    imageChoosing = el.parentElement.querySelector('.img_preview');
+                    imageModal.show();
+                } else{
+                currentInput = el;
+                // if(currentInput){
+                const editor = tinymce.get('whyModalEditor').setContent(el.value || '');
+                modal.show();
+                }
+            });
+        });
+        btnApply.addEventListener('click', function (ev) {
+            if (currentInput) {
+                const value = tinymce.get('whyModalEditor').getContent();
+                currentInput.value = value;
+                modal.hide();
+            }
+        });
+        btnWhySubmit.addEventListener('click', function (ev) {
+            ev.preventDefault;
+            const data = {
+                title: document.querySelector('input[name="title"]').value,
+                item: {
+                    img_url: document.querySelector('input[name="img_url"]').value,
+                    line1: document.querySelector('input[name="line1"]').value,
+                    line2: document.querySelector('input[name="line2"]').value,
+                    line3: document.querySelector('input[name="line3"]').value,
+                },
+                title_2: document.querySelector('input[name="title_2"]').value,
+                title_3: document.querySelector('input[name="title_3"]').value,
+                cards: [
+                    document.querySelector('textarea[name="card1"]').value,
+                    document.querySelector('textarea[name="card2"]').value,
+                    document.querySelector('textarea[name="card3"]').value,
+                ],
+            };
+            console.log(data);
+            //
+            $.ajax({
+                url: '/admin/page-config/why-choose-us',
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(data),
+                success: (res) => {
+                    if (res.success) {
+                        MyNotification('success', 'success');
+                    }
+                },
+                error: (xhr, status, err) => {
+                    console.log(xhr.responseJSON.mess);
+                    MyNotification('Server error', 'error');
+                },
+            });
+        });
+        // end
+    });
+</script>

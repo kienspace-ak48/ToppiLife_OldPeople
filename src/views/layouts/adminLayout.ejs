@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Admin dashboard</title>
+        <link rel="stylesheet" href="/lib/css/sweetalert2.min.css" />
+        <link rel="stylesheet" href="/lib/css/bootstrap.min.css" />
+        <!--  -->
+        <script src="/lib/js/jquery-3.7.1.js"></script>
+        <script src="/lib/js/bootstrap.bundle.min.js"></script>
+        <script src="/lib/js/sweetalert2.all.min.js"></script>
+        <!-- text editor tinymce  -->
+        <script src="/lib/tinymce/tinymce.min.js"></script>
+        <!-- fontawesome v7. -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+            integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+        <!--  -->
+        <link rel="stylesheet" href="/css/adminstyle.css" />
+    </head>
+    <body>
+        <div id="sidebar" class="sidebar">
+            <div class="logo" id="toggleBtn" >
+                <a href="#!">
+                    <span class="logo-icon">⚙️</span>
+                    <span class="logo-text">AccessRace</span>
+                </a>
+            </div>
+            <ul>
+                <li>
+                    <a href="/admin/dashboard/home"><i>🏡</i><span>Home</span></a>
+                </li>
+                <li>
+                    <a href="/admin/page-config/hero"><i>📄</i><span>Page setting</span></a>
+                </li>
+                <li>
+                    <a href="/admin/image"><i>🖼️</i><span>Gallery</span></a>
+                </li>
+                <li style="background-color: #2e2e44;" class="logout">
+                    <a href="/admin/auth/logout"><i>🔒</i><span>Logout</span></a>
+                </li>
+            </ul>
+        </div>
+        <div class="main">
+            <!-- <button  class="btn btn-secondary">⚓</button> -->
+            <%- include('../admin/partials/header.ejs')%>
+            <div class="main-container"><%- body%></div>
+            <%- include('../admin/partials/footer.ejs')%>
+        </div>
+
+        <!-- script -->
+        <script src="/js/admin.js"></script>
+        <script>
+            const sidebar = document.getElementById('sidebar');
+            const toggleBtn = document.getElementById('toggleBtn');
+            toggleBtn.addEventListener('click', () => {
+                sidebar.classList.toggle('collapsed');
+            });
+        </script>
+    </body>
+</html>

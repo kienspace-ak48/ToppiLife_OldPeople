@@ -1,0 +1,110 @@
+<style>
+    .merge-two-input-column{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 0;
+    }
+</style>
+<%- include('../partials/pcHeaderControl.ejs') %>
+<script src="/js/TinyApp.js"></script>
+<div class="my-card">
+    <label for="" class="label">title</label>
+    <input type="text" name="title" value="<%=(faq && faq.title)?faq?.title:''%>" class="form-control">
+    <div class="row mt-3 mb-3">
+        <div class="col-6">
+            <div class="merge-two-input-column">
+                <input type="text" name="i1_q" value="<%=(faq&&faq.title)?faq?.items[0]?.q:''%>" class="form-control">
+                <textarea name="i1_a" class="form-control"  id=""><%=(faq&&faq.title)?faq?.items[0]?.q:''%></textarea>
+            </div>
+            <div class="merge-two-input-column mt-3">
+                <input type="text" name="i2_q" value="<%=(faq&&faq.title)?faq?.items[1]?.q:''%>"  class="form-control">             
+                <textarea name="i2_a" class="form-control" id=""><%=(faq&&faq.title)?faq?.items[1]?.q:''%></textarea>
+
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="merge-two-input-column">
+                <input type="text" name="i3_q" value="<%=(faq&&faq.title)?faq?.items[2]?.q:''%>" class="form-control">               
+                <textarea name="i3_a" class="form-control" id=""><%=(faq&&faq.title)?faq?.items[2]?.q:''%></textarea>
+
+            </div>
+            <div class="merge-two-input-column mt-3">
+                <input type="text" name="i4_q" value="<%=(faq&&faq.title)?faq?.items[3]?.q:''%>" class="form-control">   
+                <textarea name="i4_a" class="form-control" id=""><%=(faq&&faq.title)?faq?.items[3]?.q:''%></textarea>
+
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-outline-primary mt-3" id="btn-faq-submit">Save config</button>
+</div>
+<!-- //==========MODAL=========// -->
+<div id="faqModal" class="modal fade" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <textarea name="" id="faqModalEditor"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline-secondary mt-3" id="btn-apply">Apply</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- //==========Script=========// -->
+ <script>
+    document.addEventListener('DOMContentLoaded', ()=>{
+        // global scope 
+        const modalEl = document.querySelector('#faqModal');
+        const modal = new bootstrap.Modal(modalEl);
+        var currentInput = null;
+        const btnApply = document.querySelector('#btn-apply');
+        const btnFaqSubmit = document.querySelector('#btn-faq-submit');
+
+        TinyApp.init('#faqModalEditor');
+        document.querySelectorAll('input, textarea').forEach(el=>{
+            el.addEventListener('focus', (ev)=>{
+                currentInput = el;
+                tinymce.get('faqModalEditor').setContent(el.value || '');
+                modal.show();
+            })
+        });
+        document.getElementById('btn-apply').addEventListener('click', (ev)=>{
+            const value = tinymce.get('faqModalEditor').getContent();
+            currentInput.value = value;
+            modal.hide();
+        })
+        document.querySelector('#btn-faq-submit').addEventListener('click', ()=>{
+            const data={
+                title: document.querySelector('input[name="title"]').value,
+                items: [
+                    {q: document.querySelector('input[name="i1_q"]').value, a:document.querySelector('textarea[name="i1_a"]').value},
+                    {q: document.querySelector('input[name="i2_q"]').value, a:document.querySelector('textarea[name="i2_a"]').value},
+                    {q: document.querySelector('input[name="i3_q"]').value, a:document.querySelector('textarea[name="i3_a"]').value},
+                    {q: document.querySelector('input[name="i4_q"]').value, a:document.querySelector('textarea[name="i4_a"]').value},
+                ]
+            }
+            console.log(data)
+            $.ajax({
+                url: "/admin/page-config/faq",
+                method: "POST",
+                contentType: "application/json",
+                data: JSON.stringify(data),
+                success: (res)=>{
+                    if(res.success){
+                        MyNotification('Success', 'success')
+                    }
+                },
+                error: (xhr, status, err)=>{
+                    console.log(xhr.responseJSON.mess);
+                    MyNotification('Server error', 'error')
+                }
+            })
+        })
+
+        // end
+    })
+ </script>

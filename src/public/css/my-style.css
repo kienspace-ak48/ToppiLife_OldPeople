@@ -1,4 +1,7 @@
 /* ===== HEADER ===== */
+strong{
+  font-weight: bold;
+}
 .wrap-header {
   width: 100%;
   height: 100vh;
@@ -161,9 +164,13 @@ nav ul li:hover a {
   font-size: 5.6rem;
   font-weight: 700;
 }
-
+.hero-text .hero-title * {
+  all: unset; /* loại bỏ inline style từ TinyMCE */
+  font: inherit;
+  color: inherit;
+}
 .hero-text h1 strong {
-  color: #0ba84c;
+  /* color: #0ba84c; */
 }
 
 .hero-text p {
@@ -324,7 +331,7 @@ nav ul li:hover a {
   justify-content: center;
   overflow: hidden;
 }
-.issue .issue-summary .desc {
+.issue .issue-summary  {
   font-size: 4rem;
   font-weight: 600;
   line-height: 1.2;
@@ -387,7 +394,7 @@ nav ul li:hover a {
   padding: 10px;
   font-size: 2.8rem;
 }
-.solution .sol-card h3.title {
+.solution .sol-card div.title {
   padding-top: 10px;
   font-size: 3rem;
   font-weight: 700;
@@ -436,6 +443,9 @@ nav ul li:hover a {
   display: block; /* bỏ khoảng trống inline mặc định */
 }
 /* ==================== Why choose ============*/
+.toppilife-difference strong{
+  /* font-weight: bold; */
+}
 .toppilife-difference {
   text-align: center;
   margin: 60px auto;
@@ -444,7 +454,7 @@ nav ul li:hover a {
 }
 
 .toppilife-difference .title {
-  font-size: 2.8rem;
+  font-size: 4.6rem;
   font-weight: 700;
   margin-bottom: 30px;
 }
@@ -486,7 +496,7 @@ nav ul li:hover a {
 }
 
 .benefit {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 16px;
   /* background: #f4fef8; */
@@ -505,13 +515,16 @@ nav ul li:hover a {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+  line-height: 1;        /* tránh chữ kéo méo hình */
+  flex-shrink: 0;
 }
 .benefit p{
   font-size: 2.4rem;
   font-weight: 500;
+  text-align: left;
 }
 
 /* ----------- PHẦN BẢNG ----------- */
@@ -753,9 +766,9 @@ th.device { background: #0BA84C;
 }
 
 .survey-card p {
-  margin-top: 2.8rem;
-  font-weight: 700;
-  font-size: 15px;
+  margin-top: 15px;
+  font-weight: 500;
+  font-size: 2.8rem;
   color: #333;
   line-height: 1.5;
 }
@@ -1112,13 +1125,13 @@ th.device { background: #0BA84C;
   max-width: 40%; /* giới hạn text */
 }
 
-.intro-text h2 {
+.intro-text h2 p {
   font-size: 4.6rem;
   font-weight: 700;
   margin-bottom: 20px;
 }
 
-.intro-text .desc {
+.intro-text p {
   font-size: 2.4rem;
   font-weight: 600;
   line-height: 1.8;

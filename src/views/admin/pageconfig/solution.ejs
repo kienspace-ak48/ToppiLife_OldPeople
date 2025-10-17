@@ -1,0 +1,121 @@
+<%- include('../partials/pcHeaderControl.ejs') %>
+<script src="/js/TinyApp.js"></script>
+<div class="my-card">
+    <div class="row">
+        <div class="form-group">
+            <label for="" class="label">Title</label>
+            <input type="text" value="<%=(sol&&sol.title)? sol.title:''%>" name="title" class="form-control" />
+        </div>
+        <div class="col-6 mt-3">
+            <label for="" class="label">Card 1</label>
+            <input type="text" value="<%=(sol&&sol.title)?sol?.cards[0]?.label:''%>" name="c1_label" class="form-control" />
+            <textarea name="c1_desc" id=""  class="form-control"><%=(sol&&sol.title)?sol?.cards[0]?.desc:''%></textarea>
+            <label for="" class="label">Card 3</label>
+            <input type="text" value="<%=(sol&&sol.title)?sol?.cards[2]?.label:''%>" name="c3_label" class="form-control" />
+            <textarea name="c3_desc" id="" class="form-control"><%=(sol&&sol.title)?sol?.cards[2]?.desc:''%></textarea>
+        </div>
+        <div class="col-6 mt-3">
+            <label for="" class="label">Card 2</label>
+            <input type="text" value="<%=(sol&&sol.title)?sol?.cards[1]?.label:''%>" name="c2_label" class="form-control" />
+            <textarea name="c2_desc" id="" class="form-control"><%=(sol&&sol.title)?sol?.cards[1]?.desc:''%></textarea>
+            <label for="" class="label">Card 4</label>
+            <input type="text" value="<%=(sol&&sol.title)?sol?.cards[3]?.label:''%>" name="c4_label" class="form-control" />
+            <textarea name="c4_desc" id="" class="form-control"><%=(sol&&sol.title)?sol?.cards[3]?.desc:''%></textarea>
+        </div>
+        <!--  -->
+        <div class="form-group mt-2">
+            <label for="" class="label">Card5</label>
+            <input type="text" name="c5_label" value="<%=(sol&&sol.title)?sol?.cards[4]?.label:''%>" class="form-control" />
+            <textarea name="c5_desc" id="" class="form-control"><%=(sol&&sol.title)?sol?.cards[4]?.desc:''%></textarea>
+        </div>
+        <div class="form-group mt-3">
+            <label for="" class="form-label">Video (Url)</label>
+            <input type="text" el-ignore="true" value="<%=(sol&&sol.title)?sol.video_url:''%>" name="vid_url" class="form-control" />
+        </div>
+    </div>
+    <button type="button" id="btn-solution-submit" class="btn btn-outline-primary mt-3">Save config</button>
+</div>
+<!-- //==========MODAL========// -->
+<div id="solutionModal" class="modal fade" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <textarea name="" id="modalSolutionEditor"> </textarea>
+            </div>
+            <div class="modal-footer">
+                <button id="btn-apply" class="btn btn-outline-secondary">Apply</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- //==========SCRIPT======// -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        //global scope
+        const modalEl = document.getElementById('solutionModal');
+        const modal = new bootstrap.Modal(modalEl);
+        var currentInput = null;
+        const btnApply = document.getElementById('btn-apply');
+        const btnSolutionSubmit = document.getElementById('btn-solution-submit');
+        //
+        TinyApp.init('#modalSolutionEditor');
+        document.querySelectorAll('input, textarea').forEach((el)=>{
+            console.log('aaa')
+            if(el.hasAttribute('el-ignore')){
+                console.log('bbb')
+                return
+            }
+            el.addEventListener('focus', ()=>{
+                currentInput = el;
+                modal.show();
+                setTimeout(()=>{
+                    const editor = tinymce.get('modalSolutionEditor');
+                    if(editor) editor.setContent(el.value || '');
+                }, 200)
+            })
+        });
+        btnApply.addEventListener('click', function(ev){
+            if(currentInput){
+                const value = tinymce.get('modalSolutionEditor').getContent();
+                console.log(value);
+                currentInput.value = value;
+                modal.hide();
+            }
+        });
+        btnSolutionSubmit.addEventListener('click', function(ev){
+            const data ={
+                title: document.querySelector('input[name="title"]').value,
+                cards: [
+                    {label: document.querySelector('input[name="c1_label"]').value, desc: document.querySelector('textarea[name="c1_desc"]').value},
+                    {label: document.querySelector('input[name="c2_label"]').value, desc: document.querySelector('textarea[name="c2_desc"]').value},
+                    {label: document.querySelector('input[name="c3_label"]').value, desc: document.querySelector('textarea[name="c3_desc"]').value},
+                    {label: document.querySelector('input[name="c4_label"]').value, desc: document.querySelector('textarea[name="c4_desc"]').value},
+                    {label: document.querySelector('input[name="c5_label"]').value, desc: document.querySelector('textarea[name="c5_desc"]').value}
+                ],
+                video_url: document.querySelector('input[name="vid_url"]').value
+            }
+            console.log(data);
+            $.ajax({
+                url: '/admin/page-config/solution',
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(data),
+                success: (res)=>{
+                    if(res.success){
+                        MyNotification('Success', 'success')
+                    }
+                },
+                error: (xhr, status, err)=>{
+                    console.log(xhr.responseJSON.mess);
+                    MyNotification('Server error', 'error');
+                }
+            })
+        })
+        
+    });
+</script>
+
+<!-- COMPONENT -->

@@ -6,6 +6,7 @@ const session = require('express-session');
 
 
 const connectDB = require('./config/connectDB');
+const myPath = require('./config/myPath');
 require('dotenv').config();
 
 // Middleware
@@ -27,8 +28,10 @@ app.use(session({
 
 //static file
 app.use(express.static(path.join(__dirname, './public')));
-console.log("AAAAAAAAAAAAA"+path.join(__dirname, '..', 'uploads'))
+// console.log("AAAAAAAAAAAAA"+path.join(__dirname, '..', 'uploads'))
 app.use('/uploads',express.static(path.join(__dirname, '..', 'uploads')));
+console.log(path.join(__dirname, '..', 'uploads'))
+// app.use('')
 
 //cau hinh ejs
 app.set('view engine', 'ejs');

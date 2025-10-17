@@ -1,0 +1,153 @@
+<style>
+    .merge-two-input {
+        display: flex;
+        width: 100%;
+        gap: 0px;
+    }
+    .merge-two-input input:nth-child(1) {
+        flex: 2;
+    }
+    .merge-two-input textarea:nth-child(2) {
+        flex: 8;
+    }
+</style>
+<%- include('../partials/pcHeaderControl.ejs') %>
+<script src="/js/TinyApp.js"></script>
+<div class="my-card">
+    <label for="" class="label">Title</label>
+    <input type="text" value="<%=(s&&s.title)?s?.title:''%>" name="title" class="form-control" />
+    <label for="" class="label">Stats<small>(% - text)</small></label>
+    <div class="row">
+        <div class="col-6">
+            <div class="merge-two-input">
+                <input type="number" value="<%=(s&&s.title)?s?.cards[0]?.percent:''%>" name="c1_percent" min="0" max="100" ignore-element="true" class="form-control" />
+                <textarea name="c1_desc" class="form-control" id=""><%=(s&&s.title)?s?.cards[0]?.desc:''%></textarea>
+            </div>
+            <br />
+            <div class="merge-two-input">
+                <input
+                    type="number"
+                    name="c3_percent"
+                    min="0"
+                    max="100"
+                    ignore-element="true"
+                    class="form-control"
+                    value="<%=(s&&s.title)?s?.cards[2]?.percent:''%>"
+                /><textarea name="c3_desc" class="form-control" id=""><%=(s&&s.title)?s?.cards[2]?.desc:''%></textarea>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="merge-two-input">
+                <input
+                    type="number"
+                    name="c2_percent"
+                    min="0"
+                    max="100"
+                    ignore-element="true"
+                    class="form-control"
+                    value="<%=(s&&s.title)?s?.cards[1]?.percent:''%>"
+                /><textarea name="c2_desc" class="form-control" id=""><%=(s&&s.title)?s?.cards[1]?.desc:''%></textarea>
+            </div>
+            <br />
+            <div class="merge-two-input">
+                <input
+                    type="number"
+                    name="c4_percent"
+                    min="0"
+                    max="100"
+                    ignore-element="true"
+                    class="form-control"
+                    value="<%=(s&&s.title)?s?.cards[3]?.percent:''%>"
+                /><textarea name="c4_desc" class="form-control" id=""><%=(s&&s.title)?s?.cards[3]?.desc:''%></textarea>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-outline-primary mt-3" id="btn-survey-submit">Save config</button>
+</div>
+
+<!-- //==========MODAL=========// -->
+<div id="surveyModal" class="modal fade" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <textarea name="" id="surveyModalEditor"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline-secondary mt-3" id="btn-apply">Apply</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // global scope
+        const modalEl = document.getElementById('surveyModal');
+        const modal = new bootstrap.Modal(modalEl);
+        var currentInput = null;
+        const btnApply = document.getElementById('btn-apply');
+        const btnSurveySubmit = document.getElementById('btn-survey-submit');
+
+        // TinyApp.init('#surveyModal');
+        TinyApp.init('#surveyModalEditor');
+        document.querySelectorAll('input, textarea').forEach((el) => {
+            if (el.hasAttribute('ignore-element')) {
+                return;
+            }
+            el.addEventListener('focus', (ev) => {
+                currentInput = el;
+                tinymce.get('surveyModalEditor').setContent(el.value || '');
+                modal.show();
+            });
+        });
+        btnApply.addEventListener('click', () => {
+            if (currentInput) {
+                const value = tinymce.get('surveyModalEditor').getContent();
+                currentInput.value = value;
+                modal.hide();
+            }
+        });
+
+        btnSurveySubmit.addEventListener('click', function (ev) {
+            const data = {
+                title: document.querySelector('input[name="title"]').value,
+                items: [
+                    {
+                        percent: document.querySelector('input[name="c1_percent"]').value,
+                        desc: document.querySelector('textarea[name="c1_desc"]').value,
+                    },
+                    {
+                        percent: document.querySelector('input[name="c2_percent"]').value,
+                        desc: document.querySelector('textarea[name="c2_desc"]').value,
+                    },
+                    {
+                        percent: document.querySelector('input[name="c3_percent"]').value,
+                        desc: document.querySelector('textarea[name="c3_desc"]').value,
+                    },
+                    {
+                        percent: document.querySelector('input[name="c4_percent"]').value,
+                        desc: document.querySelector('textarea[name="c4_desc"]').value,
+                    },
+                ],
+            };
+            $.ajax({
+                url: '/admin/page-config/survey',
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(data),
+                success: (res) => {
+                    if (res.success) {
+                        MyNotification('Successs', 'success');
+                    }
+                },
+                error: (xhr, status, err) => {
+                    console.log(xhr.responseJSON.mess);
+                    MyNotification('Server error', 'error');
+                },
+            });
+        });
+        // end
+    });
+</script>

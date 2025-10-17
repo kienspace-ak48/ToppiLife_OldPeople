@@ -1,0 +1,180 @@
+<style></style>
+<%- include('../partials/pcHeaderControl.ejs') %>
+<script src="/js/TinyApp.js"></script>
+<section id="issue">
+    <div class="my-card">
+        <div class="row">
+            <label for="" class="form-label">Title</label>
+            <input type="text" class="form-control" value="<%=(is&&is.title)?is.title:''%>" name="title" />
+            <div class="col-6 mt-3">
+                <!--  -->
+                <div class="image-group">
+                    <label for="" class="label">item1</label>
+                    <input type="text" class="form-control" name="c1_desc" value="<%=is?.img_items?.[0].desc || ''%>" />
+                    <label for="" class="form-label">Image(link)</label>
+                    <div class="image-group-body">
+                        <input type="text" name="c1_img" image-action="true" class="form-control" />
+                        <img
+                            class="img_preview"
+                            src="<%= (is && is.title) ? ('/uploads/' + is?.img_items[0].img) : '/img/default.png' %>"
+                            alt=""
+                        />
+                    </div>
+                </div>
+                <!--  -->
+                <!--  -->
+                <div class="image-group">
+                    <label for="" class="label">item2</label>
+                    <input type="text" class="form-control" name="c2_desc" value="<%=is?.img_items?.[1].desc || ''%>" />
+                    <label for="" class="form-label">Image(link)</label>
+                    <div class="image-group-body">
+                        <input type="text" name="c2_img" image-action="true" class="form-control" />
+                        <img
+                            class="img_preview"
+                            src="<%= (is && is.title) ? ('/uploads/' + is?.img_items[1].img) : '/img/default.png' %>"
+                            alt=""
+                        />
+                    </div>
+                </div>
+                <!--  -->
+            </div>
+            <div class="col-6 mt-3">
+                <!--  -->
+                <div class="image-group">
+                    <label for="" class="label">item3</label>
+                    <input type="text" class="form-control" name="c3_desc" value="<%=is?.img_items?.[2].desc || ''%>" />
+                    <label for="" class="form-label">Image(link)</label>
+                    <div class="image-group-body">
+                        <input type="text" name="c3_img" image-action="true" class="form-control" />
+                        <img
+                            class="img_preview"
+                            src="<%= (is && is.title) ? ('/uploads/' + is?.img_items[2].img) : '/img/default.png' %>"
+                            alt=""
+                        />
+                    </div>
+                </div>
+                <!--  -->
+                <div class="image-group">
+                    <label for="" class="label">item4</label>
+                    <input type="text" class="form-control" name="c4_desc" value="<%=is?.img_items?.[3].desc || ''%>" />
+                    <label for="" class="form-label">Image(link)</label>
+                    <div class="image-group-body">
+                        <input type="text" name="c4_img" image-action="true" class="form-control" />
+                        <img
+                            class="img_preview"
+                            src="<%= (is && is.title) ? ('/uploads/' + is?.img_items[3].img) : '/img/default.png' %>"
+                            alt=""
+                        />
+                    </div>
+                </div>
+                <!--  -->
+            </div>
+            <label for="" class="label">Summary</label>
+            <textarea class="form-control" name="summary" cols="" id=""><%=is?.summary|| ''%></textarea>
+        </div>
+        <br />
+        <div class="form-group">
+            <button type="submit" id="btn-issue-submit" class="btn btn-outline-primary">Save Config</button>
+        </div>
+    </div>
+</section>
+<!-- //===============OUTDOOR MODAL //==============-->
+<div id="issueModal" class="modal fade" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <textarea id="modalIssueEditor"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button id="btn-apply" class="btn btn-outline-secondary">Apply</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- //===============SCRIPT====== -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        //global scope
+        const modalEl = document.getElementById('issueModal');
+        if (!modalEl) {
+            console.error('Không tìm thấy #issueModal trong DOM');
+            return;
+        }
+        let modal = new bootstrap.Modal(modalEl);
+        var currentInput = null;
+        const btnIssueSubmit = document.getElementById('btn-issue-submit');
+        const btnApply = document.getElementById('btn-apply');
+        //
+        TinyApp.init('#modalIssueEditor');
+        //tinymce.get('modalEditor')?.remove();
+        document.querySelectorAll('input, textarea').forEach((el) => {
+            el.addEventListener('focus', () => {
+                if (el.hasAttribute('image-action')) {
+                    elementChoosing = el;
+                    imageChoosing = el.parentElement.querySelector('.img_preview');
+                    imageModal.show();
+                } else {
+                    currentInput = el;
+                    console.log(el);
+                    modal.show();
+                    //
+                    setTimeout(() => {
+                        const editor = tinymce.get('modalIssueEditor');
+                        if (editor) editor.setContent(el.value || '');
+                    }, 200);
+                }
+            });
+        });
+        btnApply.addEventListener('click', function (ev) {
+            if (currentInput) {
+                const content = tinymce.get('modalIssueEditor').getContent();
+                currentInput.value = content;
+            }
+            modal.hide();
+        });
+        btnIssueSubmit.addEventListener('click', function (ev) {
+            const data = {
+                title: document.querySelector('input[name="title"]').value,
+                img_items: [
+                    {
+                        desc: document.querySelector('input[name="c1_desc"]').value,
+                        img: document.querySelector('input[name="c1_img"]').value,
+                    },
+                    {
+                        desc: document.querySelector('input[name="c2_desc"]').value,
+                        img: document.querySelector('input[name="c2_img"]').value,
+                    },
+                    {
+                        desc: document.querySelector('input[name="c3_desc"]').value,
+                        img: document.querySelector('input[name="c3_img"]').value,
+                    },
+                    {
+                        desc: document.querySelector('input[name="c4_desc"]').value,
+                        img: document.querySelector('input[name="c4_img"]').value,
+                    },
+                ],
+                summary: document.querySelector('textarea[name="summary"]').value,
+            };
+            console.log(data)
+            $.ajax({
+                url: `/admin/page-config/issue`,
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(data),
+                success: (res) => {
+                    if (res.success) {
+                        MyNotification('Success', 'success');
+                    }
+                },
+                error: (xhr, status, err) => {
+                    conosle.log(xhr.responseJSON.mess);
+                    MyNotification('server err', 'error');
+                },
+            });
+        });
+        //end here
+    });
+</script>

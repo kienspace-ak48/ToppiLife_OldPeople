@@ -1,7 +1,7 @@
 
 <section class="solution">
   <div class="main-content">
-    <h2 class="sol-title"><%=ps.solution.title%></h2>
+    <h2 class="sol-title"><%-(pc&&pc.solution.title)?pc.solution.title: ''%></h2>
     <div class="sol-grid">
       <!-- card1 -->
       <div class="sol-card">
@@ -11,10 +11,10 @@
 </svg>
 </span>
         </div>
-        <h3 class="title"><%=ps.solution.cards[0].title%></h3>
-        <p class="desc">
-          <%=ps.solution.cards[0].desc%>
-        </p>
+        <div class="title"><%-(pc&&pc.solution.title)?pc.solution.cards[0].label: ''%></div>
+        <div class="desc">
+          <%-(pc&&pc.solution.title)?pc.solution.cards[0].desc: ''%>
+        </div>
         <!-- <p class="desc">
           Hiểu rõ nhất ở vùng lưng - tay - chân, rất phổ biến ở người cao tuổi
         </p> -->
@@ -27,10 +27,10 @@
 </svg>
 </span>
         </div>
-        <h3 class="title"><%=ps.solution.cards[1].title%></h3>
-        <p class="desc">
-          <%=ps.solution.cards[1].desc%>
-        </p>
+        <div class="title"><%-(pc&&pc.solution.title)?pc.solution.cards[1].label: ''%></div>
+        <div class="desc">
+          <%-(pc&&pc.solution.title)?pc.solution.cards[1].desc: ''%>
+        </div>
         <!-- <p class="desc">
           Giúp ngủ ngon, sâu hơn và rút ngắn thời gian vào giấc.
         </p> -->
@@ -46,13 +46,10 @@
 </svg>
 </span>
         </div>
-        <h3 class="title"><%=ps.solution.cards[2].title%></h3>
-        <!-- <p class="desc">
-          Dòng điện sinh học thúc đẩy lưu thông máu, khai thông kinh mạch.
-        </p> -->
-        <p class="desc">
-            <%=ps.solution.cards[2].desc%>
-        </p>
+        <div class="title"><%-(pc&&pc.solution.title)?pc.solution.cards[2].label: ''%></div>
+        <div class="desc">
+          <%-(pc&&pc.solution.title)?pc.solution.cards[2].desc: ''%>
+        </div>
       </div>
       <!-- card 4 -->
       <div class="sol-card">
@@ -63,10 +60,10 @@
 </svg>
 </span>
         </div>
-        <h3 class="title"><%=ps.solution.cards[3].title%></h3>
-        <p class="desc">
-          <%=ps.solution.cards[3].desc%>
-        </p>
+        <div class="title"><%-(pc&&pc.solution.title)?pc.solution.cards[3].label: ''%></div>
+        <div class="desc">
+          <%-(pc&&pc.solution.title)?pc.solution.cards[3].desc: ''%>
+        </div>
       </div>
       <!-- card 5 -->
       <div class="sol-card">
@@ -80,12 +77,12 @@
 </svg>
 </span>
         </div>
-        <h3 class="title"><%=ps.solution.cards[4].title%></h3>
+        <div class="title"><%-(pc&&pc.solution.title)?pc.solution.cards[4].label: ''%></div>
         <div style="display: flex; gap: 30px; justify-content: space-between;">
             <div class="col-lef">
-                <p class="desc">
-                    <%=ps.solution.cards[4].desc%>
-                </p>
+                <div class="desc">
+          <%-(pc&&pc.solution.title)?pc.solution.cards[4].desc: ''%>
+        </div>
             </div>
             <div class="col-right">
                 <p class="desc">
@@ -98,7 +95,7 @@
     <!--  -->
     <div class="sol-video">
       <div class="vid-wrap">
-        <iframe width="100%" height="100%" loading="lazy" src="<%=ps.solution.video%>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe width="100%" height="100%" loading="lazy" src="<%=(pc&&pc.solution.title)?pc?.solution?.video_url:''%>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
     </div>
   </div>

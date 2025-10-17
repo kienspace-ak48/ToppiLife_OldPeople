@@ -1,0 +1,106 @@
+<h4>Trang quanr tri noi dung</h4>
+<p class="desc">Config noi dung (text, image, video, bo cuc,) luu xuong db</p>
+<div class="f-wrapper wrap-button">
+  <div class="group-button">
+    <a href="/admin/page-config/hero">Hero</a>
+    <a href="/admin/page-config/issue" class="active">Issue</a>
+    <a href="/admin/page-config/solution">Solution</a>
+    <a href="/admin/page-config/why-choose-us">Why-choose-us</a>
+    <a href="/admin/page-config/certificate">Cert</a>
+    <a href="/admin/page-config/survey">Survey</a>
+    <a href="/admin/page-config/feedback">Feedback</a>
+    <a href="/admin/page-config/faq">Faq</a>
+    <a href="/admin/page-config/three-part">Three-part</a>
+  </div>
+</div>
+
+<!--  -->
+<!-- Modal hiển thị ảnh -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">📸 Chọn ảnh</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row g-3">
+          <% files.forEach(file=> { %>
+            <div class="col-3">
+              <div class="image-thumb" data-name="<%= file.name %>">
+                <img src="<%= file.path %>" alt="<%= file.name %>">
+              </div>
+            </div>
+            <% }) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--  -->
+<style>
+  .image-thumb {
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.image-thumb img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+}
+
+.image-thumb:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.image-thumb.selected {
+  outline: 3px solid #0d6efd;
+  transform: scale(1.05);
+}
+
+</style>
+<script>
+  var elementChoosing = null;
+  var imageChoosing =null;
+  const imageModalEl = document.getElementById('imageModal');
+    const imageModal = new bootstrap.Modal(imageModalEl);
+document.addEventListener("DOMContentLoaded", () => {
+  const thumbs = document.querySelectorAll("#imageModal .image-thumb");
+  thumbs.forEach(thumb => {
+    thumb.addEventListener("click", () => {
+      // Bỏ chọn cũ
+      thumbs.forEach(t => t.classList.remove("selected"));
+      const name = thumb.dataset.name;
+      thumb.classList.add("selected");
+      console.log(elementChoosing)
+      elementChoosing.value=name;
+      console.log(imageChoosing);
+      imageChoosing.src=`/uploads/${name}`
+      // imageChoosing.src =`/uploads/${name}`;
+      // alert(thumb.dataset.name)
+      // imgSelected=thumb.dataset.name
+
+
+      // Lấy tên file
+      // const name = thumb.dataset.name;
+      // input.value = name;
+
+      // Hiển thị preview
+      // preview.src = `/uploads/${name}`;
+      // previewContainer.style.display = "block";
+
+      // Đóng modal sau 300ms (cho mượt)
+      setTimeout(() => {
+        const modal = bootstrap.Modal.getInstance(document.getElementById("imageModal"));
+        modal.hide();
+      }, 300);
+    });
+  });
+});
+</script>
+

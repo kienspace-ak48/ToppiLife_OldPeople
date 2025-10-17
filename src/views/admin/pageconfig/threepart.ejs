@@ -1,0 +1,113 @@
+<%- include('../partials/pcHeaderControl.ejs') %>
+<script src="/js/TinyApp.js"></script>
+<div class="my-card">
+    <h3>Warranty</h3>
+    <label for="" class="label">Title</label>
+    <input type="text" value="<%=(p.warranty&&p.warranty.title)?p?.warranty?.title:''%>" name="w_title" class="form-control" />
+    <br />
+    <div class="row">
+        <div class="col-6">
+            <input type="text" value="<%=(p.warranty&&p.warranty.title)?p?.warranty?.cards[0]:''%>" name="w_card1" class="form-control" /> <br />
+            <input type="text" name="w_card2" value="<%=(p.warranty&&p.warranty.title)?p?.warranty?.cards[1]:''%>"class="form-control" />
+        </div>
+        <div class="col-6">
+            <input type="text" value="<%=(p.warranty&&p.warranty.title)?p?.warranty?.cards[2]:''%>" name="w_card3" class="form-control" /> <br />
+            <input type="text" value="<%=(p.warranty&&p.warranty.title)?p?.warranty?.cards[3]:''%>"name="w_card4" class="form-control" />
+        </div>
+    </div>
+    <h3 class="mt-3">Contact</h3>
+    <hr />
+    <label for="" class="label">Title</label>
+    <input type="text" value="<%=(p.contact&&p.contact.title)?p?.contact?.title:''%>" name="c_title" class="form-control" />
+    <label for="" class="lable">Desc</label>
+    <textarea name="c_desc" class="form-control" id=""><%=(p.contact&&p.contact.title)?p?.contact?.desc:''%></textarea>
+    <h3 class="mt-3">Introlduce</h3>
+    <hr />
+    <label for="" class="label">Title</label>
+    <input type="text" value="<%=(p.introduce&&p.introduce.title)?p?.introduce?.title:''%>" name="i_title" class="form-control" />
+    <label for=""  class="label">Desc</label>
+    <textarea name="i_desc" class="form-control" id=""><%=(p.introduce&&p.introduce.title)?p?.introduce?.desc:''%></textarea>
+    <!--  -->
+    <button class="btn btn-outline-primary mt-3" id="btn-t3-submit">Save config</button>
+</div>
+
+<!-- //==========MODAL=========// -->
+<div id="t3Modal" class="modal fade" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <textarea name="" id="t3ModalEditor"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline-secondary mt-3" id="btn-apply">Apply</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- //==============Script============// -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // global scope
+        const modalEl = document.getElementById('t3Modal');
+        const modal = new bootstrap.Modal(modalEl);
+        const btnApply = document.getElementById('btn-apply');
+        const btnt3Submit = document.getElementById('btn-t3-submit');
+        var currentInput = null;
+
+        TinyApp.init('#t3ModalEditor');
+        document.querySelectorAll('input, textarea').forEach((el) => {
+            el.addEventListener('focus', (ev) => {
+                currentInput = el;
+                tinymce.get('t3ModalEditor').setContent(currentInput.value || '');
+                modal.show();
+            });
+        });
+        btnApply.addEventListener('click', (ev) => {
+            if (currentInput) {
+                const value = tinymce.get('t3ModalEditor').getContent();
+                currentInput.value = value;
+                modal.hide();
+            }
+        });
+        btnt3Submit.addEventListener('click', (ev)=>{
+            const data ={
+                warranty: {
+                    title: document.querySelector('input[name="w_title"]').value,
+                    cards: [
+                        document.querySelector('input[name="w_card1"]').value,
+                        document.querySelector('input[name="w_card2"]').value,
+                        document.querySelector('input[name="w_card3"]').value,
+                        document.querySelector('input[name="w_card4"]').value
+                    ]
+                },
+                contact: {
+                    title: document.querySelector('input[name="c_title"]').value,
+                    desc: document.querySelector('textarea[name="c_desc"]').value
+                },
+                introduce: {
+                    title: document.querySelector('input[name="i_title"]').value,
+                    desc: document.querySelector('textarea[name="i_desc"]').value
+                }
+            }
+            $.ajax({
+                url: '/admin/page-config/three-part',
+                method: "POST",
+                contentType: 'application/json',
+                data: JSON.stringify(data),
+                success: (res)=>{
+                    if(res.success){
+                        MyNotification('Success', 'success')
+                    }
+                },
+                error: (xhr, status, err)=>{
+                    console.log(xhr.responseJSON.mess)
+                    MyNotification('Sever error', 'error')
+                }
+            })
+        })
+        // end
+    });
+</script>

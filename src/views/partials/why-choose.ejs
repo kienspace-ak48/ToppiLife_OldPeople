@@ -1,36 +1,26 @@
-<style>
-    
 
-/* Responsive: mobile xuống 1 cột */
-/* @media (max-width: 768px) {
-  .feature-grid {
-    grid-template-columns: 1fr;
-  }
-} */
-
-</style>
 <section id="why-choose" class="toppilife-difference">
  
     <div class="main-content">
-    <h2 class="title"><%=ps.why.title%></h2>
+    <h2 class="title"><%-(pc&&pc.whychooseus)?pc?.whychooseus?.title:''%></h2>
   <div class="difference-box">
     <div class="product">
-      <img src="/img/df-machine.png" loading="lazy" alt="ToppiLife product">
+      <img src="/uploads/<%-(pc&&pc.whychooseus)?pc?.whychooseus?.item_card.img_url:''%>" loading="lazy" alt="ToppiLife product">
       <button class="btn-consult">TƯ VẤN NGAY →</button>
     </div>
 
     <div class="benefits">
       <div class="benefit">
         <span class="number">1</span>
-        <p><%=ps.why.cards.line1%></p>
+      <%-(pc&&pc.whychooseus)?pc?.whychooseus?.item_card.line1:''%>
       </div>
       <div class="benefit">
         <span class="number">2</span>
-        <p><strong><%=ps.why.cards.line2%></p>
+        <%-(pc&&pc.whychooseus)?pc?.whychooseus?.item_card.line2:''%>
       </div>
       <div class="benefit">
         <span class="number">3</span>
-        <p><strong>Hiệu quả rõ rệt</strong> – Cảm nhận thay đổi sau vài buổi dùng</p>
+        <%-(pc&&pc.whychooseus)?pc?.whychooseus?.item_card.line3:''%>
       </div>
     </div>
   </div>
@@ -39,7 +29,7 @@
 
 <section class="toppilife-compare">
   <div class="main-content">
-    <h2><%=ps.why.sub_title_01%></h2>
+    <h2><%-(pc&&pc.whychooseus)?pc?.whychooseus?.title_2:''%></h2>
 
   <div class="table-wrapper">
     <table>
@@ -88,7 +78,7 @@
 </section>
 <section class="safe-features">
   <div class="main-content">
-    <h2><%=ps.why.sub_title_02%></h2>
+    <h2><%-(pc&&pc.whychooseus)?pc?.whychooseus?.title_3:''%></h2>
 
   <div class="feature-grid">
     <div class="feature-card">
@@ -103,7 +93,7 @@
 
       </div>
       <p>
-        <%=ps.why.extracards[0] %>
+        <%-(pc&&pc.whychooseus)?pc?.whychooseus?.cards[0]:''%>
       </p>
     </div>
 
@@ -117,7 +107,7 @@
 </svg>
       </div>
       <p>
-        <%=ps.why.extracards[1] %>
+        <%-(pc&&pc.whychooseus)?pc?.whychooseus?.cards[1]:''%>
       </p>
     </div>
 
@@ -130,7 +120,7 @@
 
       </div>
       <p>
-        <%=ps.why.extracards[2] %>
+        <%-(pc&&pc.whychooseus)?pc?.whychooseus?.cards[2]:''%>
       </p>
     </div>
   </div>

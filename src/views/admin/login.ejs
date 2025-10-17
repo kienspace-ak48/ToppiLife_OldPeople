@@ -1,130 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login for admin</title>
-  </head>
-  <style>
-    *{
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    .wrapper-login {
-      width: 100%;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: #f0f2f5;
-    }
-    .form-login {
-      width: 500px;
-      /* margin: auto auto; */
-      padding: 30px;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      background-color: #f9f9f9;
-    }
-    .form-login h2{
-        text-align: center;
-        margin-top: 10px;
-        margin-bottom: 20px;
-        color: #333;
-    }
-    .form-login .form-group {
-      padding: 0 10px;
-      margin-bottom: 15px;
-    }
-    .form-login .form-label {
-      display: block;
-      margin-bottom: 5px;
-      font-weight: 600;
-    }
-    .form-login .form-control {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 16px;
-    }
-    .form-login .btn {
-      width: 100%;
-      margin-top: 10px;
-      padding: 10px ;
-      border: none;
-      border-radius: 5px;
-      background-color: #007bff;
-      color: white;
-      font-size: 18px;
-      cursor: pointer;
-    }
-    .form-login .btn:hover {
-      background-color: #0056b3;
-    }
-    /* toast mess */
-    .toast-mess {
-        min-height: 150px;
-        width: 300px;
-        background-color: #ccc;
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-      /* position: fixed;
-      top: 20px;
-      right: 20px;
-      min-width: 250px;
-      max-width: 300px;
-      padding: 15px 20px;
-      background-color: #333;
-      color: red;
-      border-radius: 5px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.5s, visibility 0.5s;
-      z-index: 1000; */
-    }
-  </style>
-  <body>
-    <div class="toast-mess" style="display: block; text-align: center; padding: 10px;">
-        <div class="toast-top" style="display: flex; justify-content: space-between; margin-bottom: 10px; ">
-            <span class="toast-mess-text">Nofitication</span>
-            <span class="toast-mess-close"><button class="btn btn-secondary">X</button></span>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Login for admin</title>
+        <script src="/lib/js/jquery-3.7.1.js"></script>
+        <link rel="stylesheet" href="/lib/css/sweetalert2.min.css" />
+        <script src="/lib/js/sweetalert2.all.min.js"></script>
+    </head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .wrapper-login {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f2f5;
+        }
+        .form-login {
+            width: 500px;
+            /* margin: auto auto; */
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+        }
+        .form-login h2 {
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .form-login .form-group {
+            padding: 0 10px;
+            margin-bottom: 15px;
+        }
+        .form-login .form-label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        .form-login .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .form-login .btn {
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .form-login .btn:hover {
+            background-color: #0056b3;
+        }
+        /* toast mess */
+        .toast-mess {
+            min-height: 150px;
+            width: 300px;
+            background-color: #ccc;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+    <body>
+        <!-- <div class="toast-mess" style="display: block; text-align: center; padding: 10px">
+            <div class="toast-top" style="display: flex; justify-content: space-between; margin-bottom: 10px">
+                <span class="toast-mess-text">Nofitication</span>
+                <span class="toast-mess-close"><button class="btn btn-secondary">X</button></span>
+            </div>
+            <hr />
+            <div
+                class="toast-body"
+                style="display: flex; margin-top: 10px; justify-content: center; align-items: center"
+            >
+            </div>
+        </div> -->
+        <div class="wrapper-login">
+            <div class="form-login">
+                <h2>Admin login</h2>
+                <form action="/admin" method="post">
+                    <div class="form-group">
+                        <label for="" class="form-label">Username: </label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="username"
+                            name="username"
+                            placeholder="Enter username"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="form-label">Password: </label>
+                        <input
+                            type="password"
+                            class="form-control"
+                            id="password"
+                            name="password"
+                            placeholder="Enter password"
+                        />
+                    </div>
+                    <button type="submit" id="btn-submit-login" class="btn btn-primary">Login</button>
+                </form>
+            </div>
         </div>
-        <hr>
-        <div class="toast-body" style="display: flex; margin-top: 10px;  justify-content: center; align-items: center;">
-            <p><%= (typeof data !== 'undefined' && data.mess) ? data.mess : "" %></p>
-        </div>
-    </div>
-    <div class="wrapper-login">
-      <div class="form-login">
-        <h2>Admin login</h2>
-        <form action="/admin" method="post">
-          <div class="form-group">
-            <label for="" class="form-label">Username: </label>
-            <input
-              type="text"
-              class="form-control"
-              name="username"
-              placeholder="Enter username"
-            />
-          </div>
-          <div class="form-group">
-            <label for="" class="form-label">Password: </label>
-            <input
-              type="password"
-              class="form-control"
-              name="password"
-              placeholder="Enter password"
-            />
-          </div>
-          <button type="submit" class="btn btn-primary">Login</button>
-        </form>
-      </div>
-    </div>
-  </body>
+    </body>
+
+    <!-- script here -->
+    <script>
+        // global var
+        const btn_submit_login = document.getElementById('btn-submit-login');
+        btn_submit_login.addEventListener('click', function (ev) {
+            ev.preventDefault();
+            $.ajax({
+                url: `/admin/auth/login`,
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    username: document.getElementById('username').value,
+                    password: document.getElementById('password').value,
+                }),
+                success: (res) => {
+                    console.log(res);
+                    if (res.success) {
+                        window.location.href = res.redirect;
+                    }else{
+                        myNotification(res.mess, 'error', 'top-end', 2500);
+                    }
+                },
+                error: (xhr, status, err) => {
+                    myNotification(xhr.responseJSON.mess, 'error', 'center', 3000);
+                    console.log(xhr);
+                },
+            });
+        });
+        function myNotification(mess, status, position = 'center', timer = 1500) {
+            Swal.fire({
+                title: mess,
+                position: position,
+                icon: status,
+                showConfirmButton: false,
+                timer: timer,
+            });
+        }
+    </script>
 </html>

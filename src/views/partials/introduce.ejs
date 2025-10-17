@@ -9,9 +9,9 @@
 
       <div class="main-content">
         <div class="intro-text">
-          <h2><%=ps.introduce.title%></h2>
+          <h2><%-(pc&&pc.introduce)?pc?.introduce?.title:''%></h2>
           <p class="desc">
-            <%=ps.introduce.desc%>
+            <%-(pc&&pc.introduce)?pc?.introduce?.desc:''%>
           </p>
         </div>
       </div>

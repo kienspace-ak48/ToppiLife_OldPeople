@@ -14,29 +14,29 @@
 
 <div class="issue">
   <div class="main-content">
-    <h2 class="title"><%=ps.issue.title%></h2>
+    <h2 class="title"><%-pc?.issue?.title%></h2>
     <div class="issue-list">
       <div class="issue-card">
-        <img src="<%= ps?.issue?.images[0]?.file ? ('/uploads/'+ps.issue.images[0].file) : '/img/default.png' %>" loading="lazy" alt="">
-        <h3 class="desc"><%=ps.issue.images[0].desc%></h3>
+        <img src="<%= pc?.issue?.img_items[0]?.img ? ('/uploads/'+pc.issue.img_items[0].img) : '/img/default.png' %>" loading="lazy" alt="">
+        <h3 class="desc"><%-pc?.issue?.img_items?.[0]?.desc%></h3>
       </div>
       <div class="issue-card">
-        <img src="<%= ps?.issue?.images[1]?.file ? ('/uploads/'+ps.issue.images[1].file) : '/img/default.png' %>" loading="lazy" alt="">
-        <h3 class="desc"><%=ps.issue.images[1].desc%></h3>
+        <img src="<%= pc?.issue?.img_items[0]?.img ? ('/uploads/'+pc.issue.img_items[1].img)  : '/img/default.png' %>" loading="lazy" alt="">
+        <h3 class="desc"><%-pc?.issue?.img_items?.[1]?.desc%></h3>
       </div>
       <div class="issue-card">
-        <img src="<%= ps?.issue?.images[2]?.file ? ('/uploads/'+ps.issue.images[2].file) : '/img/default.png' %>" loading="lazy" alt="">
-        <h3 class="desc"><%=ps.issue.images[2].desc%></h3>
+        <img src="<%= pc?.issue?.img_items[0]?.img ? ('/uploads/'+pc.issue.img_items[2].img)  : '/img/default.png' %>" loading="lazy" alt="">
+        <h3 class="desc"><%-pc?.issue?.img_items?.[2]?.desc ||''%></h3>
       </div>
       <div class="issue-card">
-        <img src="<%= ps?.issue?.images[3]?.file ? ('/uploads/'+ps.issue.images[3].file) : '/img/default.png' %>" loading="lazy" alt="">
-        <h3 class="desc"><%=ps.issue.images[3].desc%></h3>
+        <img src="<%= pc?.issue?.img_items[0]?.img ? ('/uploads/'+pc.issue.img_items[3].img)  : '/img/default.png' %>" loading="lazy" alt="">
+        <h3 class="desc"><%-pc?.issue?.img_items?.[3]?.desc%></h3>
       </div>
     </div>
 
     <div class="issue-summary">
       <p class="desc">
-        <%=ps.issue.summary%>
+        <%-pc?.issue?.summary%>
       </p>
     </div>
   </div>

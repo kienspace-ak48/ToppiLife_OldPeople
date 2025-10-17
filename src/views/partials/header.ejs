@@ -18,24 +18,27 @@
       <div class="hotline">Hotline: 0123 456 789</div>
     </div>
   </header>
+  <style>
+    section.hero h1{
 
+    }
+  </style>
   <section class="hero">
     <div class="main-content">
       <div class="hero-text">
-        <h1>
-            <strong>
-              <%=ps.hero.title%>
-            </strong>
+        <h1 class="hero-title">
+              <%-(pc.hero&&pc.hero.title)?pc.hero.title_highline:''%>
           <br />
-          <%=ps.hero.subtitle%>
+          <%-(pc.hero&&pc.hero.title)?pc?.hero?.title:''%>
         </h1>
-        <p>Giấc ngủ sâu, sống lâu sống khỏe!</p>
+        <!-- <p>Giấc ngủ sâu, sống lâu sống khỏe!</p> -->
+         <%-pc.hero.desc%>
         <div class="actions">
           <a href="#" class="btn btn-cta-contact">TƯ VẤN NGAY →</a>
         </div>
       </div>
       <div class="hero-img">
-        <img loading="lazy" src="<%= ps?.hero?.image ? ('/uploads/'+ps.hero.image) : '/img/default.png' %>" alt="Sản phẩm" />
+        <img loading="lazy" src="<%= pc?.hero?.img_url ? ('/uploads/'+pc?.hero?.img_url) : '/img/default.png' %>" alt="Sản phẩm" />
       </div>
     </div>
   </section>

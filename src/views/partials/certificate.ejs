@@ -8,21 +8,21 @@
 </div>
 <!--  -->
   <div class="main-content">
-    <h2><%=ps.certificate.title%></h2>
+    <h2><%-(pc&&pc.certificate)?pc?.certificate?.title:''%></h2>
     <!--  -->
     <div class="swiper SwiperCertificate">
     <div class="swiper-wrapper">
       <div class="swiper-slide">
-        <img src="/img/certificate1.png" class="thumb" loading="lazy" alt="Certificate 1" />
+        <img src="/uploads/<%-(pc&&pc.certificate)?pc?.certificate?.img_urls[0]:''%>" class="thumb" loading="lazy" alt="Certificate 1" />
       </div>
       <div class="swiper-slide">
-        <img src="/img/certificate1.png" class="thumb" loading="lazy" alt="Certificate 2" />
+        <img src="/uploads/<%-(pc&&pc.certificate)?pc?.certificate?.img_urls[1]:''%>" class="thumb" loading="lazy" alt="Certificate 2" />
       </div>
       <div class="swiper-slide">
-        <img src="/img/certificate1.png" class="thumb" loading="lazy" alt="Certificate 3" />
+        <img src="/uploads/<%-(pc&&pc.certificate)?pc?.certificate?.img_urls[2]:''%>" class="thumb" loading="lazy" alt="Certificate 3" />
       </div>
       <div class="swiper-slide">
-        <img src="/img/certificate1.png" class="thumb" loading="lazy" alt="Certificate 4" />
+        <img src="/uploads/<%-(pc&&pc.certificate)?pc?.certificate?.img_urls[3]:''%>" class="thumb" loading="lazy" alt="Certificate 4" />
       </div>
      
     </div>

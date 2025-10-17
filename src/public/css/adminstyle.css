@@ -13,6 +13,84 @@ html {
 body {
 }
 /*  */
+a {
+    text-decoration: none;
+    color: #fff;
+}
+body {
+    display: flex;
+}
+.sidebar {
+    width: 240px;
+    height: 100vh;
+    background-color: #1e1e2f;
+    color: white;
+    transition: width 0.3s;
+    overflow: hidden;
+}
+.sidebar .logo {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    font-weight: bold;
+    font-size: 1.2em;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.sidebar .logo-icon {
+    font-size: 1.5em;
+    margin-right: 10px;
+}
+.sidebar.collapsed .logo-text {
+    display: none;
+}
+.sidebar ul {
+    list-style: none;
+    padding: 10px 0;
+}
+.sidebar ul li {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    /* cursor: pointer; */
+    transition: ease background 0.3s;
+}
+.sidebar ul li:hover {
+    background: #2c2c3e;
+}
+.sidebar ul li i {
+    margin-right: 15px;
+    font-size: 1.2em;
+    font-style: normal;
+}
+.sidebar.collapsed ul li span {
+    display: none;
+}
+.sidebar ul li span {
+    transition: all ease 0.3s;
+}
+#toggleBtn {
+    /* background: #1e1e2f;
+    color: white;
+    border: none;
+    margin: 10px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 4px; */
+}
+.sidebar ul li.logout:hover {
+  background: #f30d0d !important;
+}
+.sidebar.collapsed {
+    width: 70px;
+}
+.main {
+    flex: 1;
+    height: 100vh;
+    overflow-y: auto; /* cho phép cuộn khi nội dung dài */
+    background: #f9f9f9; /* tuỳ chọn, chỉ để nhìn rõ vùng main */
+}
+/*  */
 .main-container {
     margin: 0 auto;
     width: calc(86% - 20px);
@@ -40,20 +118,53 @@ body {
     background-color: #f3f4f6;
     padding: 4px;
 }
-.group-button button {
+.group-button a {
     border: none;
     background-color: transparent;
     color: #88868d;
     margin: 0 10px;
     padding: 4px;
 }
-.group-button button:hover {
+.group-button a:hover {
     border-radius: 4px;
     background-color: #fff;
     color: #000;
 }
-.group-button button.active {
+.group-button a.active {
     border-radius: 4px;
     background-color: #fff;
     color: #000;
+}
+
+/* admin image css */
+.image-group {
+}
+.image-group-body{
+display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+.img_preview {
+    display: inline-block;
+    height: 150px;
+    width: 250px;
+    object-fit: cover;
+    margin: 5px 0;
+}
+.image-group input{
+    /* width: 250px; */
+    /* max-width: 100%; */
+}
+img.img_preview {
+    margin-top: 0;
+    display: inline-block;
+    height: 150px;
+    /* width: 250px; */
+    width: 100%;
+    /* object-fit: cover; */
+    object-fit: contain;
+    border-radius: 10px;
+    border: 2px solid #ddd;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.25s, box-shadow 0.25s;
 }
