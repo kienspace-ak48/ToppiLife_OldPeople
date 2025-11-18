@@ -5,7 +5,15 @@
 <section class="cta contact">
   <div class="cta-content">
     <h2><%-(pc&&pc.contact)?pc?.contact?.title:''%></h2>
-    <p><%-(pc&&pc.contact)?pc?.contact?.desc:''%></p>
-    <a href="#!" class="cta-btn">TƯ VẤN NGAY →</a>
+    <div class="desc"><%-(pc&&pc.contact)?pc?.contact?.desc:''%></div>
+    <div class="" style="    display: flex; justify-content: center;">
+      <a style="color: #000; padding: 0 45px"
+  href="https://zalo.me/<%=pc?.pageinfo?.phone%>"
+  target="_blank"
+  class="btn-consult"
+>
+  Tư vấn ngay →<i class="fa-solid fa-arrow-right"></i>
+</a>
+    </div>
   </div>
 </section>

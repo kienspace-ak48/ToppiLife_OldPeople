@@ -1,5 +1,32 @@
 <%- include('../partials/pcHeaderControl.ejs') %>
 <script src="/js/TinyApp.js"></script>
+<style>
+    /* video */
+    .video-card {
+        border-radius: 12px;
+        overflow: hidden;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .video-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
+    .video-wrapper {
+        width: 100%;
+        height: 180px;
+        background: #000;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+    .video-wrapper video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+</style>
 <div class="my-card">
     <div class="row">
         <div class="form-group">
@@ -8,34 +35,106 @@
         </div>
         <div class="col-6 mt-3">
             <label for="" class="label">Card 1</label>
-            <input type="text" value="<%=(sol&&sol.title)?sol?.cards[0]?.label:''%>" name="c1_label" class="form-control" />
-            <textarea name="c1_desc" id=""  class="form-control"><%=(sol&&sol.title)?sol?.cards[0]?.desc:''%></textarea>
+            <input
+                type="text"
+                value="<%=(sol&&sol.title)?sol?.cards[0]?.label:''%>"
+                name="c1_label"
+                class="form-control"
+            />
+            <textarea name="c1_desc" id="" class="form-control"><%=(sol&&sol.title)?sol?.cards[0]?.desc:''%></textarea>
             <label for="" class="label">Card 3</label>
-            <input type="text" value="<%=(sol&&sol.title)?sol?.cards[2]?.label:''%>" name="c3_label" class="form-control" />
+            <input
+                type="text"
+                value="<%=(sol&&sol.title)?sol?.cards[2]?.label:''%>"
+                name="c3_label"
+                class="form-control"
+            />
             <textarea name="c3_desc" id="" class="form-control"><%=(sol&&sol.title)?sol?.cards[2]?.desc:''%></textarea>
         </div>
         <div class="col-6 mt-3">
             <label for="" class="label">Card 2</label>
-            <input type="text" value="<%=(sol&&sol.title)?sol?.cards[1]?.label:''%>" name="c2_label" class="form-control" />
+            <input
+                type="text"
+                value="<%=(sol&&sol.title)?sol?.cards[1]?.label:''%>"
+                name="c2_label"
+                class="form-control"
+            />
             <textarea name="c2_desc" id="" class="form-control"><%=(sol&&sol.title)?sol?.cards[1]?.desc:''%></textarea>
             <label for="" class="label">Card 4</label>
-            <input type="text" value="<%=(sol&&sol.title)?sol?.cards[3]?.label:''%>" name="c4_label" class="form-control" />
+            <input
+                type="text"
+                value="<%=(sol&&sol.title)?sol?.cards[3]?.label:''%>"
+                name="c4_label"
+                class="form-control"
+            />
             <textarea name="c4_desc" id="" class="form-control"><%=(sol&&sol.title)?sol?.cards[3]?.desc:''%></textarea>
         </div>
         <!--  -->
         <div class="form-group mt-2">
             <label for="" class="label">Card5</label>
-            <input type="text" name="c5_label" value="<%=(sol&&sol.title)?sol?.cards[4]?.label:''%>" class="form-control" />
+            <input
+                type="text"
+                name="c5_label"
+                value="<%=(sol&&sol.title)?sol?.cards[4]?.label:''%>"
+                class="form-control"
+            />
             <textarea name="c5_desc" id="" class="form-control"><%=(sol&&sol.title)?sol?.cards[4]?.desc:''%></textarea>
         </div>
-        <div class="form-group mt-3">
+        <!-- <div class="form-group mt-3">
             <label for="" class="form-label">Video (Url)</label>
-            <input type="text" el-ignore="true" value="<%=(sol&&sol.title)?sol.video_url:''%>" name="vid_url" class="form-control" />
+            <input type="text" el-ignore="true" value="<%#=(sol&&sol.title)?sol.video_url:''%>" name="vid_url" class="form-control" />
+        </div> -->
+        <!-- add new -->
+        <label for="" class="form-label"> Video </label>
+        <div class="input-group">
+            <button class="btn btn-outline-secondary cta-choose-video">Choose video</button>
+            <input
+                type="text"
+                id="whychooseus_video"
+                name="whychooseus_video"
+                class="form-control"
+                placeholder="path value..."
+                value="<%=(sol&&sol.title)?sol.video_url:''%>"
+            />
         </div>
+        <!-- end -->
     </div>
     <button type="button" id="btn-solution-submit" class="btn btn-outline-primary mt-3">Save config</button>
 </div>
 <!-- //==========MODAL========// -->
+<!-- video -->
+<div class="modal fade" id="chooseVideoModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5">Chọn video</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row g-3 video-list">
+                    <% videos.forEach(file => { %>
+                    <div class="col-6 col-md-3">
+                        <div class="card video-card shadow-sm border-0">
+                            <div class="video-wrapper">
+                                <video src="<%= file.path %>" muted loop preload="metadata"></video>
+                            </div>
+                            <div class="card-body text-center">
+                                <a
+                                    href="#!"
+                                    data-path="<%=file.name%>"
+                                    class="cta-choose-card-video btn btn-outline-secondary btn-sm w-75"
+                                    >Choose</a
+                                >
+                            </div>
+                        </div>
+                    </div>
+                    <% }) %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--  -->
 <div id="solutionModal" class="modal fade" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
@@ -54,6 +153,26 @@
 <!-- //==========SCRIPT======// -->
 <script>
     document.addEventListener('DOMContentLoaded', () => {
+        //video
+        const modalVideoEl = document.querySelector('#chooseVideoModal');
+        const modalVideo = new bootstrap.Modal(modalVideoEl);
+        var videoTarget = null;
+        // mo modal choose video
+        document.querySelector('.cta-choose-video').addEventListener('click', function (ev) {
+            modalVideo.show();
+            videoTarget = this;
+        });
+        document.querySelectorAll('#chooseVideoModal .video-list .cta-choose-card-video').forEach((thumb, i) => {
+            thumb.addEventListener('click', function (ev) {
+                // const value = ev.currentTarget;
+                // console.log(thumb)
+                // var name = thumb.dataset.name;
+                var path = thumb.dataset.path;
+                // alert(path)
+                document.getElementById('whychooseus_video').value = path;
+                modalVideo.hide();
+            });
+        });
         //global scope
         const modalEl = document.getElementById('solutionModal');
         const modal = new bootstrap.Modal(modalEl);
@@ -62,59 +181,73 @@
         const btnSolutionSubmit = document.getElementById('btn-solution-submit');
         //
         TinyApp.init('#modalSolutionEditor');
-        document.querySelectorAll('input, textarea').forEach((el)=>{
-            console.log('aaa')
-            if(el.hasAttribute('el-ignore')){
-                console.log('bbb')
-                return
+        document.querySelectorAll('input, textarea').forEach((el) => {
+            console.log('aaa');
+            if (el.hasAttribute('el-ignore')) {
+                console.log('bbb');
+                return;
             }
-            el.addEventListener('focus', ()=>{
+            el.addEventListener('focus', () => {
                 currentInput = el;
                 modal.show();
-                setTimeout(()=>{
+                setTimeout(() => {
                     const editor = tinymce.get('modalSolutionEditor');
-                    if(editor) editor.setContent(el.value || '');
-                }, 200)
-            })
+                    if (editor) editor.setContent(el.value || '');
+                }, 200);
+            });
         });
-        btnApply.addEventListener('click', function(ev){
-            if(currentInput){
+        btnApply.addEventListener('click', function (ev) {
+            if (currentInput) {
                 const value = tinymce.get('modalSolutionEditor').getContent();
                 console.log(value);
                 currentInput.value = value;
                 modal.hide();
             }
         });
-        btnSolutionSubmit.addEventListener('click', function(ev){
-            const data ={
+        btnSolutionSubmit.addEventListener('click', function (ev) {
+            const data = {
                 title: document.querySelector('input[name="title"]').value,
                 cards: [
-                    {label: document.querySelector('input[name="c1_label"]').value, desc: document.querySelector('textarea[name="c1_desc"]').value},
-                    {label: document.querySelector('input[name="c2_label"]').value, desc: document.querySelector('textarea[name="c2_desc"]').value},
-                    {label: document.querySelector('input[name="c3_label"]').value, desc: document.querySelector('textarea[name="c3_desc"]').value},
-                    {label: document.querySelector('input[name="c4_label"]').value, desc: document.querySelector('textarea[name="c4_desc"]').value},
-                    {label: document.querySelector('input[name="c5_label"]').value, desc: document.querySelector('textarea[name="c5_desc"]').value}
+                    {
+                        label: document.querySelector('input[name="c1_label"]').value,
+                        desc: document.querySelector('textarea[name="c1_desc"]').value,
+                    },
+                    {
+                        label: document.querySelector('input[name="c2_label"]').value,
+                        desc: document.querySelector('textarea[name="c2_desc"]').value,
+                    },
+                    {
+                        label: document.querySelector('input[name="c3_label"]').value,
+                        desc: document.querySelector('textarea[name="c3_desc"]').value,
+                    },
+                    {
+                        label: document.querySelector('input[name="c4_label"]').value,
+                        desc: document.querySelector('textarea[name="c4_desc"]').value,
+                    },
+                    {
+                        label: document.querySelector('input[name="c5_label"]').value,
+                        desc: document.querySelector('textarea[name="c5_desc"]').value,
+                    },
                 ],
-                video_url: document.querySelector('input[name="vid_url"]').value
-            }
+                video_url: document.querySelector('input[name="whychooseus_video"]').value,
+            };
             console.log(data);
             $.ajax({
                 url: '/admin/page-config/solution',
                 method: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify(data),
-                success: (res)=>{
-                    if(res.success){
-                        MyNotification('Success', 'success')
+                success: (res) => {
+                    if (res.success) {
+                        MyNotification('Success', 'success');
                     }
                 },
-                error: (xhr, status, err)=>{
+                error: (xhr, status, err) => {
                     console.log(xhr.responseJSON.mess);
                     MyNotification('Server error', 'error');
-                }
-            })
-        })
-        
+                },
+            });
+        });
     });
 </script>
 

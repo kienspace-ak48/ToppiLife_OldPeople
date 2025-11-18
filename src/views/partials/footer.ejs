@@ -1,44 +1,36 @@
-<footer class="footer">
+<footer class="footer-info">
   <div class="main-content">
-    <!-- top -->
     <div class="footer-top">
-      <div class="col-left">
-        <div class="footer-title">Nạp lại năng lượng sống!</div>
-      </div>
-      <div class="col-right">
-        <a class="btn btn-footer-cta" href="#!">Tư Vấn Ngay →</a>
-      </div>
+    <div class="footer-title">Nạp lại năng lượng sống!</div>
+    <a
+  href="https://zalo.me/<%=pc?.pageinfo?.phone%>"
+  target="_blank"
+  class="btn-consult"
+>
+  Tư vấn ngay →<i class="fa-solid fa-arrow-right"></i>
+</a>
+  </div>
+
+  <hr />
+
+  <div class="footer-bottom">
+    <div class="footer-left">
+      <p class="info-item">
+        <span class="material-symbols-outlined">location_on</span>
+        <span><%=(pc&&pc.pageinfo.address)?pc.pageinfo?.address:'Tòa nhà F Central, số 16A Lê Hồng Phong, Phường 12, Quận 10, Hồ Chí Minh'%></span>
+      </p>
+      <p class="info-item">
+        <span class="material-symbols-outlined">mail</span>
+        <span><%=(pc&&pc.pageinfo.email)?pc.pageinfo?.email:'test@gmail.com'%></span>
+      </p>
     </div>
 
-    <div class="custom-line"></div>
-
-    <!-- info -->
-    <div class="footer-info">
-      <div class="fi_body">
-        <div class="col-left">
-          <p class="info-item">
-            <span class="material-symbols-outlined">location_on</span>
-            <span>
-              Tòa nhà F Central, số 16A Lê Hồng Phong, Phường 12, Quận 10, Hồ Chí Minh
-            </span>
-          </p>
-        </div>
-        <div class="col-right">
-          <img src="/img/logo.png" loading="lazy" class="logo" alt="Topilife Logo" />
-        </div>
-      </div>
-
-      <div class="fi_body">
-        <div class="col-left">
-          <p class="info-item">
-            <span class="material-symbols-outlined">mail</span>
-            <span>email@gmail.com</span>
-          </p>
-        </div>
-        <div class="col-right">
-          <p class="coppyright">© 2025 Topilife.</p>
-        </div>
-      </div>
+    <div class="footer-right">
+      <img src="/img/logo.png" alt="ToppiLife Logo" class="logo-small" />
+      <p class="coppyright">© 2025 ToppiLife.</p>
     </div>
   </div>
-</footer>
+  </div>
+</footer> 
+
+

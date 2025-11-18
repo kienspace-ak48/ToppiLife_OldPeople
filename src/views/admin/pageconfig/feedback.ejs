@@ -1,34 +1,298 @@
 <%- include('../partials/pcHeaderControl.ejs') %>
+<style>
+    .preview-wrapper {
+        margin: 3px 0;
+        border: 1px solid #ccc;
+        height: 150px;
+        width: 200px;
+        object-fit: cover;
+    }
+    .preview-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    #chooseImageModal {
+        padding: 50px;
+    }
+    #chooseImageModal .img-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    #chooseImageModal .img-list .card {
+        width: 200px;
+        height: 200px;
+        display: flex;
+        border-radius: 5px;
+        justify-content: center;
+        align-items: center;
+    }
+    #chooseImageModal .img-list img {
+        border-radius: 5px;
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        transition: all 0.5s linear;
+    }
+    #chooseImageModal .img-list img:hover {
+        /* transform: translateY(-10px); */
+        transform: scale(1.1);
+        cursor: pointer;
+    }
+    /* video */
+    .video-card {
+        border-radius: 12px;
+        overflow: hidden;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .video-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
+    .video-wrapper {
+        width: 100%;
+        height: 180px;
+        background: #000;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+    .video-wrapper video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+</style>
 <div class="my-card">
-    <label for="" class="label">title</label>
-    <input type="text" value="<%=(fb&&fb.title)?fb?.title:''%>" name="title" class="form-control">
+    <div class="mb-2" style="display: flex; justify-content: space-between; align-items: center;">
+        <button class="btn btn-outline-primary mt-3" id="btn-fb-submit">Save config</button>
+        <button class="btn btn-outline-success" id="btn-add-image">+ Add image</button>
+    </div>
+    <label for="" class="label">Title</label>
+    <input type="text" value="<%=(fb&&fb.title)?fb?.title:''%>" name="title" class="form-control" />
     <label for="" class="label">Video (link)</label>
-    <input type="text" name="vid_url" value="<%=(fb&&fb.title)?fb?.video_url:''%>"  class="form-control">
-    <button class="btn btn-outline-primary mt-3" id="btn-fb-submit">Save config</button>
+    <!-- <input type="text" name="vid_url" value="<%#=(fb&&fb.title)?fb?.video_url:''%>" class="form-control" /> -->
+    <!-- add new -->
+    <label for="" class="form-label"> Video </label>
+    <div class="input-group">
+        <button class="btn btn-outline-secondary cta-choose-video">Choose video</button>
+        <input
+            type="text"
+            id="vid_url"
+            name="vid_url"
+            class="form-control"
+            placeholder="path value..."
+            value="<%=(fb&&fb.title)?fb?.video_url:''%>"
+        />
+    </div>
+
+    <!-- end -->
+    <label for="imgage"></label>
+    <!-- <div class="input-group">
+        <button class="btn btn-outline-success cta-choose-img">Choose image</button>
+        <input
+            id="hero_issue_img_summary"
+            type="text"
+            value="<%#=(pc&&pc.hero)?pc.hero?.images[0]?.summary:''%>"
+            class="form-control"
+            placeholder="path value..."
+        />
+    </div>
+    <div class="preview-wrapper">
+        <img src="<%#=(pc &&pc.hero)?pc.hero.images[0].primary:'/imgs/default.png'%>" alt="" />
+    </div> -->
+    <!--  -->
+    <hr />
+    <label for="" class="form-label">Image Feedback list</label>
+    <div id="multi-image-container">
+            <% if (fb && fb.cards && fb.cards.length > 0) { %>
+                <%fb.cards.forEach((c,i)=>{%>
+                <div class="input-group">
+                    <button class="btn btn-outline-success cta-choose-img">Choose image</button>
+                    <input
+                        type="text"
+                        value="<%=c%>"
+                        class="form-control"
+                        placeholder="path value..."
+                    />
+                </div>
+                <div class="preview-wrapper">
+                    <img src="<%=c%>" alt="" />
+                </div>
+            <%})%>
+            <% } else { %>
+                
+            <% } %>
+    </div>
 </div>
+<!-- //==========MODAL========// -->
+<div class="modal fade" id="chooseImageModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5"></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="img-list">
+                    <%imgs.forEach((c,i)=>{%>
+                    <div class="card" data-name="<%=c.name%>" data-path="<%=c.path%>">
+                        <img src="<%=c.path%>" alt="" />
+                    </div>
+                    <%})%>
+                </div>
+            </div>
+            <div class="modal-footer"></div>
+        </div>
+    </div>
+</div>
+<!-- video -->
+<div class="modal fade" id="chooseVideoModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5">Chọn video</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row g-3 video-list">
+                    <% videos.forEach(file => { %>
+                    <div class="col-6 col-md-3">
+                        <div class="card video-card shadow-sm border-0">
+                            <div class="video-wrapper">
+                                <video src="<%= file.path %>" muted loop preload="metadata"></video>
+                            </div>
+                            <div class="card-body text-center">
+                                <a
+                                    href="#!"
+                                    data-path="<%=file.name%>"
+                                    class="cta-choose-card-video btn btn-outline-secondary btn-sm w-75"
+                                    >Choose</a
+                                >
+                            </div>
+                        </div>
+                    </div>
+                    <% }) %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ===========SCRIPT Here=============== -->
+<script type="text/template" id="image-block-template">
+    <div class="image-block mb-3">
+        <div class="input-group">
+            <button class="btn btn-outline-success cta-choose-img">Choose image</button>
+            <input type="text" class="form-control img-path" placeholder="path value..." />
+        </div>
+        <div class="preview-wrapper mt-1">
+            <img src="/imgs/default.png" />
+        </div>
+    </div>
+</script>
 
 <script>
-    document.addEventListener('DOMContentLoaded', ()=>{
-        document.getElementById('btn-fb-submit').addEventListener('click',()=>{
-            const data ={
-                title: document.querySelector('input[name="title"]').value,
-                vid_url: document.querySelector('input[name="vid_url"]').value
+    //
+    document.getElementById('btn-add-image').addEventListener('click', () => {
+        const tpl = document.getElementById('image-block-template').innerHTML;
+        const container = document.getElementById('multi-image-container');
+        container.insertAdjacentHTML('beforeend', tpl);
+    });
+    //video
+    const modalVideoEl = document.querySelector('#chooseVideoModal');
+    const modalVideo = new bootstrap.Modal(modalVideoEl);
+    var videoTarget = null;
+    const modalEl = document.querySelector('#chooseImageModal');
+    const modal = new bootstrap.Modal(modalEl);
+    var groupTarget = null;
+    // mo modal choose video
+    document.querySelector('.cta-choose-video').addEventListener('click', function (ev) {
+        modalVideo.show();
+        videoTarget = this;
+    });
+    document.querySelectorAll('#chooseVideoModal .video-list .cta-choose-card-video').forEach((thumb, i) => {
+        thumb.addEventListener('click', function (ev) {
+            // const value = ev.currentTarget;
+            // console.log(thumb)
+            // var name = thumb.dataset.name;
+            var path = thumb.dataset.path;
+            // alert(path)
+            document.getElementById('vid_url').value = path;
+            modalVideo.hide();
+        });
+    });
+    //
+    document.querySelectorAll('.cta-choose-img').forEach((el) => {
+        el.addEventListener('click', function (ev) {
+            modal.show();
+            // console.log(ev.target);
+            // console.log(el.closest('.preview-wrapper img'));
+            groupTarget = this;
+        });
+    });
+    //
+    /* EVENT DELEGATION cho nút Choose image của các block thêm mới */
+    document.addEventListener('click', function (ev) {
+        if (ev.target.classList.contains('cta-choose-img')) {
+            groupTarget = ev.target; // Lưu lại nút đang được click
+            modal.show();
+        }
+    });
+    document.querySelectorAll('#chooseImageModal .img-list .card').forEach((thumb, i) => {
+        thumb.addEventListener('click', function (ev) {
+            const value = ev.currentTarget;
+            // console.log(thumb)
+            var name = thumb.dataset.name;
+            var path = thumb.dataset.path;
+            // console.log(name, path)
+            if (groupTarget) {
+                // Từ nút "Choose image" → tìm input kế bên
+                const input = groupTarget.nextElementSibling;
+                if (input) input.value = path;
+
+                // Từ nút "Choose image" → tìm .preview-wrapper liền sau input-group
+                const imgGroup = groupTarget.closest('.input-group');
+                const preview = imgGroup.nextElementSibling?.querySelector('img');
+                if (preview) preview.src = path;
             }
+            modal.hide();
+        });
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // global
+
+        const cardList= [];
+        document.getElementById('btn-fb-submit').addEventListener('click', () => {
+            document.querySelectorAll('#multi-image-container .input-group input').forEach((e,i)=>{
+                console.log(e)
+                cardList.push(e.value)  
+            })
+            console.log(cardList)
+            const data = {
+                title: document.querySelector('input[name="title"]').value,
+                vid_url: document.querySelector('input[name="vid_url"]').value,
+                cards: cardList
+            };
             $.ajax({
-                url: "/admin/page-config/feedback",
-                method: "POST",
+                url: '/admin/page-config/feedback',
+                method: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify(data),
-                success: (res)=>{
-                    if(res.success){
+                success: (res) => {
+                    if (res.success) {
                         MyNotification('Success', 'success');
                     }
                 },
-                error: (xhr, status, err)=>{
+                error: (xhr, status, err) => {
                     console.log(xhr.responseJSON.mess);
-                    MyNotification('Sever error', 'error')
-                }
-            })
-        })
-    })
+                    MyNotification('Sever error', 'error');
+                },
+            });
+        });
+    });
 </script>

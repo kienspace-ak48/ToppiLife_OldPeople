@@ -1,27 +1,24 @@
 const express = require('express');
 const router = express.Router();
-const AdminController = require('../controller/admin.controller')();
+// const AdminController = require('../controller/admin.controller')();
 
-const PageSettingEntity = require('../model/PageSetting');
+// const PageSettingEntity = require('../model/PageSetting');
 const PageConfigEntity = require('../model/PageConfig');
 
 // 
-router.get('/admin/my-dashboard', AdminController.MyDashboard);
+// router.get('/admin/my-dashboard', AdminController.MyDashboard);
 
 
 // 
 router.get('/', async (req, res) => {
     try {
-        var ps = await PageSettingEntity.findOne({}).lean();
+        // var ps = await PageSettingEntity.findOne({}).lean();
         var pc = await PageConfigEntity.findOne({}).lean();
-        if (!ps) {
-            ps = defaultSetting;
-        }
-        res.locals = ps;
+        // res.locals = ps;
         res.render('home/homepage', {
             title: 'Home Page',
             layout: 'layouts/mainlayout',
-            ps: ps,
+            // ps: ps,
             pc,
         });
     } catch (error) {

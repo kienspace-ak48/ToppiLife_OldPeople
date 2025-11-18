@@ -1,0 +1,117 @@
+<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" /> -->
+<style>
+    .video-card {
+        border-radius: 12px;
+        overflow: hidden;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .video-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
+    .video-wrapper {
+        width: 100%;
+        height: 180px;
+        background: #000;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+    .video-wrapper video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+</style>
+
+<div class="my-card">
+    <h2 class="mb-4 text-center">🎥 Video Manager</h2>
+
+    <form action="/admin/video/upload" method="POST" enctype="multipart/form-data" class="mb-4">
+        <div class="input-group">
+            <input type="file" name="video" class="form-control" accept="video/*" required />
+            <button class="btn btn-primary" type="submit">Upload</button>
+        </div>
+    </form>
+
+    <div class="row g-4">
+        <% if (files.length === 0) { %>
+            <p class="text-center text-muted">No videos found.</p>
+        <% } else { %>
+            <% files.forEach(file => { %>
+                <div class="col-6 col-md-3">
+                    <div class="card video-card shadow-sm border-0">
+                        <div class="video-wrapper" onclick="openVideoModal('<%= file.path %>')">
+                            <video src="<%= file.path %>" muted loop preload="metadata"></video>
+                        </div>
+                        <div class="card-body text-center">
+                            <a href="#!" data-path="<%=file.name%>" class="cta-delete btn btn-outline-danger btn-sm w-75"> 🗑 Delete </a>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        <% } %>
+    </div>
+</div>
+
+<!-- Modal Fullscreen Video -->
+<div class="modal fade" id="videoModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content bg-dark">
+            <div class="modal-body p-0">
+                <video id="videoPlayer" controls autoplay style="width:100%; height:100%; object-fit:contain"></video>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Cho video tự play preview khi hover
+    document.addEventListener('DOMContentLoaded', () => {
+        const videos = document.querySelectorAll('.video-wrapper video');
+        videos.forEach((v) => {
+            v.addEventListener('mouseenter', () => v.play());
+            v.addEventListener('mouseleave', () => v.pause());
+        });
+    });
+
+    // Mở modal fullscreen có âm thanh
+    function openVideoModal(src) {
+        const video = document.getElementById('videoPlayer');
+        video.src = src;
+        video.muted = false; // bật âm thanh
+        const modal = new bootstrap.Modal(document.getElementById('videoModal'));
+        modal.show();
+
+        // Dừng video khi đóng modal
+        const modalEl = document.getElementById('videoModal');
+        modalEl.addEventListener('hidden.bs.modal', () => {
+            video.pause();
+            video.src = "";
+        }, { once: true });
+    }
+
+    document.querySelectorAll('.cta-delete').forEach(btn=>{
+        btn.addEventListener('click', (e)=>{
+            e.eventDefault;
+            const path = btn.getAttribute('data-path');
+            console.log(path);
+            $.ajax({
+                url: `/admin/video/delete/${path}`,
+                method: 'DELETE',
+                contentType: 'application/json',
+                success: (res)=>{
+                    if(res.success){
+                        location.reload();
+                    }
+                },
+                error: (xhr, status, err)=>{
+                    console.log('Server error:', err);
+                }
+            })
+        })
+    })
+</script>

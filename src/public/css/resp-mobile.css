@@ -122,12 +122,13 @@
     font-size: 2rem;
     font-weight: 600;
 }
-.issue .issue-summary .desc{
+.issue .issue-summary p{
     font-size: 2rem;
     font-weight: 600;
     line-height: 1.5;
-    padding: 30px 8%;
+    padding: 30px 4%;
 }
+
 /* ================SOLUTION============ */
 
 
@@ -170,6 +171,11 @@
 }
 #why-choose .difference-box{
   flex-direction: column;
+}
+.toppilife-difference .title p{
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #000;
 }
 #why-choose .product{
   display: flex;
@@ -214,6 +220,9 @@
   font-weight: 700;
 }
 /* ==================Survey ================ */
+.survey {
+  padding: 0 40px;
+}
 .survey h2 {
   font-size: 2.8rem;
   font-weight: 700;
@@ -235,6 +244,9 @@
     width: 100%;
 }
 /* ==================== FAQ ================= */
+.faq-section{
+  margin: 30px 0;
+}
 .faq-section h2 {
   font-size: 2.8rem;
   font-weight: 700;
@@ -253,6 +265,10 @@
   font-weight: 700;
 }
 /* =================== Wanrnaty ================*/
+.warranty {
+  padding: 0 40px;
+  margin: 30px 0;
+}
 .warranty h2 {
   font-size: 2rem;
   font-weight: 700;
@@ -261,12 +277,12 @@
 .cta.contact {
   border-radius: 0;
 }
-.cta h2 {
+.cta h2 p{
   font-size: 2.8rem;
   font-weight: 700;
 }
 
-.cta p {
+.cta div.desc p {
   font-size: 1.6rem;
   font-weight: 500;
 }
@@ -277,11 +293,11 @@
 .introduce .intro-text {
   max-width: 70%; /* giới hạn text */
 }
-.introduce .intro-text h2{
-  font-size: 4rem;
-  font-weight: 600;
+.introduce .intro-text h2 p{
+  font-size: 3rem;
+  font-weight: 700;
 }
-.introduce .intro-text .desc{
+.introduce .intro-text .desc p{
   font-size: 1.8rem;
   font-weight: 600;
   color: #000;
@@ -289,15 +305,34 @@
 
 /* =============FOOTER =========*/
 
-.footer .tooter-top .footer-title{
-  font-size: 2.8rem;
+/* .footer-title {
+  font-size: 2.8rem !important;
   font-weight: 700;
 }
-.footer .footer-top {
+footer .footer-top {
+    flex-direction: column;
+    text-align: center;
+  } */
+   .footer-title {
+  font-size: 2.8rem !important;
+  font-weight: 700;
+}
+.footer-top {
     flex-direction: column;
     text-align: center;
   }
 
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+.footer-left .material-symbols-outlined {
+  font-size: 1.8rem;
+}
+  .footer-right {
+    text-align: center;
+  }
 
 
   /* end resp */

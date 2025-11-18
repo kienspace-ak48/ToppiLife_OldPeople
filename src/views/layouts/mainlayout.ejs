@@ -1,163 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Toppi life</title>
-    <!-- reset css -->
-    <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/my-style.css">
-    <link rel="stylesheet" href="/css/resp-mobile.css">
-    <!-- swipper -->
-     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
-    <!-- gg icon -->
-    <!-- Kết nối sớm để tối ưu -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Toppi life</title>
+        <link rel="shortcut icon" href="/icons/favicon.ico" type="image/x-icon">
+        <!-- reset css -->
+        <link rel="stylesheet" href="/css/reset.css" />
+        <link rel="stylesheet" href="/css/my-style.css" />
+        <link rel="stylesheet" href="/css/resp-mobile.css" />
 
-<!-- Nhúng Material Symbols Outlined -->
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
-      rel="stylesheet" />
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        /* font-family: 'Poppins', sans-serif; */
-      }
-      .my-df {
-        display: flex;
-      }
-      html {
-        scroll-behavior: smooth;
-        font-size: 62.5%;
-      }
-      /*  */
-      @font-face {
-  font-family: 'SVN-Gilroy';
-  src: url('/fonts/SVN-Gilroy/SVN-Gilroy-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-}
+        <!-- swipper -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+        <!-- gg icon -->
+        <!-- Kết nối sớm để tối ưu -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-@font-face {
-  font-family: 'SVN-Gilroy';
-  src: url('/fonts/SVN-Gilroy/SVN-Gilroy-Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'SVN-Gilroy';
-  src: url('/fonts/SVN-Gilroy/SVN-Gilroy-SemiBold.woff2') format('woff2');
-  font-weight: 600;
-  font-style: normal;
-}
+        <!-- Nhúng Material Symbols Outlined -->
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                /* font-family: 'Poppins', sans-serif; */
+            }
+            .my-df {
+                display: flex;
+            }
+            html {
+                scroll-behavior: smooth;
+                font-size: 62.5%;
+            }
+            /*  */
+            @font-face {
+                font-family: 'SVN-Gilroy';
+                src: url('/fonts/SVN-Gilroy/SVN-Gilroy-Regular.woff2') format('woff2');
+                font-weight: 400;
+                font-style: normal;
+            }
 
-@font-face {
-  font-family: 'SVN-Gilroy';
-  src: url('/fonts/SVN-Gilroy/SVN-Gilroy-Black.woff2') format('woff2'); 
-  font-weight: 900;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'SVN-Gilroy';
-  src: url('/fonts/SVN-Gilroy/SVN-Gilroy-Medium.woff2') format('woff2'); 
-  font-weight: 500;
-  font-style: normal;
-}
+            @font-face {
+                font-family: 'SVN-Gilroy';
+                src: url('/fonts/SVN-Gilroy/SVN-Gilroy-Bold.woff2') format('woff2');
+                font-weight: 700;
+                font-style: normal;
+            }
+            @font-face {
+                font-family: 'SVN-Gilroy';
+                src: url('/fonts/SVN-Gilroy/SVN-Gilroy-SemiBold.woff2') format('woff2');
+                font-weight: 600;
+                font-style: normal;
+            }
 
-body {
-  font-family: 'SVN-Gilroy', sans-serif;
-  font-size: 1.6rem;
-}
+            @font-face {
+                font-family: 'SVN-Gilroy';
+                src: url('/fonts/SVN-Gilroy/SVN-Gilroy-Black.woff2') format('woff2');
+                font-weight: 900;
+                font-style: normal;
+            }
+            @font-face {
+                font-family: 'SVN-Gilroy';
+                src: url('/fonts/SVN-Gilroy/SVN-Gilroy-Medium.woff2') format('woff2');
+                font-weight: 500;
+                font-style: normal;
+            }
 
-      /*  */
-      .main-content {
-        max-width: 1200px;
-        /* max-width: calc(85% - 30px); */
-        margin: 0 auto;
-        padding: 0 16px; /* chống dính lề */
-      }
-      a {
-        text-decoration: none;
-        cursor: pointer;
-      }
-      body {
-        /* font-family: "Poppins", sans-serif; */
-        font-family: 'SVN-Gilroy', sans-serif;
-      }
-      /*  */
-      #scrollToTopBtn {
-        position: fixed;
-        bottom: 30px;
-        right: 15px;
-        width: 48px;
-        height: 48px;
-        background-color: #01dc82;
-        color: white;
-        border: none;
-        border-radius: 50%;
-        font-size: 20px;
-        cursor: pointer;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        display: none; /* Ẩn ban đầu */
-        align-items: center;
-        justify-content: center;
-        transition: opacity 0.3s ease, transform 0.3s ease;
-        z-index: 999;
-      }
+            body {
+                font-family: 'SVN-Gilroy', sans-serif;
+                font-size: 1.6rem;
+            }
 
-      #scrollToTopBtn:hover {
-        transform: scale(1.1);
-        background-color: #08e9fc;
-      }
-    </style>
-  </head>
-  <script>
-    // Swal.fire(`Hello it/'/s working`)
-    // Swal.fire("SweetAlert2 is working!");
-  </script>
-  <body>
-    <button id="scrollToTopBtn">↑</button>
-    <%-include('../partials/header')%> 
-    <%- body%> 
-    <%- include('../partials/issue')%> 
-    <%-include('../partials/solution')%> 
-    <%- include('../partials/why-choose')%>
-    <%- include('../partials/certificate')%> 
-    <%- include('../partials/survey')%>
-    <%- include('../partials/feedback')%>
-    <%-include('../partials/faq')%>
-    <%- include('../partials/warranty')%>
-    <%- include('../partials/contact')%>
-    <%-include('../partials/introduce')%> 
-    <%- include('../partials/footer')%>
-  </body>
-  <!-- swiper -->
-   <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-  <script>
-    const scrollBtn = document.getElementById("scrollToTopBtn");
+            /*  */
+            .main-content {
+                max-width: 1200px;
+                /* max-width: calc(85% - 30px); */
+                margin: 0 auto;
+                padding: 0 16px; /* chống dính lề */
+            }
+            a {
+                text-decoration: none;
+                cursor: pointer;
+            }
+            body {
+                /* font-family: "Poppins", sans-serif; */
+                font-family: 'SVN-Gilroy', sans-serif;
+            }
+            /*  */
+            #scrollToTopBtn {
+                position: fixed;
+                bottom: 30px;
+                right: 15px;
+                width: 48px;
+                height: 48px;
+                background-color: #01dc82;
+                color: white;
+                border: none;
+                border-radius: 50%;
+                font-size: 20px;
+                cursor: pointer;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+                display: none; /* Ẩn ban đầu */
+                align-items: center;
+                justify-content: center;
+                transition: opacity 0.3s ease, transform 0.3s ease;
+                z-index: 999;
+            }
 
-    window.addEventListener("scroll", () => {
-      scrollBtn.style.display = window.scrollY > 300 ? "block" : "none";
-    });
+            #scrollToTopBtn:hover {
+                transform: scale(1.1);
+                background-color: #08e9fc;
+            }
+        </style>
+    </head>
+    <body style="position: relative">
+        <!-- group convenient -->
+        <div class="" style="position: fixed; z-index: 999; bottom: 70px; right: 20px">
+            <!-- Nút Zalo -->
+            <a href="https://zalo.me/<%=pc?.pageinfo?.phone%>" target="_blank" class="pulse-button zalo d-block mb-2">
+                <img src="/img/icon-zalo.png" alt="Zalo" />
+            </a>
 
-    scrollBtn.addEventListener("click", () => {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    });
-    // 
-//     const navLinks = document.querySelectorAll(".nav-menu a");
-//   const currentPath = window.location.pathname;
+            <!-- Nút gọi điện -->
+            <a href="tel:<%=pc?.pageinfo?.phone%>" class="pulse-button call d-block">
+                <img src="/img/icon-call.png" alt="Gọi điện" />
+            </a>
+        </div>
+        <button id="scrollToTopBtn">↑</button>
+        <%-include('../partials/header')%> <%- body%> <%- include('../partials/issue')%>
+        <%-include('../partials/solution')%> <%- include('../partials/why-choose')%> <%-
+        include('../partials/certificate')%> <%- include('../partials/survey')%> <%- include('../partials/feedback')%>
+        <%-include('../partials/faq')%> <%- include('../partials/warranty')%> <%- include('../partials/contact')%>
+        <%-include('../partials/introduce')%> <%- include('../partials/footer')%>
+    </body>
+    <!-- swiper -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script>
+        const scrollBtn = document.getElementById('scrollToTopBtn');
 
-//   navLinks.forEach((link) => {
-//     if (link.getAttribute("href") === currentPath) {
-//       link.classList.add("active");
-//     } else {
-//       link.classList.remove("active");
-//     }
-//   });
-  </script>
+        window.addEventListener('scroll', () => {
+            scrollBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
+        });
+
+        scrollBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth',
+            });
+        });
+    </script>
 </html>

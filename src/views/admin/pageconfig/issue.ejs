@@ -13,7 +13,7 @@
                     <input type="text" class="form-control" name="c1_desc" value="<%=is?.img_items?.[0].desc || ''%>" />
                     <label for="" class="form-label">Image(link)</label>
                     <div class="image-group-body">
-                        <input type="text" name="c1_img" image-action="true" class="form-control" />
+                        <input type="text" name="c1_img" image-action="true" class="form-control" value="<%=(is&&is.img_items)?is?.img_items[0].img:''%>" />
                         <img
                             class="img_preview"
                             src="<%= (is && is.title) ? ('/uploads/' + is?.img_items[0].img) : '/img/default.png' %>"
@@ -28,7 +28,7 @@
                     <input type="text" class="form-control" name="c2_desc" value="<%=is?.img_items?.[1].desc || ''%>" />
                     <label for="" class="form-label">Image(link)</label>
                     <div class="image-group-body">
-                        <input type="text" name="c2_img" image-action="true" class="form-control" />
+                        <input type="text" name="c2_img" image-action="true" class="form-control" value="<%=(is&&is.img_items)?is?.img_items[1].img:''%>" />
                         <img
                             class="img_preview"
                             src="<%= (is && is.title) ? ('/uploads/' + is?.img_items[1].img) : '/img/default.png' %>"
@@ -45,7 +45,7 @@
                     <input type="text" class="form-control" name="c3_desc" value="<%=is?.img_items?.[2].desc || ''%>" />
                     <label for="" class="form-label">Image(link)</label>
                     <div class="image-group-body">
-                        <input type="text" name="c3_img" image-action="true" class="form-control" />
+                        <input type="text" name="c3_img" image-action="true" class="form-control" value="<%=(is&&is.img_items)?is?.img_items[2].img:''%>"/>
                         <img
                             class="img_preview"
                             src="<%= (is && is.title) ? ('/uploads/' + is?.img_items[2].img) : '/img/default.png' %>"
@@ -59,7 +59,7 @@
                     <input type="text" class="form-control" name="c4_desc" value="<%=is?.img_items?.[3].desc || ''%>" />
                     <label for="" class="form-label">Image(link)</label>
                     <div class="image-group-body">
-                        <input type="text" name="c4_img" image-action="true" class="form-control" />
+                        <input type="text" name="c4_img" image-action="true" class="form-control" value="<%=(is&&is.img_items)?is?.img_items[3].img:''%>" />
                         <img
                             class="img_preview"
                             src="<%= (is && is.title) ? ('/uploads/' + is?.img_items[3].img) : '/img/default.png' %>"

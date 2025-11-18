@@ -45,8 +45,9 @@ const PageConfigSchema = new mongoose.Schema(
             cards: [{percent: String, desc: String, _id: false}]
         },
         feedback: {
-            title: {type: String},
-            video_url: String
+            title: {type: String, _id: false},
+            video_url: String,
+            cards:[]
         },
         faq: {
             title: String,
@@ -63,6 +64,11 @@ const PageConfigSchema = new mongoose.Schema(
         introduce: {
             title: String,
             desc: String,
+        },
+        pageinfo:{
+            phone: String,
+            email: String,
+            address: String
         }
     },
     { timestamps: true },

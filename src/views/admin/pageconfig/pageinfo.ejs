@@ -1,0 +1,46 @@
+<%- include('../partials/pcHeaderControl', {files: files}) %>
+<div class="my-card">
+    <label for="" class="form-laebl">Phone</label>
+    <input type="text" id="phone" class="form-control" placeholder="Ex:19001900" value="<%=(pc&&pc.pageinfo)?pc.pageinfo?.phone:''%>" />
+    <label for="" class="form-label">Email</label>
+    <input type="text" id="email" class="form-control" placeholder="admin@gmail.com" value="<%=(pc&&pc.pageinfo)?pc.pageinfo?.email:''%>" />
+    <label for="" class="form-label">Address</label>
+    <input type="text" id="address" class="form-control" placeholder="123, Tan Hung, HaNoi" value="<%=(pc&&pc.pageinfo)?pc.pageinfo?.address:''%>"  />
+    <div class="area-action" style="margin-top: 36px">
+        <button id="btn-save" class="cta btn btn-outline-primary">Save config</button>
+    </div>
+</div>
+
+<script>
+    document.getElementById('btn-save').addEventListener('click', () => {
+        $.ajax({
+            url: `/admin/page-config/pageinfo-section`,
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                address: document.getElementById('address').value
+            }),
+            success: (res)=>{
+                if(res.success){
+                    MyNotification('Save config page info successfully', 'success');
+                }
+            },
+            error: (xhr, status, mess)=>{
+                console.log('Error saving config: ', xhr.responseJSON.mess);
+                MyNotification('Error saving config: ', 'error');
+            }
+        });
+    });
+    // 
+    function MyNotification(mess, status, position = 'center', time = 2000) {
+            Swal.fire({
+                title: mess,
+                icon: status,
+                position: position,
+                showConfirmButton: false,
+                timer: time,
+            });
+        }
+</script>

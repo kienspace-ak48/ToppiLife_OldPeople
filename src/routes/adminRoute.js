@@ -4,10 +4,12 @@ const multer = require('multer');
 const isAuthenticated = require('../middleware/auth');
 
 const imageConfigUpload = require('../config/uploadImageConfig');
+const uploadVideoFx = require('../config/videoUpload')
 const imageUpload = require('../config/imageUpload');
 
 const AdminController = require('../controller/admin.controller')();
 const ImageController = require('../controller/image.controller')();
+const videoController = require('../controller/video.controller')();
 
 //config customize
 const storage = multer.diskStorage({
@@ -29,11 +31,17 @@ const defaultSetting = {
     introduce: { title: '', desc: '', image: '' },
 };
 
+// video
+router.delete('/video/delete/:path', videoController.Delete);
+router.post('/video/upload', uploadVideoFx.single('video'), videoController.Upload);
+router.get('/video', videoController.Index);
 //new
 router.get('/image/delete/:name', ImageController.DeleteImage);
 router.post('/image/upload', imageConfigUpload.single('image'), ImageController.UploadImage);
 router.get('/image', ImageController.Index);
 // route page config
+router.get('/page-config/page-info', AdminController.PageInfo);
+router.post('/page-config/pageinfo-section', AdminController.PageInfoConfigSave);
 router.get('/page-config/hero', AdminController.PageConfig);
 router.post('/page-config/hero-section', AdminController.HeroSaveConfig);
 router.get('/page-config/certificate', AdminController.Certificate);
@@ -56,12 +64,14 @@ router.get('/page-config', AdminController.PageConfig);
 
 // index login
 router.get('/dashboard/home',(req, res)=>{
-    res.render('admin/index', {layout: 'layouts/adminLayout'})
+    console.log(req.session)
+    console.log('user: ', req.session.username)
+    res.render('admin/index', {layout: 'layouts/adminLayout', user: req.session.username||''})
 })
 //
-router.get('/dashboard', isAuthenticated, AdminController.DashBoard);
+// router.get('/dashboard', isAuthenticated, AdminController.DashBoard);
 // router.post('/page-setting', isAuthenticated, imageUpload.any(), AdminController.PageSetting);
-router.post('/register', AdminController.Register);
+// router.post('/register', AdminController.Register);
 
 
 

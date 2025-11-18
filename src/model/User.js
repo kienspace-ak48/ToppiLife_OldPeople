@@ -3,8 +3,10 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema({
-  username: { type: String, required: true, unique: true },
-  password: { type: String, required: true }
+  username: String,
+  email: {type: String, require: true, unique: true},
+  password: { type: String, required: true },
+  role: {type: String, default: 'user'}
 });
 
 // Mã hóa password trước khi lưu

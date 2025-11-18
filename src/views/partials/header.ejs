@@ -1,70 +1,85 @@
-
 <div class="wrap-header">
-  <header class="header">
-    <div class="main-content">
-      <!-- <div class="logo">ToppiLife</div> -->
-      <a href="#!">
-        <img src="/img/logo.png" class="logo" alt="logo" />
-      </a>
-      <div class="menu-toggle" id="menu-toggle">☰</div>
-      <nav id="navbar">
-        <ul>
-          <li><a href="#introduce">Giới thiệu</a></li>
-          <li><a href="#why-choose">Sản phẩm</a></li>
-          <li><a href="#certificate">Giấy chứng nhận</a></li>
-          <li><a href="#">Đăng ký trải nghiệm</a></li>
-        </ul>
-      </nav>
-      <div class="hotline">Hotline: 0123 456 789</div>
-    </div>
-  </header>
-  <style>
-    section.hero h1{
-
-    }
-  </style>
-  <section class="hero">
-    <div class="main-content">
-      <div class="hero-text">
-        <h1 class="hero-title">
-              <%-(pc.hero&&pc.hero.title)?pc.hero.title_highline:''%>
-          <br />
-          <%-(pc.hero&&pc.hero.title)?pc?.hero?.title:''%>
-        </h1>
-        <!-- <p>Giấc ngủ sâu, sống lâu sống khỏe!</p> -->
-         <%-pc.hero.desc%>
-        <div class="actions">
-          <a href="#" class="btn btn-cta-contact">TƯ VẤN NGAY →</a>
+    <header class="header">
+        <div class="main-content">
+            <!-- <div class="logo">ToppiLife</div> -->
+            <a href="#!">
+                <img src="/img/logo.png" class="logo" alt="logo" />
+            </a>
+            <div class="menu-toggle" id="menu-toggle">☰</div>
+            <nav id="navbar">
+                <ul>
+                    <li><a class="" href="#solution">Giới thiệu</a></li>
+                    <li><a href="#why-choose">Sản phẩm</a></li>
+                    <li><a href="#certificate">Giấy chứng nhận</a></li>
+                    <li><a href="https://zalo.me/<%=pc?.pageinfo?.phone%>">Đăng ký trải nghiệm</a></li>
+                </ul>
+            </nav>
+            <div class="hotline">
+                <a id="hotline" href="tel:" class="" style="color:#fff">
+                    Hotline: <span id="hotline_number"><%=(pc&&pc.pageinfo.phone)?pc.pageinfo?.phone:'0967711365'%></span>
+                </a>
+            </div>
         </div>
-      </div>
-      <div class="hero-img">
-        <img loading="lazy" src="<%= pc?.hero?.img_url ? ('/uploads/'+pc?.hero?.img_url) : '/img/default.png' %>" alt="Sản phẩm" />
-      </div>
-    </div>
-  </section>
+    </header>
+    <style>
+        section.hero h1 {
+        }
+    </style>
+    <section class="hero">
+        <div class="main-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <%-(pc.hero&&pc.hero.title)?pc.hero.title_highline:''%>
+                    <br />
+                    <%-(pc.hero&&pc.hero.title)?pc?.hero?.title:''%>
+                </h1>
+                <!-- <p>Giấc ngủ sâu, sống lâu sống khỏe!</p> -->
+                <%-pc.hero.desc%>
+                <div class="actions">
+                    <a href="https://zalo.me/<%=pc?.pageinfo?.phone%>" target="_blank" class="btn-consult">
+                        Tư vấn ngay →<i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-img">
+                <img
+                    loading="lazy"
+                    src="<%= pc?.hero?.img_url ? ('/uploads/'+pc?.hero?.img_url) : '/img/default.png' %>"
+                    alt="Sản phẩm"
+                />
+            </div>
+        </div>
+    </section>
 </div>
 
 <script>
-  const toggle = document.getElementById("menu-toggle");
-  const navbar = document.getElementById("navbar");
+    const toggle = document.getElementById('menu-toggle');
+    const navbar = document.getElementById('navbar');
 
-  // let toggle = document.getElementById("menu-toggle");
-  // let navbar = document.getElementById("navbar");
-  let isOpen = false;
-  
+    let isOpen = false;
 
-toggle.addEventListener("click", () => {
-  // navbar.classList.toggle("active");
-  isOpen = !isOpen;
+    toggle.addEventListener('click', () => {
+        // navbar.classList.toggle("active");
+        isOpen = !isOpen;
 
-  // thêm hiệu ứng xoay
-  toggle.style.transition = "transform 0.5s"; 
-  toggle.style.transform = isOpen ? "rotate(360deg)" : "rotate(0deg)";
-  // mở/đóng menu
-  navbar.classList.toggle("active");
-  // đổi icon sau khi xoay xong
-  setTimeout(() => {
-    toggle.textContent = isOpen ? "✖" : "☰";
-  }, 250); // đổi icon giữa lúc xoay
-});
+        // thêm hiệu ứng xoay
+        toggle.style.transition = 'transform 0.5s';
+        toggle.style.transform = isOpen ? 'rotate(360deg)' : 'rotate(0deg)';
+        // mở/đóng menu
+        navbar.classList.toggle('active');
+        // đổi icon sau khi xoay xong
+        setTimeout(() => {
+            toggle.textContent = isOpen ? '✖' : '☰';
+        }, 250); // đổi icon giữa lúc xoay
+    });
+    // 
+    const phoneEl = document.getElementById('hotline_number');
+  if (phoneEl) {
+    let phone = phoneEl.textContent.trim();
+
+    // Chỉ format nếu là 10 số
+    if (/^\d{10}$/.test(phone)) {
+      phoneEl.textContent = phone.replace(/(\d{3})(\d{3})(\d{4})/, '$1 $2 $3');
+    }
+  }
 </script>

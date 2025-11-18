@@ -115,14 +115,16 @@ body {
 }
 .group-button {
     display: flex;
+    gap: 10px;
     background-color: #f3f4f6;
     padding: 4px;
 }
 .group-button a {
-    border: none;
+    border: 1px solid #ddd;
     background-color: transparent;
     color: #88868d;
-    margin: 0 10px;
+    border-radius: 7px;
+    /* margin: 0 5px; */
     padding: 4px;
 }
 .group-button a:hover {
