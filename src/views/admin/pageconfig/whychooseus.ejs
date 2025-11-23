@@ -37,6 +37,54 @@
         <h3>Table</h3>
         <label for="" class="form-label">Title</label>
         <input type="text" value="<%=(why&&why.title)?why?.title_2:''%>" name="title_2" class="form-control" />
+        <!-- Thead -->
+        <div class="row ">
+            <label for="" class="form-label">Thead</label>
+            <div class="col-2"><input type="text" name="tbl_row0_col1" class="form-control" value="<%=(why&&why.tbl.length>0)?why?.tbl?.[0]?.tr0_col0:''%>"></div>
+            <div class="col-2"><input type="text" name="tbl_row0_col2" class="form-control" value="<%=(why&&why.tbl.length>0)?why?.tbl?.[0]?.tr0_col1:''%>"></div>
+            <div class="col-2"><input type="text" name="tbl_row0_col3" class="form-control" value="<%=(why&&why.tbl.length>0)?why?.tbl?.[0]?.tr0_col2:''%>"></div>
+            <div class="col-2"><input type="text" name="tbl_row0_col4" class="form-control" value="<%=(why&&why.tbl.length>0)?why?.tbl?.[0]?.tr0_col3:''%>"></div>
+            <div class="col-2"><input type="text" name="tbl_row0_col5" class="form-control" value="<%=(why&&why.tbl.length>0)?why?.tbl?.[0]?.tr0_col4:''%>"></div>
+        </div>
+        <hr>
+        <!-- row1 -->
+        <div class="row ">
+            <label for="" class="form-label">Row1</label>
+            <div class="col-2"><input type="text" name="tbl_row1_col1" class="form-control" value="<%=(why&&why.tbl.length>0)?why?.tbl?.[1]?.tr1_col0:''%>"></div>
+            <div class="col-2"><input type="text" name="tbl_row1_col2" class="form-control" value="<%=(why&&why.tbl.length>0)?why?.tbl?.[1]?.tr1_col1:''%>"></div>
+            <div class="col-2"><input type="text" name="tbl_row1_col3" class="form-control" value="<%=(why&&why.tbl.length>0)?why?.tbl?.[1]?.tr1_col2:''%>"></div>
+            <div class="col-2"><input type="text" name="tbl_row1_col4" class="form-control" value="<%=(why&&why.tbl.length>0)?why?.tbl?.[1]?.tr1_col3:''%>"></div>
+            <div class="col-2"><input type="text" name="tbl_row1_col5" class="form-control" value="<%=(why&&why.tbl.length>0)?why?.tbl?.[1]?.tr1_col4:''%>"></div>
+        </div>
+        <!-- row2  -->
+        <div class="row ">
+            <label for="" class="form-label">Row2</label>
+            <div class="col-2"><input type="text" name="tbl_row2_col1" class="form-control"value="<%=(why&&why.tbl.length>0)?why?.tbl?.[2]?.tr2_col0:''%>" ></div>
+            <div class="col-2"><input type="text" name="tbl_row2_col2" class="form-control"value="<%=(why&&why.tbl.length>0)?why?.tbl?.[2]?.tr2_col1:''%>" ></div>
+            <div class="col-2"><input type="text" name="tbl_row2_col3" class="form-control"value="<%=(why&&why.tbl.length>0)?why?.tbl?.[2]?.tr2_col2:''%>" ></div>
+            <div class="col-2"><input type="text" name="tbl_row2_col4" class="form-control"value="<%=(why&&why.tbl.length>0)?why?.tbl?.[2]?.tr2_col3:''%>" ></div>
+            <div class="col-2"><input type="text" name="tbl_row2_col5" class="form-control"value="<%=(why&&why.tbl.length>0)?why?.tbl?.[2]?.tr2_col4:''%>" ></div>
+        </div>
+        <!-- row 3 -->
+        <div class="row ">
+            <label for="" class="form-label">Row3</label>
+            <div class="col-2"><input type="text" name="tbl_row3_col1" class="form-control" value="<%=(why&&why.tbl.length>0)?why?.tbl?.[3]?.tr3_col0:''%>" ></div>
+            <div class="col-2"><input type="text" name="tbl_row3_col2" class="form-control" value="<%=(why&&why.tbl.length>0)?why?.tbl?.[3]?.tr3_col1:''%>" ></div>
+            <div class="col-2"><input type="text" name="tbl_row3_col3" class="form-control" value="<%=(why&&why.tbl.length>0)?why?.tbl?.[3]?.tr3_col2:''%>" ></div>
+            <div class="col-2"><input type="text" name="tbl_row3_col4" class="form-control" value="<%=(why&&why.tbl.length>0)?why?.tbl?.[3]?.tr3_col3:''%>" ></div>
+            <div class="col-2"><input type="text" name="tbl_row3_col5" class="form-control" value="<%=(why&&why.tbl.length>0)?why?.tbl?.[3]?.tr3_col4:''%>" ></div>
+        </div>
+        <!-- row 4  -->
+        <div class="row ">
+            <label for="" class="form-label">Row4</label>
+            <div class="col-2"><input type="text" name="tbl_row4_col1" class="form-control"value="<%=(why&&why.tbl.length>0)?why?.tbl?.[4]?.tr4_col0:''%>" ></div>
+            <div class="col-2"><input type="text" name="tbl_row4_col2" class="form-control"value="<%=(why&&why.tbl.length>0)?why?.tbl?.[4]?.tr4_col1:''%>" ></div>
+            <div class="col-2"><input type="text" name="tbl_row4_col3" class="form-control"value="<%=(why&&why.tbl.length>0)?why?.tbl?.[4]?.tr4_col2:''%>" ></div>
+            <div class="col-2"><input type="text" name="tbl_row4_col4" class="form-control"value="<%=(why&&why.tbl.length>0)?why?.tbl?.[4]?.tr4_col3:''%>" ></div>
+            <div class="col-2"><input type="text" name="tbl_row4_col5" class="form-control"value="<%=(why&&why.tbl.length>0)?why?.tbl?.[4]?.tr4_col4:''%>" ></div>
+        </div>
+        
+        <!--  -->
         <h3>Features</h3>
         <hr />
         <label for="" class="label">Titile</label>
@@ -119,6 +167,39 @@
                     document.querySelector('textarea[name="card2"]').value,
                     document.querySelector('textarea[name="card3"]').value,
                 ],
+                // tbl_row0_col1
+                tbl:[
+                    {   tr0_col0:document.querySelector('input[name="tbl_row0_col1"]').value,
+                        tr0_col1: document.querySelector('input[name="tbl_row0_col2"]').value,
+                        tr0_col2: document.querySelector('input[name="tbl_row0_col3"]').value,
+                        tr0_col3: document.querySelector('input[name="tbl_row0_col4"]').value,
+                        tr0_col4: document.querySelector('input[name="tbl_row0_col5"]').value,
+                    },
+                    {   tr1_col0:document.querySelector('input[name="tbl_row1_col1"]').value,
+                        tr1_col1: document.querySelector('input[name="tbl_row1_col2"]').value,
+                        tr1_col2: document.querySelector('input[name="tbl_row1_col3"]').value,
+                        tr1_col3: document.querySelector('input[name="tbl_row1_col4"]').value,
+                        tr1_col4: document.querySelector('input[name="tbl_row1_col5"]').value,
+                    },
+                    {   tr2_col0:document.querySelector('input[name="tbl_row0_col1"]').value,
+                        tr2_col1: document.querySelector('input[name="tbl_row0_col2"]').value,
+                        tr2_col2: document.querySelector('input[name="tbl_row0_col3"]').value,
+                        tr2_col3: document.querySelector('input[name="tbl_row0_col4"]').value,
+                        tr2_col4: document.querySelector('input[name="tbl_row0_col5"]').value,
+                    },
+                    {   tr3_col0:document.querySelector('input[name="tbl_row3_col1"]').value,
+                        tr3_col1: document.querySelector('input[name="tbl_row3_col2"]').value,
+                        tr3_col2: document.querySelector('input[name="tbl_row3_col3"]').value,
+                        tr3_col3: document.querySelector('input[name="tbl_row3_col4"]').value,
+                        tr3_col4: document.querySelector('input[name="tbl_row3_col5"]').value,
+                    },
+                    {   tr4_col0:document.querySelector('input[name="tbl_row4_col1"]').value,
+                        tr4_col1: document.querySelector('input[name="tbl_row4_col2"]').value,
+                        tr4_col2: document.querySelector('input[name="tbl_row4_col3"]').value,
+                        tr4_col3: document.querySelector('input[name="tbl_row4_col4"]').value,
+                        tr4_col4: document.querySelector('input[name="tbl_row4_col5"]').value,
+                    },
+                ]
             };
             console.log(data);
             //

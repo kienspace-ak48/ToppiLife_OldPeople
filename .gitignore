@@ -143,3 +143,4 @@ reli/
 reli2/
 *.zip
 .prettierrc
+.env.example

@@ -34,7 +34,8 @@ const PageConfigSchema = new mongoose.Schema(
             },
             title_2: String,
             title_3: String,
-            cards: [String]
+            cards: [String],
+            tbl: []
         },
         certificate: {
             title: {type: String},

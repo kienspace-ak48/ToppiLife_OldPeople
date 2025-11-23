@@ -392,6 +392,7 @@ module.exports = () => {
                     title_2: dataC.title_2 || '',
                     title_3: dataC.title_3 || '',
                     cards: dataC.cards || [],
+                    tbl: dataC.tbl
                 };
                 const result = await PageConfigEntity.findOneAndUpdate(
                     {},

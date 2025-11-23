@@ -7,7 +7,7 @@ router.post('/login', async (req, res) => {
     try {
         const { username, password } = req.body;
         const user = await UserEntity.findOne({email:username});
-        console.log(user)
+        // console.log(user)
         if(!user) return res.status(400).json({success: false, mess: 'User or password not correct!'});
         const isMatch = await user.comparePassword(password);
         if (username === user.email &&  isMatch && user.role ==='master') {
