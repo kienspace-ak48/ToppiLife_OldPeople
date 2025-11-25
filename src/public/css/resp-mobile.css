@@ -261,7 +261,7 @@
 }
 /* =================== Wanrnaty ================*/
 .warranty {
-  padding: 0 40px;
+  /* padding: 0 40px; */
   margin: 30px 0;
 }
 .warranty h2 {
@@ -339,7 +339,7 @@ footer .footer-top {
     gap: 30px;
     grid-template-columns: repeat(2, 1fr);
   }
-  .solution .sol-card:last-child {
+  .solution .sol-card.sol-card5-web {
     grid-column: span 2;
      /* chỉ áp dụng trên desktop */
   }
@@ -352,8 +352,11 @@ footer .footer-top {
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
   }
+  .issue .issue-list {
+        grid-template-columns: 1fr;
+    }
 
-  .solution .sol-card:last-child {
+  .solution .sol-card.sol-card5-web {
     grid-column: span 2;
      /* chỉ áp dụng trên desktop */
   }

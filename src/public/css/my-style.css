@@ -12,15 +12,6 @@
         height: 35px;
     }
 }
-.row {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 10px 10px;
-}
-
-.col-6 {
-  width: 50%;
-}
 .pulse-button {
     position: relative;
     width: 60px;
@@ -556,6 +547,11 @@ nav ul li:hover a {
 }
 .solution .sol-card.sol-card5-web{
   display: block ;
+}
+
+.sol-card {
+  width: 100%;
+  max-width: 100%;
 }
 /* ==================== Why choose ============*/
 .toppilife-difference strong{
@@ -1126,10 +1122,16 @@ th.device { background: #0BA84C;
   .warranty-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+  .warranty-card p{
+    font-size: 1.6rem;
+  }
 }
 @media (max-width: 576px) {
   .warranty-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .warranty-card p{
+    font-size: 1.6rem;
   }
 }
 /* ====================Contact ============== */

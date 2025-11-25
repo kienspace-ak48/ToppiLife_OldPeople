@@ -114,13 +114,12 @@
 <section id="solution" class="solution">
     <div class="main-content">
         <h2 class="sol-title"><%-(pc&&pc.solution.title)?pc.solution.title: ''%></h2>
-        <div class="" style="max-width: 100%;">
-            <div class="sol-grid">
+        <div class="sol-grid">
             <!-- card1 -->
             <div class="sol-card">
                 <div class="icon">
                     <span>
-                        <img src="/uploads/<%=(pc&&pc.solution.title)?pc.solution.cards[0].img: ''%>" alt="icon-sol">
+                        <img src="/uploads/<%=(pc&&pc.solution.title)?pc.solution.cards[0].img: ''%>" alt="icon-sol" />
                     </span>
                 </div>
                 <div class="title"><%-(pc&&pc.solution.title)?pc.solution.cards[0].label: ''%></div>
@@ -133,7 +132,7 @@
             <div class="sol-card">
                 <div class="icon">
                     <span
-                        ><img src="/uploads/<%=(pc&&pc.solution.title)?pc.solution.cards[1].img: ''%>" alt="icon-sol">
+                        ><img src="/uploads/<%=(pc&&pc.solution.title)?pc.solution.cards[1].img: ''%>" alt="icon-sol" />
                     </span>
                 </div>
                 <div class="title"><%-(pc&&pc.solution.title)?pc.solution.cards[1].label: ''%></div>
@@ -146,7 +145,7 @@
             <div class="sol-card">
                 <div class="icon">
                     <span
-                        ><img src="/uploads/<%=(pc&&pc.solution.title)?pc.solution.cards[2].img: ''%>" alt="icon-sol">
+                        ><img src="/uploads/<%=(pc&&pc.solution.title)?pc.solution.cards[2].img: ''%>" alt="icon-sol" />
                     </span>
                 </div>
                 <div class="title"><%-(pc&&pc.solution.title)?pc.solution.cards[2].label: ''%></div>
@@ -156,45 +155,45 @@
             <div class="sol-card">
                 <div class="icon">
                     <span
-                        ><img src="/uploads/<%=(pc&&pc.solution.title)?pc.solution.cards[3].img: ''%>" alt="icon-sol">
+                        ><img src="/uploads/<%=(pc&&pc.solution.title)?pc.solution.cards[3].img: ''%>" alt="icon-sol" />
                     </span>
                 </div>
                 <div class="title"><%-(pc&&pc.solution.title)?pc.solution.cards[3].label: ''%></div>
                 <div class="desc"><%-(pc&&pc.solution.title)?pc.solution.cards[3].desc: ''%></div>
             </div>
-            <!-- card 5 -->
-            <div class="sol-card sol-card5-mobile" >
-                <div class="icon">
-                    <span
-                        ><img src="/uploads/<%=(pc&&pc.solution.title)?pc.solution.cards[4].img: ''%>" alt="icon-sol">
-                    </span>
-                </div>
-                <div class="title"><%-(pc&&pc.solution.title)?pc.solution.cards[4].label: ''%></div>
-                <div class="desc"><%-(pc&&pc.solution.title)?pc.solution.cards[4].desc: ''%></div>
-            </div>
+            
             <!-- card 5 -->
             <div class="sol-card sol-card5-web">
                 <div class="icon">
                     <span
-                        ><img src="/uploads/<%=(pc&&pc.solution.title)?pc.solution.cards[4].img: ''%>" alt="icon-sol">
+                        ><img src="/uploads/<%=(pc&&pc.solution.title)?pc.solution.cards[4].img: ''%>" alt="icon-sol" />
                     </span>
                 </div>
                 <div class="title"><%-(pc&&pc.solution.title)?pc.solution.cards[4].label: ''%></div>
-                <div class="row">
-                    <div class="col-6">
+                <div class="" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;" >
+                    <div class="">
                         <div class="desc"><%-(pc&&pc.solution.title)?pc.solution.cards[4].desc: ''%></div>
                     </div>
-                    <div class="col-6">
+                    <div class="">
                         <p class="desc">
                             Giúp ăn ngon miệng và hấp thụ dinh dưỡng tốt hơn. Đặc biệt hữu ích cho chứng táo bón mãn
                             tính.
                         </p>
                     </div>
                 </div>
-                
             </div>
         </div>
-        </div>
+        <!-- card 5 -->
+            <div style="min-height: 100px; margin: 40px 0 20px;" class="sol-card sol-card5-mobile">
+                <div class="icon">
+                    <span
+                        ><img src="/uploads/<%=(pc&&pc.solution.title)?pc.solution.cards[4].img: ''%>" alt="icon-sol" />
+                    </span>
+                </div>
+                <div class="title"><%-(pc&&pc.solution.title)?pc.solution.cards[4].label: ''%></div>
+                <div class="desc"><%-(pc&&pc.solution.title)?pc.solution.cards[4].desc: ''%> </div>
+            </div>
+
         <!-- video -->
         <div class="video-container">
             <div class="video-wrapper">
