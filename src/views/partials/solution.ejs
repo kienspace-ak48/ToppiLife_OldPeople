@@ -114,7 +114,8 @@
 <section id="solution" class="solution">
     <div class="main-content">
         <h2 class="sol-title"><%-(pc&&pc.solution.title)?pc.solution.title: ''%></h2>
-        <div class="sol-grid">
+        <div class="" style="max-width: 100%;">
+            <div class="sol-grid">
             <!-- card1 -->
             <div class="sol-card">
                 <div class="icon">
@@ -162,25 +163,37 @@
                 <div class="desc"><%-(pc&&pc.solution.title)?pc.solution.cards[3].desc: ''%></div>
             </div>
             <!-- card 5 -->
-            <div class="sol-card">
+            <div class="sol-card sol-card5-mobile" >
                 <div class="icon">
                     <span
                         ><img src="/uploads/<%=(pc&&pc.solution.title)?pc.solution.cards[4].img: ''%>" alt="icon-sol">
                     </span>
                 </div>
                 <div class="title"><%-(pc&&pc.solution.title)?pc.solution.cards[4].label: ''%></div>
-                <div style="display: flex; gap: 30px; justify-content: space-between">
-                    <div class="col-lef">
+                <div class="desc"><%-(pc&&pc.solution.title)?pc.solution.cards[4].desc: ''%></div>
+            </div>
+            <!-- card 5 -->
+            <div class="sol-card sol-card5-web">
+                <div class="icon">
+                    <span
+                        ><img src="/uploads/<%=(pc&&pc.solution.title)?pc.solution.cards[4].img: ''%>" alt="icon-sol">
+                    </span>
+                </div>
+                <div class="title"><%-(pc&&pc.solution.title)?pc.solution.cards[4].label: ''%></div>
+                <div class="row">
+                    <div class="col-6">
                         <div class="desc"><%-(pc&&pc.solution.title)?pc.solution.cards[4].desc: ''%></div>
                     </div>
-                    <div class="col-right">
+                    <div class="col-6">
                         <p class="desc">
                             Giúp ăn ngon miệng và hấp thụ dinh dưỡng tốt hơn. Đặc biệt hữu ích cho chứng táo bón mãn
                             tính.
                         </p>
                     </div>
                 </div>
+                
             </div>
+        </div>
         </div>
         <!-- video -->
         <div class="video-container">

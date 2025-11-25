@@ -12,6 +12,15 @@
         height: 35px;
     }
 }
+.row {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 10px 10px;
+}
+
+.col-6 {
+  width: 50%;
+}
 .pulse-button {
     position: relative;
     width: 60px;
@@ -463,21 +472,14 @@ nav ul li:hover a {
 }
 .solution .sol-grid {
   display: grid;
-  /* display: grid;/
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px; */
+  grid-template-columns: 3fr; /* Mobile: 1 cột */
+  gap: 20px;
 }
-/* .solution .sol-card:last-child {
-    grid-column: span 2;
-  } */
-/* @media (max-width: 1024px) {
-    .solutions-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  } */
 
 .solution .sol-card {
   /* background: rgba(255, 255, 255, .9); */
+  width: 100%;
+  /* min-height: 410px; */
   background: rgba(165, 223, 179, 0.9);
   border: 1px solid #daf070;
   border-radius: 20px;
@@ -485,6 +487,7 @@ nav ul li:hover a {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease;
 }
+
 .solution .sol-card:hover {
   transform: translateY(-10px);
 }
@@ -547,6 +550,12 @@ nav ul li:hover a {
   border: 0; /* bỏ border mặc định */
   border-radius: 15px; /* bo góc giống Figma */
   display: block; /* bỏ khoảng trống inline mặc định */
+}
+.solution .sol-card.sol-card5-mobile{
+  display: none ;
+}
+.solution .sol-card.sol-card5-web{
+  display: block ;
 }
 /* ==================== Why choose ============*/
 .toppilife-difference strong{

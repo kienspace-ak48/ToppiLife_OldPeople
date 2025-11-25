@@ -135,36 +135,31 @@
 .solution .sol-grid {
     display: grid;
     grid-template-columns: 1fr;
-    
     gap: 50px 0;
-  }
-  .solution .sol-card:last-child  .col-right{
-    /* grid-column: 1; */
-    display: none;
+    padding: 0;
   }
   .solution h2.sol-title{
-    font-size: 3rem;
-    font-weight: 700;
-  }
-  .solution .sol-card h3.title{
     font-size: 2.6rem;
     font-weight: 700;
   }
-  .solution .sol-card .desc{
+  .solution .sol-card h3.title{
     font-size: 2rem;
+    font-weight: 700;
+  }
+  .solution .sol-card .desc{
+    font-size: 1.8rem;
     font-weight: 500;
   }
   .solution .sol-video .vid-wrap{
     height: 250px;
     width: 100%;
   }
-
-/* .solution-card:last-child {
-      grid-column: span 1;
-    }
-    .solutions-grid {
-      grid-template-columns: 1fr;
-    } */
+.solution .sol-card.sol-card5-mobile{
+  display: block ;
+}
+.solution .sol-card.sol-card5-web{
+  display: none ;
+}
 /* ==============WHY CHOOSE US */
 #why-choose img{
   max-width: 180px;
