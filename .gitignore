@@ -145,5 +145,5 @@ reli2/
 .prettierrc
 .env.example
 dump
-docker-compose.yml
-Dockerfile
+#docker-compose.yml
+#Dockerfile
