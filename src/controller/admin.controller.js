@@ -604,6 +604,12 @@ module.exports = () => {
                     phone: data.phone || '',
                     email: data.email || '',
                     address: data.address || '',
+                    footer_title: data.footer_title||'',
+                    webname: data.webname || '',
+                    desc: data.desc || '',
+                    keywords: data.keywords || '',
+                    gg_a: data.gg_a || '',
+                    gg_wt: data.gg_wt || ''
                 };
                 const result = await PageConfigEntity.findOneAndUpdate(
                     {},

@@ -42,6 +42,25 @@
                 class="form-control"
             />
             <textarea name="c1_desc" id="" class="form-control"><%=(sol&&sol.title)?sol?.cards[0]?.desc:''%></textarea>
+            <!--  -->
+            <div class="image-group">
+                <label for="" class="form-label">Image(link)</label>
+                <div class="image-group-body">
+                    <input
+                        type="text"
+                        name="img_card1"
+                        el-ignore="true"
+                        class="form-control"
+                        value="<%=(sol&&sol.title)?sol?.cards[0]?.img:''%>"
+                    />
+                    <img
+                        class="img_preview"
+                        src="<%= (sol && sol.cards.length >0) ? ('/uploads/' + sol?.cards[0]?.img) : '/img/default.png' %>"
+                        alt=""
+                    />
+                </div>
+            </div>
+            <!--  -->
             <label for="" class="label">Card 3</label>
             <input
                 type="text"
@@ -50,6 +69,25 @@
                 class="form-control"
             />
             <textarea name="c3_desc" id="" class="form-control"><%=(sol&&sol.title)?sol?.cards[2]?.desc:''%></textarea>
+            <!--  -->
+            <div class="image-group">
+                <label for="" class="form-label">Image(link)</label>
+                <div class="image-group-body">
+                    <input
+                        type="text"
+                        name="img_card3"
+                        el-ignore="true"
+                        class="form-control"
+                        value="<%=(sol&&sol.title)?sol?.cards[2]?.img:''%>"
+                    />
+                    <img
+                        class="img_preview"
+                        src="<%= (sol && sol.cards.length >0) ? ('/uploads/' + sol?.cards[2]?.img) : '/img/default.png' %>"
+                        alt=""
+                    />
+                </div>
+            </div>
+            <!--  -->
         </div>
         <div class="col-6 mt-3">
             <label for="" class="label">Card 2</label>
@@ -60,6 +98,25 @@
                 class="form-control"
             />
             <textarea name="c2_desc" id="" class="form-control"><%=(sol&&sol.title)?sol?.cards[1]?.desc:''%></textarea>
+            <!--  -->
+            <div class="image-group">
+                <label for="" class="form-label">Image(link)</label>
+                <div class="image-group-body">
+                    <input
+                        type="text"
+                        name="img_card2"
+                        el-ignore="true"
+                        class="form-control"
+                        value="<%=(sol&&sol.title)?sol?.cards[1]?.img:''%>"
+                    />
+                    <img
+                        class="img_preview"
+                        src="<%= (sol && sol.cards.length >0) ? ('/uploads/' + sol?.cards[1]?.img) : '/img/default.png' %>"
+                        alt=""
+                    />
+                </div>
+            </div>
+            <!--  -->
             <label for="" class="label">Card 4</label>
             <input
                 type="text"
@@ -68,6 +125,25 @@
                 class="form-control"
             />
             <textarea name="c4_desc" id="" class="form-control"><%=(sol&&sol.title)?sol?.cards[3]?.desc:''%></textarea>
+            <!--  -->
+            <div class="image-group">
+                <label for="" class="form-label">Image(link)</label>
+                <div class="image-group-body">
+                    <input
+                        type="text"
+                        name="img_card4"
+                        el-ignore="true"
+                        class="form-control"
+                        value="<%=(sol&&sol.title)?sol?.cards[3]?.img:''%>"
+                    />
+                    <img
+                        class="img_preview"
+                        src="<%= (sol && sol.cards.length >0) ? ('/uploads/' + sol?.cards[3]?.img) : '/img/default.png' %>"
+                        alt=""
+                    />
+                </div>
+            </div>
+            <!--  -->
         </div>
         <!--  -->
         <div class="form-group mt-2">
@@ -79,6 +155,25 @@
                 class="form-control"
             />
             <textarea name="c5_desc" id="" class="form-control"><%=(sol&&sol.title)?sol?.cards[4]?.desc:''%></textarea>
+            <!--  -->
+            <div class="image-group">
+                <label for="" class="form-label">Image(link)</label>
+                <div class="image-group-body">
+                    <input
+                        type="text"
+                        name="img_card5"
+                        el-ignore="true"
+                        class="form-control"
+                        value="<%=(sol&&sol.title)?sol?.cards[4]?.img:''%>"
+                    />
+                    <img
+                        class="img_preview"
+                        src="<%= (sol && sol.cards.length >0) ? ('/uploads/' + sol?.cards[4]?.img) : '/img/default.png' %>"
+                        alt=""
+                    />
+                </div>
+            </div>
+            <!--  -->
         </div>
         <!-- <div class="form-group mt-3">
             <label for="" class="form-label">Video (Url)</label>
@@ -183,17 +278,21 @@
         TinyApp.init('#modalSolutionEditor');
         document.querySelectorAll('input, textarea').forEach((el) => {
             console.log('aaa');
-            if (el.hasAttribute('el-ignore')) {
-                console.log('bbb');
-                return;
-            }
             el.addEventListener('focus', () => {
-                currentInput = el;
-                modal.show();
-                setTimeout(() => {
-                    const editor = tinymce.get('modalSolutionEditor');
-                    if (editor) editor.setContent(el.value || '');
-                }, 200);
+                if (el.hasAttribute('el-ignore')) {
+                    elementChoosing = el;
+                    imageChoosing = el.parentElement.querySelector('.img_preview');
+                    imageModal.show();
+                } else {
+                    // el.addEventListener('focus', () => {
+                        currentInput = el;
+                        modal.show();
+                        setTimeout(() => {
+                            const editor = tinymce.get('modalSolutionEditor');
+                            if (editor) editor.setContent(el.value || '');
+                        }, 200);
+                    // });
+                }
             });
         });
         btnApply.addEventListener('click', function (ev) {
@@ -211,22 +310,28 @@
                     {
                         label: document.querySelector('input[name="c1_label"]').value,
                         desc: document.querySelector('textarea[name="c1_desc"]').value,
+                        img: document.querySelector('input[name="img_card1"]').value
                     },
                     {
                         label: document.querySelector('input[name="c2_label"]').value,
                         desc: document.querySelector('textarea[name="c2_desc"]').value,
+                        img: document.querySelector('input[name="img_card2"]').value
                     },
                     {
                         label: document.querySelector('input[name="c3_label"]').value,
                         desc: document.querySelector('textarea[name="c3_desc"]').value,
+                        img: document.querySelector('input[name="img_card3"]').value
+
                     },
                     {
                         label: document.querySelector('input[name="c4_label"]').value,
                         desc: document.querySelector('textarea[name="c4_desc"]').value,
+                        img: document.querySelector('input[name="img_card4"]').value
                     },
                     {
                         label: document.querySelector('input[name="c5_label"]').value,
                         desc: document.querySelector('textarea[name="c5_desc"]').value,
+                        img: document.querySelector('input[name="img_card5"]').value
                     },
                 ],
                 video_url: document.querySelector('input[name="whychooseus_video"]').value,

@@ -3,8 +3,18 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Toppi life</title>
+        <title><%=(pc&&pc.pageinfo)?pc?.pageinfo?.webname:'Toppi life'%></title>
         <link rel="shortcut icon" href="/icons/favicon.ico" type="image/x-icon">
+        <meta name="description" content="<%=(pc&&pc.pageinfo)?pc?.pageinfo?.desc:'ToppiLife mang đến giải pháp hỗ trợ sức khỏe toàn diện giúp giảm đau nhức, cải thiện giấc ngủ và nâng cao chất lượng cuộc sống cho người bận rộn và người lớn tuổi.'%>">
+        <meta name="keywords" content="<%=(pc&&pc.pageinfo)?pc?.pageinfo?.keywords:'Toppi life'%>">
+        <!-- Open Graph: Facebook, LinkedIn, Zalo -->
+        <meta property="og:title" content="<%=(pc&&pc.pageinfo)?pc?.pageinfo?.webname:'Toppi life'%>">
+        <meta property="og:site_name" content="<%=(pc&&pc.pageinfo)?pc?.pageinfo?.webname:'Toppi life'%>">
+        <meta property="og:description" content="<%=(pc&&pc.pageinfo)?pc?.pageinfo?.desc:'ToppiLife mang đến giải pháp hỗ trợ sức khỏe toàn diện giúp giảm đau nhức, cải thiện giấc ngủ và nâng cao chất lượng cuộc sống cho người bận rộn và người lớn tuổi.'%>">
+        <meta property="og:locale" content="vi_VN">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://toppilife.com">
+        <meta property="og:image" content="https://www.toppilife.com/seo/delegate.png">
         <!-- reset css -->
         <link rel="stylesheet" href="/css/reset.css" />
         <link rel="stylesheet" href="/css/my-style.css" />

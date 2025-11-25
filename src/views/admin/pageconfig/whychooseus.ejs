@@ -90,11 +90,56 @@
         <label for="" class="label">Titile</label>
         <input type="text" value="<%=(why&&why.title)?why?.title_3:''%>" name="title_3" class="form-control" />
         <label for="" class="label">card 1</label>
-        <textarea id="" name="card1" class="form-control"><%=(why&&why.title)?why?.cards[0]:''%></textarea>
+        <textarea id="" name="card1" class="form-control"><%=(why&&why.title)?why?.cards[0]?.desc:''%></textarea>
+        <!--  -->
+            <div class="image-group">
+                <label for="" class="form-label">Image(link)</label>
+                <div class="image-group-body">
+                    <input type="text" name="card1_img" image-action="true" class="form-control"  value="<%=(why&&why.cards.length>0)?why?.cards?.[0].icon:''%>"/>
+                    <img
+                        class="img_preview"
+                        
+                        src="<%= (why && why.cards.length>0) ? ('/uploads/' + why?.cards[0]?.icon) : '/img/default.png' %>"
+
+                        alt=""
+                    />
+                </div>
+            </div>
+            <!--  -->
         <label for="" class="label">card 2</label>
-        <textarea name="card2" id="" class="form-control"><%=(why&&why.title)?why?.cards[1]:''%></textarea>
+        <textarea name="card2" id="" class="form-control"><%=(why&&why.title)?why?.cards[1]?.desc:''%></textarea>
+        <!--  -->
+            <div class="image-group">
+                <label for="" class="form-label">Image(link)</label>
+                <div class="image-group-body">
+                    <input type="text" name="card2_img" image-action="true" class="form-control"  value="<%=(why&&why.cards.length>0)?why?.cards?.[1].icon:''%>"/>
+                    <img
+                        class="img_preview"
+                        
+                        src="<%= (why && why.cards.length>0) ? ('/uploads/' + why?.cards[1]?.icon) : '/img/default.png' %>"
+
+                        alt=""
+                    />
+                </div>
+            </div>
+            <!--  -->
         <label for="" class="label">card 3</label>
-        <textarea name="card3" id="" class="form-control"><%=(why&&why.title)?why?.cards[2]:''%></textarea>
+        <textarea name="card3" id="" class="form-control"><%=(why&&why.title)?why?.cards[2].desc:''%></textarea>
+        <!--  -->
+            <div class="image-group">
+                <label for="" class="form-label">Image(link)</label>
+                <div class="image-group-body">
+                    <input type="text" name="card3_img" image-action="true" class="form-control"  value="<%=(why&&why.cards.length>0)?why?.cards?.[2].icon:''%>"/>
+                    <img
+                        class="img_preview"
+                        
+                        src="<%= (why && why.cards.length>0) ? ('/uploads/' + why?.cards[2]?.icon) : '/img/default.png' %>"
+
+                        alt=""
+                    />
+                </div>
+            </div>
+            <!--  -->
         <button class="btn btn-outline-primary mt-3" id="btn-why-submit">Save config</button>
     </div>
 </section>
@@ -163,9 +208,20 @@
                 title_2: document.querySelector('input[name="title_2"]').value,
                 title_3: document.querySelector('input[name="title_3"]').value,
                 cards: [
-                    document.querySelector('textarea[name="card1"]').value,
-                    document.querySelector('textarea[name="card2"]').value,
-                    document.querySelector('textarea[name="card3"]').value,
+                    {
+                        icon: document.querySelector('input[name="card1_img"]').value,
+                        desc: document.querySelector('textarea[name="card1"]').value,
+
+                    },
+                    {
+
+                        icon: document.querySelector('input[name="card2_img"]').value,
+                        desc: document.querySelector('textarea[name="card2"]').value,
+                    },
+                    {
+                        icon: document.querySelector('input[name="card3_img"]').value,
+                        desc: document.querySelector('textarea[name="card3"]').value,
+                    }
                 ],
                 // tbl_row0_col1
                 tbl:[

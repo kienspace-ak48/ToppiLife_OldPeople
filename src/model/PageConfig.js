@@ -20,7 +20,7 @@ const PageConfigSchema = new mongoose.Schema(
         },
         solution:{
             title: {type: String},
-            cards: [{label: String, desc: String, _id: false }],
+            cards: [{label: String, desc: String, img:String,_id: false }],
             video_url: {type:String}
         },
         whychooseus:{
@@ -34,7 +34,7 @@ const PageConfigSchema = new mongoose.Schema(
             },
             title_2: String,
             title_3: String,
-            cards: [String],
+            cards: [],
             tbl: []
         },
         certificate: {
@@ -56,7 +56,7 @@ const PageConfigSchema = new mongoose.Schema(
         },
         warranty: {
             title: String,
-            cards: [String]
+            cards: []
         },
         contact: {
             title: {type: String},
@@ -65,11 +65,18 @@ const PageConfigSchema = new mongoose.Schema(
         introduce: {
             title: String,
             desc: String,
+            img: String
         },
         pageinfo:{
             phone: String,
             email: String,
-            address: String
+            address: String,
+            footer_title: String,
+            webname: String,
+            desc: String,
+            keywords: String,
+            gg_a: String,
+            gg_wt: String
         }
     },
     { timestamps: true },

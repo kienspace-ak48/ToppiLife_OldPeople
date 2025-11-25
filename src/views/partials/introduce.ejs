@@ -4,7 +4,7 @@
 <!-- section introduce -->
     <section id="introduce" class="introduce">
       <div class="bg-img">
-        <img loading="lazy" src="/img/introduce.png" alt="Giới thiệu" />
+        <img loading="lazy" src="<%=(pc&&pc.introduce)?('/uploads/'+pc?.introduce?.img):'/img/introduce.png'%>" alt="Giới thiệu" />
       </div>
 
       <div class="main-content">

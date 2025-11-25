@@ -3,30 +3,164 @@
 <div class="my-card">
     <h3>Warranty</h3>
     <label for="" class="label">Title</label>
-    <input type="text" value="<%=(p.warranty&&p.warranty.title)?p?.warranty?.title:''%>" name="w_title" class="form-control" />
+    <input
+        type="text"
+        value="<%=(p.warranty&&p.warranty.title)?p?.warranty?.title:''%>"
+        name="w_title"
+        class="form-control"
+    />
     <br />
     <div class="row">
         <div class="col-6">
-            <input type="text" value="<%=(p.warranty&&p.warranty.title)?p?.warranty?.cards[0]:''%>" name="w_card1" class="form-control" /> <br />
-            <input type="text" name="w_card2" value="<%=(p.warranty&&p.warranty.title)?p?.warranty?.cards[1]:''%>"class="form-control" />
+            <input
+                type="text"
+                value="<%=(p.warranty&&p.warranty.title)?p?.warranty?.cards[0].desc:''%>"
+                name="w_card1"
+                class="form-control"
+            />
+            <!--  -->
+            <div class="image-group">
+                <label for="" class="form-label">Image(link)</label>
+                <div class="image-group-body">
+                    <input
+                        type="text"
+                        name="w_img1"
+                        el-ignore="true"
+                        class="form-control"
+                        value="<%=(p.warranty&&p.warranty.cards.length>0)?p?.warranty?.cards[0].icon:''%>"
+                    />
+                    <img
+                        class="img_preview"
+                        src="<%= (p.warranty&&p.warranty.cards.length>0) ? ('/uploads/' + p.warranty.cards?.[0].icon) : '/img/default.png' %>"
+                        alt=""
+                    />
+                </div>
+            </div>
+            <!--  -->
+            <br />
+            <input
+                type="text"
+                name="w_card2"
+                value="<%=(p.warranty&&p.warranty.title)?p?.warranty?.cards[1].desc:''%>"
+                class="form-control"
+            />
+            <!--  -->
+            <div class="image-group">
+                <label for="" class="form-label">Image(link)</label>
+                <div class="image-group-body">
+                    <input
+                        type="text"
+                        name="w_img2"
+                        el-ignore="true"
+                        class="form-control"
+                        value="<%=(p.warranty&&p.warranty.cards.length>0)?p?.warranty?.cards[1].icon:''%>"
+                    />
+                    <img
+                        class="img_preview"
+                        src="<%= (p.warranty&&p.warranty.cards.length>0) ? ('/uploads/' + p.warranty.cards?.[1].icon) : '/img/default.png' %>"
+                        alt=""
+                    />
+                </div>
+            </div>
+            <!--  -->
         </div>
         <div class="col-6">
-            <input type="text" value="<%=(p.warranty&&p.warranty.title)?p?.warranty?.cards[2]:''%>" name="w_card3" class="form-control" /> <br />
-            <input type="text" value="<%=(p.warranty&&p.warranty.title)?p?.warranty?.cards[3]:''%>"name="w_card4" class="form-control" />
+            <input
+                type="text"
+                value="<%=(p.warranty&&p.warranty.title)?p?.warranty?.cards[2].desc:''%>"
+                name="w_card3"
+                class="form-control"
+            />
+            <!--  -->
+            <div class="image-group">
+                <label for="" class="form-label">Image(link)</label>
+                <div class="image-group-body">
+                    <input
+                        type="text"
+                        name="w_img3"
+                        el-ignore="true"
+                        class="form-control"
+                        value="<%=(p.warranty&&p.warranty.cards.length>0)?p?.warranty?.cards[2].icon:''%>"
+                    />
+                    <img
+                        class="img_preview"
+                        src="<%= (p.warranty&&p.warranty.cards.length>0) ? ('/uploads/' + p.warranty.cards?.[2].icon) : '/img/default.png' %>"
+                        alt=""
+                    />
+                </div>
+            </div>
+            <!--  -->
+            <br />
+            <input
+                type="text"
+                value="<%=(p.warranty&&p.warranty.title)?p?.warranty?.cards[3].desc:''%>"
+                name="w_card4"
+                class="form-control"
+            />
+            <!--  -->
+            <div class="image-group">
+                <label for="" class="form-label">Image(link)</label>
+                <div class="image-group-body">
+                    <input
+                        type="text"
+                        name="w_img4"
+                        el-ignore="true"
+                        class="form-control"
+                        value="<%=(p.warranty&&p.warranty.cards.length>0)?p?.warranty?.cards[3].icon:''%>"
+                    />
+                    <img
+                        class="img_preview"
+                        src="<%= (p.warranty&&p.warranty.cards.length>0) ? ('/uploads/' + p.warranty.cards?.[3].icon) : '/img/default.png' %>"
+                        alt=""
+                    />
+                </div>
+            </div>
+            <!--  -->
         </div>
     </div>
     <h3 class="mt-3">Contact</h3>
     <hr />
     <label for="" class="label">Title</label>
-    <input type="text" value="<%=(p.contact&&p.contact.title)?p?.contact?.title:''%>" name="c_title" class="form-control" />
+    <input
+        type="text"
+        value="<%=(p.contact&&p.contact.title)?p?.contact?.title:''%>"
+        name="c_title"
+        class="form-control"
+    />
     <label for="" class="lable">Desc</label>
     <textarea name="c_desc" class="form-control" id=""><%=(p.contact&&p.contact.title)?p?.contact?.desc:''%></textarea>
     <h3 class="mt-3">Introlduce</h3>
     <hr />
     <label for="" class="label">Title</label>
-    <input type="text" value="<%=(p.introduce&&p.introduce.title)?p?.introduce?.title:''%>" name="i_title" class="form-control" />
-    <label for=""  class="label">Desc</label>
-    <textarea name="i_desc" class="form-control" id=""><%=(p.introduce&&p.introduce.title)?p?.introduce?.desc:''%></textarea>
+    <input
+        type="text"
+        value="<%=(p.introduce&&p.introduce.title)?p?.introduce?.title:''%>"
+        name="i_title"
+        class="form-control"
+    />
+    <label for="" class="label">Desc</label>
+    <textarea name="i_desc" class="form-control" id="">
+<%=(p.introduce&&p.introduce.title)?p?.introduce?.desc:''%></textarea
+    >
+    <!--  -->
+    <div class="image-group">
+        <label for="" class="form-label">Image(link)</label>
+        <div class="image-group-body">
+            <input
+                type="text"
+                name="i_img"
+                el-ignore="true"
+                class="form-control"
+                value="<%=(p.introduce&&p.introduce.title)?p?.introduce?.img:''%>"
+            />
+            <img
+                class="img_preview"
+                src="<%= (p.introduce&&p.introduce.title) ? ('/uploads/' + p?.introduce?.img) : '/img/default.png' %>"
+                alt=""
+            />
+        </div>
+    </div>
+    <!--  -->
     <!--  -->
     <button class="btn btn-outline-primary mt-3" id="btn-t3-submit">Save config</button>
 </div>
@@ -60,9 +194,15 @@
         TinyApp.init('#t3ModalEditor');
         document.querySelectorAll('input, textarea').forEach((el) => {
             el.addEventListener('focus', (ev) => {
-                currentInput = el;
-                tinymce.get('t3ModalEditor').setContent(currentInput.value || '');
-                modal.show();
+                if (el.hasAttribute('el-ignore')) {
+                    elementChoosing = el;
+                    imageChoosing = el.parentElement.querySelector('.img_preview');
+                    imageModal.show();
+                } else {
+                    currentInput = el;
+                    tinymce.get('t3ModalEditor').setContent(currentInput.value || '');
+                    modal.show();
+                }
             });
         });
         btnApply.addEventListener('click', (ev) => {
@@ -72,42 +212,56 @@
                 modal.hide();
             }
         });
-        btnt3Submit.addEventListener('click', (ev)=>{
-            const data ={
+        btnt3Submit.addEventListener('click', (ev) => {
+            const data = {
                 warranty: {
                     title: document.querySelector('input[name="w_title"]').value,
                     cards: [
-                        document.querySelector('input[name="w_card1"]').value,
-                        document.querySelector('input[name="w_card2"]').value,
-                        document.querySelector('input[name="w_card3"]').value,
-                        document.querySelector('input[name="w_card4"]').value
-                    ]
+                        {
+                            icon: document.querySelector('input[name="w_img1"]').value,
+                            desc: document.querySelector('input[name="w_card1"]').value,
+                        },
+                        {
+                            icon: document.querySelector('input[name="w_img2"]').value,
+                            desc: document.querySelector('input[name="w_card2"]').value,
+                        },
+                        {
+                            icon: document.querySelector('input[name="w_img3"]').value,
+                            desc: document.querySelector('input[name="w_card3"]').value,
+                        },
+                        {
+                            icon: document.querySelector('input[name="w_img4"]').value,
+                            desc: document.querySelector('input[name="w_card4"]').value,
+                        }
+                        
+                    ],
                 },
                 contact: {
                     title: document.querySelector('input[name="c_title"]').value,
-                    desc: document.querySelector('textarea[name="c_desc"]').value
+                    desc: document.querySelector('textarea[name="c_desc"]').value,
                 },
                 introduce: {
                     title: document.querySelector('input[name="i_title"]').value,
-                    desc: document.querySelector('textarea[name="i_desc"]').value
-                }
-            }
+                    desc: document.querySelector('textarea[name="i_desc"]').value,
+                    img: document.querySelector('input[name="i_img"]').value
+                },
+            };
             $.ajax({
                 url: '/admin/page-config/three-part',
-                method: "POST",
+                method: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify(data),
-                success: (res)=>{
-                    if(res.success){
-                        MyNotification('Success', 'success')
+                success: (res) => {
+                    if (res.success) {
+                        MyNotification('Success', 'success');
                     }
                 },
-                error: (xhr, status, err)=>{
-                    console.log(xhr.responseJSON.mess)
-                    MyNotification('Sever error', 'error')
-                }
-            })
-        })
+                error: (xhr, status, err) => {
+                    console.log(xhr.responseJSON.mess);
+                    MyNotification('Sever error', 'error');
+                },
+            });
+        });
         // end
     });
 </script>

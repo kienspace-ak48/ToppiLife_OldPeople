@@ -6,6 +6,19 @@
     <input type="text" id="email" class="form-control" placeholder="admin@gmail.com" value="<%=(pc&&pc.pageinfo)?pc.pageinfo?.email:''%>" />
     <label for="" class="form-label">Address</label>
     <input type="text" id="address" class="form-control" placeholder="123, Tan Hung, HaNoi" value="<%=(pc&&pc.pageinfo)?pc.pageinfo?.address:''%>"  />
+    <label for="" class="form-label">Title footer</label>
+    <input type="text" id="footer_title" class="form-control" placeholder="123, Tan Hung, HaNoi" value="<%=(pc&&pc.pageinfo)?pc.pageinfo?.footer_title:''%>"  />
+    <hr>
+    <label for="" class="form-laebl">Tên website</label>
+    <input type="text" id="webname" class="form-control" placeholder="Ex:19001900" value="<%=(pc&&pc.pageinfo)?pc.pageinfo?.webname:''%>" />
+    <label for="" class="form-laebl">Mô tả</label>
+    <input type="text" id="desc" class="form-control" placeholder="Ex:19001900" value="<%=(pc&&pc.pageinfo)?pc.pageinfo?.desc:''%>" />
+    <label for="" class="form-laebl">Keyword</label>
+    <input type="text" id="keywords" class="form-control" placeholder="Ex:19001900" value="<%=(pc&&pc.pageinfo)?pc.pageinfo?.keywords:''%>" />
+    <label for="" class="form-laebl">Google Analytics</label>
+    <input type="text" id="gg_a" class="form-control" placeholder="Ex:19001900" value="<%=(pc&&pc.pageinfo)?pc.pageinfo?.gg_a:''%>" />
+    <label for="" class="form-laebl">Google Webmaster Tool</label>
+    <input type="text" id="gg_wt" class="form-control" placeholder="Ex:19001900" value="<%=(pc&&pc.pageinfo)?pc.pageinfo?.gg_wt:''%>" />
     <div class="area-action" style="margin-top: 36px">
         <button id="btn-save" class="cta btn btn-outline-primary">Save config</button>
     </div>
@@ -20,7 +33,14 @@
             data: JSON.stringify({
                 phone: document.getElementById('phone').value,
                 email: document.getElementById('email').value,
-                address: document.getElementById('address').value
+                address: document.getElementById('address').value,
+                footer_title: document.getElementById('footer_title').value,
+                webname: document.getElementById('webname').value,
+                desc: document.getElementById('desc').value,
+                keywords: document.getElementById('keywords').value,
+                gg_a: document.getElementById('gg_a').value,
+                gg_wt: document.getElementById('gg_wt').value,
+
             }),
             success: (res)=>{
                 if(res.success){

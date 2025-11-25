@@ -64,8 +64,8 @@ router.get('/page-config', AdminController.PageConfig);
 
 // index login
 router.get('/dashboard/home',(req, res)=>{
-    console.log(req.session)
-    console.log('user: ', req.session.username)
+    // console.log(req.session)
+    // console.log('user: ', req.session.username)
     res.render('admin/index', {layout: 'layouts/adminLayout', user: req.session.username||''})
 })
 //
