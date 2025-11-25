@@ -144,3 +144,6 @@ reli2/
 *.zip
 .prettierrc
 .env.example
+dump
+docker-compose.yml
+Dockerfile

@@ -352,9 +352,7 @@ footer .footer-top {
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
   }
-  .issue .issue-list {
-        grid-template-columns: 1fr;
-    }
+
 
   .solution .sol-card.sol-card5-web {
     grid-column: span 2;

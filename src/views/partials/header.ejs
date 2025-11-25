@@ -29,7 +29,9 @@
         <div class="main-content">
             <div class="hero-text">
                 <h1 class="hero-title">
-                    <%-(pc.hero&&pc.hero.title)?pc.hero.title_highline:''%>
+                    <div style="white-space: nowrap; overflow: hidden;">
+                        <%-(pc.hero&&pc.hero.title)?pc.hero.title_highline:''%>
+                    </div>
                     <br />
                     <%-(pc.hero&&pc.hero.title)?pc?.hero?.title:''%>
                 </h1>
