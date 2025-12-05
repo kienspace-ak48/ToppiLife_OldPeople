@@ -155,6 +155,7 @@
                 class="form-control"
             />
             <textarea name="c5_desc" id="" class="form-control"><%=(sol&&sol.title)?sol?.cards[4]?.desc:''%></textarea>
+            <textarea name="c5_2_desc" id="" class="form-control"><%=(sol&&sol.title)?sol?.cards[4]?.c5_2_desc:''%></textarea>
             <!--  -->
             <div class="image-group">
                 <label for="" class="form-label">Image(link)</label>
@@ -331,6 +332,7 @@
                     {
                         label: document.querySelector('input[name="c5_label"]').value,
                         desc: document.querySelector('textarea[name="c5_desc"]').value,
+                        c5_2_desc: document.querySelector('textarea[name="c5_2_desc"]').value,
                         img: document.querySelector('input[name="img_card5"]').value
                     },
                 ],

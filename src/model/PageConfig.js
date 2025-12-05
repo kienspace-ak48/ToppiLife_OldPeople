@@ -20,7 +20,7 @@ const PageConfigSchema = new mongoose.Schema(
         },
         solution:{
             title: {type: String},
-            cards: [{label: String, desc: String, img:String,_id: false }],
+            cards: [{label: String, desc: String, img:String, c5_2_desc: String,_id: false }],
             video_url: {type:String}
         },
         whychooseus:{
