@@ -14,7 +14,7 @@
         <meta property="og:locale" content="vi_VN">
         <meta property="og:type" content="website">
         <meta property="og:url" content="https://toppilife.vn">
-        <meta property="og:image" content="https://www.toppilife.vn/seo/delegate.png">
+        <meta property="og:image" content="<%=(pc&&pc.pageinfo)?('https://toppilife.vn/uploads/'+pc?.pageinfo?.ogshare):'https://www.toppilife.vn/seo/delegate.png'%>">
         <!-- reset css -->
         <link rel="stylesheet" href="/css/reset.css" />
         <link rel="stylesheet" href="/css/my-style.css" />
@@ -128,13 +128,13 @@
         <!-- group convenient -->
         <div class="" style="position: fixed; z-index: 999; bottom: 70px; right: 20px">
             <!-- Nút Zalo -->
-            <a href="https://zalo.me/<%=pc?.pageinfo?.phone%>" target="_blank" class="pulse-button zalo d-block mb-2">
+            <a href="https://zalo.me/<%=pc?.pageinfo?.zalo%>" target="_blank" class="pulse-button zalo d-block mb-2">
                 <img src="/img/icon-zalo.png" alt="Zalo" />
             </a>
 
             <!-- Nút gọi điện -->
             <a href="tel:<%=pc?.pageinfo?.phone%>" class="pulse-button call d-block">
-                <img src="/img/icon-call.png" alt="Gọi điện" />
+                <img src="/icons/call-4.png" alt="Gọi điện" />
             </a>
         </div>
         <button id="scrollToTopBtn">↑</button>

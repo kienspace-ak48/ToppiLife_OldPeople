@@ -2,6 +2,8 @@
 <div class="my-card">
     <label for="" class="form-laebl">Phone</label>
     <input type="text" id="phone" class="form-control" placeholder="Ex:19001900" value="<%=(pc&&pc.pageinfo)?pc.pageinfo?.phone:''%>" />
+    <label for="" class="form-laebl">Zalo</label>
+    <input type="text" id="zalo" class="form-control" placeholder="Ex:1284194243875899385" value="<%=(pc&&pc.pageinfo)?pc.pageinfo?.zalo:''%>" />
     <label for="" class="form-label">Email</label>
     <input type="text" id="email" class="form-control" placeholder="admin@gmail.com" value="<%=(pc&&pc.pageinfo)?pc.pageinfo?.email:''%>" />
     <label for="" class="form-label">Address</label>
@@ -19,12 +21,37 @@
     <input type="text" id="gg_a" class="form-control" placeholder="Ex:19001900" value="<%=(pc&&pc.pageinfo)?pc.pageinfo?.gg_a:''%>" />
     <label for="" class="form-laebl">Google Webmaster Tool</label>
     <input type="text" id="gg_wt" class="form-control" placeholder="Ex:19001900" value="<%=(pc&&pc.pageinfo)?pc.pageinfo?.gg_wt:''%>" />
+    <div class="image-group">
+                <label for="" class="form-label">Ảnh khi share</label>
+                <div class="image-group-body">
+                    <input type="text" id="open_graph_share" name="img_url" image-action="true" class="form-control"  value="<%=(pc&&pc.pageinfo)?pc?.pageinfo?.ogshare:''%>"/>
+                    <img
+                        class="img_preview"
+                        
+                        src="<%= (pc && pc.pageinfo) ? ('/uploads/' + pc.pageinfo.ogshare) : '/img/default.png' %>"
+
+                        alt=""
+                    />
+                </div>
+            </div>
     <div class="area-action" style="margin-top: 36px">
         <button id="btn-save" class="cta btn btn-outline-primary">Save config</button>
     </div>
 </div>
 
 <script>
+    // global scope
+    const ogs = document.querySelector('#open_graph_share');
+    const chooseImage = document.querySelector('#open_graph_share').addEventListener('focus', (ev)=>{
+        console.log(ev)
+        if (ogs.hasAttribute('image-action')) {
+                    elementChoosing =ogs;
+                    imageChoosing = ogs.parentElement.querySelector('.img_preview');
+                    
+                    imageModal.show();
+                    // return;
+                }
+    })
     document.getElementById('btn-save').addEventListener('click', () => {
         $.ajax({
             url: `/admin/page-config/pageinfo-section`,
@@ -32,6 +59,8 @@
             contentType: 'application/json',
             data: JSON.stringify({
                 phone: document.getElementById('phone').value,
+                zalo: document.getElementById('zalo').value,
+                ogshare: document.getElementById('open_graph_share').value,
                 email: document.getElementById('email').value,
                 address: document.getElementById('address').value,
                 footer_title: document.getElementById('footer_title').value,

@@ -67,7 +67,7 @@
     }
 </style>
 <div class="my-card">
-    <div class="mb-2" style="display: flex; justify-content: space-between; align-items: center;">
+    <div class="mb-2" style="display: flex; justify-content: space-between; align-items: center">
         <button class="btn btn-outline-primary mt-3" id="btn-fb-submit">Save config</button>
         <button class="btn btn-outline-success" id="btn-add-image">+ Add image</button>
     </div>
@@ -91,41 +91,25 @@
 
     <!-- end -->
     <label for="imgage"></label>
-    <!-- <div class="input-group">
-        <button class="btn btn-outline-success cta-choose-img">Choose image</button>
-        <input
-            id="hero_issue_img_summary"
-            type="text"
-            value="<%#=(pc&&pc.hero)?pc.hero?.images[0]?.summary:''%>"
-            class="form-control"
-            placeholder="path value..."
-        />
-    </div>
-    <div class="preview-wrapper">
-        <img src="<%#=(pc &&pc.hero)?pc.hero.images[0].primary:'/imgs/default.png'%>" alt="" />
-    </div> -->
-    <!--  -->
+ 
     <hr />
-    <label for="" class="form-label">Image Feedback list</label>
-    <div id="multi-image-container">
-            <% if (fb && fb.cards && fb.cards.length > 0) { %>
-                <%fb.cards.forEach((c,i)=>{%>
-                <div class="input-group">
-                    <button class="btn btn-outline-success cta-choose-img">Choose image</button>
-                    <input
-                        type="text"
-                        value="<%=c%>"
-                        class="form-control"
-                        placeholder="path value..."
-                    />
-                </div>
-                <div class="preview-wrapper">
-                    <img src="<%=c%>" alt="" />
-                </div>
-            <%})%>
-            <% } else { %>
-                
-            <% } %>
+    <!-- <label for="" class="form-label">Image Feedback list</label> -->
+    <div id="multi-image-container" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px">
+        <% if (fb && fb.cards && fb.cards.length > 0) { %> <%fb.cards.forEach((c,i)=>{%>
+        <div class="fb_item">
+            <div style="display: flex; justify-content: space-between; padding-bottom: 10px">
+                <label for="form-label">Image(link)</label>
+                <button class="btn btn-outline-danger cta-delete">&times;</button>
+            </div>
+            <div class="input-group">
+                <button class="btn btn-outline-success cta-choose-img">Choose image</button>
+                <input type="text" value="<%=c%>" class="form-control" placeholder="path value..." />
+            </div>
+            <div class="preview-wrapper">
+                <img src="<%=c%>" alt="" />
+            </div>
+        </div>
+        <%})%> <% } else { %> <% } %>
     </div>
 </div>
 <!-- //==========MODAL========// -->
@@ -183,6 +167,11 @@
 </div>
 <!-- ===========SCRIPT Here=============== -->
 <script type="text/template" id="image-block-template">
+    <div class="fb_item">
+        <div style ="display: flex; justify-content: space-between; padding-bottom: 10px">
+        <label for="form-label">Image(link)</label>
+        <button class="btn btn-outline-danger cta-delete">&times;</button>
+    </div>
     <div class="image-block mb-3">
         <div class="input-group">
             <button class="btn btn-outline-success cta-choose-img">Choose image</button>
@@ -192,15 +181,24 @@
             <img src="/imgs/default.png" />
         </div>
     </div>
+    </div>
 </script>
 
 <script>
+    // global scope
+    const containerNew = document.getElementById('multi-image-container');
     //
     document.getElementById('btn-add-image').addEventListener('click', () => {
         const tpl = document.getElementById('image-block-template').innerHTML;
         const container = document.getElementById('multi-image-container');
         container.insertAdjacentHTML('beforeend', tpl);
     });
+    containerNew.addEventListener('click', (ev)=>{
+        if (ev.target.classList.contains('cta-delete')) {
+        const item = ev.target.closest('.fb_item');
+        if (item) item.remove();
+    }
+    })
     //video
     const modalVideoEl = document.querySelector('#chooseVideoModal');
     const modalVideo = new bootstrap.Modal(modalVideoEl);
@@ -266,17 +264,18 @@
     document.addEventListener('DOMContentLoaded', () => {
         // global
 
-        const cardList= [];
+        let cardList = [];
         document.getElementById('btn-fb-submit').addEventListener('click', () => {
-            document.querySelectorAll('#multi-image-container .input-group input').forEach((e,i)=>{
-                console.log(e)
-                cardList.push(e.value)  
-            })
-            console.log(cardList)
+            cardList=[];
+            document.querySelectorAll('#multi-image-container .input-group input').forEach((e, i) => {
+                // console.log(e);
+                cardList.push(e.value);
+            });
+            console.log(cardList);
             const data = {
                 title: document.querySelector('input[name="title"]').value,
                 vid_url: document.querySelector('input[name="vid_url"]').value,
-                cards: cardList
+                cards: cardList,
             };
             $.ajax({
                 url: '/admin/page-config/feedback',

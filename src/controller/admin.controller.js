@@ -602,6 +602,8 @@ module.exports = () => {
                 const data = req.body;
                 const pageinfoDTO = {
                     phone: data.phone || '',
+                    zalo: data.zalo ||'',
+                    ogshare: data.ogshare||'',
                     email: data.email || '',
                     address: data.address || '',
                     footer_title: data.footer_title||'',

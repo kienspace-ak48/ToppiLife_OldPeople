@@ -12,18 +12,16 @@
     <!--  -->
     <div class="swiper SwiperCertificate">
     <div class="swiper-wrapper">
-      <div class="swiper-slide">
-        <img src="/uploads/<%-(pc&&pc.certificate)?pc?.certificate?.img_urls[0]:''%>" class="thumb" loading="lazy" alt="Certificate 1" />
+      <!--  -->
+      <%if(pc.certificate&&pc.certificate.img_urls.length>0){%>
+        <%pc.certificate.img_urls.forEach((c, i)=>{%>
+          <div class="swiper-slide">
+        <img src="/uploads/<%=c%>" class="thumb" loading="lazy" alt="Certificate <%=i%>" />
       </div>
-      <div class="swiper-slide">
-        <img src="/uploads/<%-(pc&&pc.certificate)?pc?.certificate?.img_urls[1]:''%>" class="thumb" loading="lazy" alt="Certificate 2" />
-      </div>
-      <div class="swiper-slide">
-        <img src="/uploads/<%-(pc&&pc.certificate)?pc?.certificate?.img_urls[2]:''%>" class="thumb" loading="lazy" alt="Certificate 3" />
-      </div>
-      <div class="swiper-slide">
-        <img src="/uploads/<%-(pc&&pc.certificate)?pc?.certificate?.img_urls[3]:''%>" class="thumb" loading="lazy" alt="Certificate 4" />
-      </div>
+        <%})%>
+      <%}%>
+      <!--  -->
+     
      
     </div>
 

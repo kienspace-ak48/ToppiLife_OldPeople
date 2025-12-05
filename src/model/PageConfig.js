@@ -69,6 +69,8 @@ const PageConfigSchema = new mongoose.Schema(
         },
         pageinfo:{
             phone: String,
+            zalo: String,
+            ogshare: String,
             email: String,
             address: String,
             footer_title: String,
