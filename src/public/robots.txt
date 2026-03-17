@@ -1,0 +1,33 @@
+# ===================================================================
+# Robots.txt mẫu tối ưu SEO
+# Áp dụng cho website phổ biến ở Việt Nam
+# ===================================================================
+
+# Áp dụng cho tất cả bot (Google, Bing, Yahoo, Facebook, Zalo, v.v.)
+User-agent: *
+
+# Không cho bot vào các thư mục không quan trọng cho SEO
+Disallow: /admin/
+Disallow: /login/
+Disallow: /register/
+Disallow: /private/
+Disallow: /tmp/
+Disallow: /cache/
+Disallow: /scripts/
+Disallow: /vendor/
+Disallow: /admin/auth
+
+# Cho phép bot vào các thư mục quan trọng
+Allow: /uploads/
+Allow: /
+Allow: /public
+
+# Sitemap (giúp bot index nhanh và đầy đủ)
+Sitemap: https://maydientruong.toppilife.vn/sitemap.xml
+
+# ===================================================================
+# Notes:
+# 1. Thay "https://www.example.com" bằng domain của bạn.
+# 2. Kiểm tra sitemap.xml đã tồn tại và cập nhật đầy đủ các trang cần SEO.
+# 3. File này giúp tối ưu SEO, không bảo mật nội dung.
+# ===================================================================

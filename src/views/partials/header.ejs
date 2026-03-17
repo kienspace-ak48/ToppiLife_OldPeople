@@ -79,9 +79,7 @@
   if (phoneEl) {
     let phone = phoneEl.textContent.trim();
 
-    // Chỉ format nếu là 10 số
-    if (/^\d{10}$/.test(phone)) {
-      phoneEl.textContent = phone.replace(/(\d{3})(\d{3})(\d{4})/, '$1 $2 $3');
-    }
+    phoneEl.textContent= formatPhone433(phone);
+    
   }
 </script>

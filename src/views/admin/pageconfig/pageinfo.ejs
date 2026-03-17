@@ -1,8 +1,8 @@
 <%- include('../partials/pcHeaderControl', {files: files}) %>
 <div class="my-card">
-    <label for="" class="form-laebl">Phone</label>
+    <label for="" class="form-label">Phone</label>
     <input type="text" id="phone" class="form-control" placeholder="Ex:19001900" value="<%=(pc&&pc.pageinfo)?pc.pageinfo?.phone:''%>" />
-    <label for="" class="form-laebl">Zalo</label>
+    <label for="" class="form-label">Zalo</label>
     <input type="text" id="zalo" class="form-control" placeholder="Ex:1284194243875899385" value="<%=(pc&&pc.pageinfo)?pc.pageinfo?.zalo:''%>" />
     <label for="" class="form-label">Email</label>
     <input type="text" id="email" class="form-control" placeholder="admin@gmail.com" value="<%=(pc&&pc.pageinfo)?pc.pageinfo?.email:''%>" />
@@ -11,15 +11,15 @@
     <label for="" class="form-label">Title footer</label>
     <input type="text" id="footer_title" class="form-control" placeholder="123, Tan Hung, HaNoi" value="<%=(pc&&pc.pageinfo)?pc.pageinfo?.footer_title:''%>"  />
     <hr>
-    <label for="" class="form-laebl">Tên website</label>
+    <label for="" class="form-label">Tên website</label>
     <input type="text" id="webname" class="form-control" placeholder="Ex:19001900" value="<%=(pc&&pc.pageinfo)?pc.pageinfo?.webname:''%>" />
-    <label for="" class="form-laebl">Mô tả</label>
+    <label for="" class="form-label">Mô tả</label>
     <input type="text" id="desc" class="form-control" placeholder="Ex:19001900" value="<%=(pc&&pc.pageinfo)?pc.pageinfo?.desc:''%>" />
-    <label for="" class="form-laebl">Keyword</label>
+    <label for="" class="form-label">Keyword</label>
     <input type="text" id="keywords" class="form-control" placeholder="Ex:19001900" value="<%=(pc&&pc.pageinfo)?pc.pageinfo?.keywords:''%>" />
-    <label for="" class="form-laebl">Google Analytics</label>
+    <label for="" class="form-label">Canonical <small style="color: red">(bỏ /)</small></label>
     <input type="text" id="gg_a" class="form-control" placeholder="Ex:19001900" value="<%=(pc&&pc.pageinfo)?pc.pageinfo?.gg_a:''%>" />
-    <label for="" class="form-laebl">Google Webmaster Tool</label>
+    <label for="" class="form-label">Google Webmaster Tool</label>
     <input type="text" id="gg_wt" class="form-control" placeholder="Ex:19001900" value="<%=(pc&&pc.pageinfo)?pc.pageinfo?.gg_wt:''%>" />
     <div class="image-group">
                 <label for="" class="form-label">Ảnh khi share</label>

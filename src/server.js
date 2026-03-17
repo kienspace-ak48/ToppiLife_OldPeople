@@ -1,6 +1,9 @@
 const app = require('./app');
-require('dotenv').config();
 const ALLPORT="0.0.0.0";
+const path = require('path');
+require('dotenv').config({
+    path: path.resolve(__dirname, '../.env')
+});
 const http = require('http');
 const https = require('https');
 const fs = require('fs');
