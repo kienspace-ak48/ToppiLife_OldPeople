@@ -600,6 +600,11 @@ module.exports = () => {
         PageInfoConfigSave: async (req, res) => {
             try {
                 const data = req.body;
+                const gtmRaw = String(data.gtm_id || '').trim();
+                const gtm_id = /^GTM-[A-Z0-9]+$/i.test(gtmRaw) ? gtmRaw.toUpperCase() : '';
+                const pixelRaw = String(data.meta_pixel_id || '').trim();
+                const meta_pixel_id = /^\d{5,}$/.test(pixelRaw) ? pixelRaw : '';
+
                 const pageinfoDTO = {
                     phone: data.phone || '',
                     zalo: data.zalo ||'',
@@ -611,7 +616,8 @@ module.exports = () => {
                     desc: data.desc || '',
                     keywords: data.keywords || '',
                     gg_a: data.gg_a || '',
-                    gg_wt: data.gg_wt || ''
+                    gtm_id,
+                    meta_pixel_id,
                 };
                 const result = await PageConfigEntity.findOneAndUpdate(
                     {},
